@@ -6,7 +6,7 @@
 // pick a video you cannot recognise. Sharing the picker also means new content
 // shows up in both tabs from the same source.
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLive } from "./live";
 import { useClock } from "./clock";
 import type { HarnessMeta } from "./types";
@@ -25,6 +25,11 @@ interface Props {
   videos: VideoGroup[];
 }
 
+interface Health {
+  ok: boolean;
+  services: { name: string; up: boolean; model: string | null; start_with: string }[];
+}
+
 export default function LiveView({ harnesses, videos }: Props) {
   const live = useLive();
   const [harness, setHarness] = useState(harnesses[0]?.id ?? "opencode");
@@ -33,6 +38,22 @@ export default function LiveView({ harnesses, videos }: Props) {
   //: set when the question came from a suggestion, so the server can reuse the
   //  original answer options instead of the generic yes/no set.
   const [sampleRef, setSampleRef] = useState<string | null>(null);
+  const [health, setHealth] = useState<Health | null>(null);
+
+  // Checked on load and after every run, because the usual way this breaks is
+  // that the GPU servers were never started - and without this the only symptom
+  // is a run that hangs and times out minutes later.
+  useEffect(() => {
+    let alive = true;
+    const poll = () =>
+      fetch("/api/health")
+        .then((r) => r.json())
+        .then((h: Health) => { if (alive) setHealth(h); })
+        .catch(() => { if (alive) setHealth(null); });
+    poll();
+    const id = setInterval(poll, 20000);
+    return () => { alive = false; clearInterval(id); };
+  }, []);
 
   const video = videos.find((v) => v.id === videoId) ?? videos[0] ?? null;
   const suggestions = useMemo(() => (video ? suggestionsFor(video) : []), [video]);
@@ -50,7 +71,8 @@ export default function LiveView({ harnesses, videos }: Props) {
 
   const meta = harnesses.find((h) => h.id === harness);
   const busy = live.status === "starting" || live.status === "running";
-  const canRun = !busy && Boolean(video) && question.trim().length >= 8;
+  const modelsUp = health?.ok ?? true;
+  const canRun = !busy && modelsUp && Boolean(video) && question.trim().length >= 8;
 
   const run = () => {
     if (!video || !canRun) return;
@@ -120,6 +142,27 @@ export default function LiveView({ harnesses, videos }: Props) {
         </button>
         {live.status === "finished" && <button onClick={live.reset}>new question</button>}
       </div>
+
+      {health && !health.ok && (
+        <div className="warnbox">
+          <b>The model servers are not running, so a run cannot start.</b>
+          <ul>
+            {health.services.filter((sv) => !sv.up).map((sv) => (
+              <li key={sv.name}>
+                <code>{sv.name}</code> is down — start it with <code>{sv.start_with}</code>{" "}
+                in the phase-0 repo
+              </li>
+            ))}
+          </ul>
+          <span className="hint">Rechecked every 20 seconds; this clears itself once they are up.</span>
+        </div>
+      )}
+
+      {health?.ok && (
+        <p className="okline">
+          models up: {health.services.map((sv) => sv.model ?? sv.name).join(" · ")}
+        </p>
+      )}
 
       {live.error && <div className="error">{live.error}</div>}
 

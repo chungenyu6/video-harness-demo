@@ -56,6 +56,12 @@ show the checker doing something. Two are included:
 An agent can be right and dishonest, or honest and under-reporting. Only a checker
 with independent access to the ledger tells them apart.
 
+## Operating it
+
+Day-to-day instructions (SSH, starting and stopping, loading the models onto the
+GPUs, cleanup, and what to do when something is stuck) are in
+[`docs/OPERATING.zh-TW.md`](docs/OPERATING.zh-TW.md).
+
 ## Reaching live mode
 
 ```bash

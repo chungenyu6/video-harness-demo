@@ -398,3 +398,18 @@ button.disclose:hover { text-decoration: underline; }
   border-top: 1px solid var(--rule); padding-top: 0.5rem; margin: 0.6rem 0 0;
 }
 .cknote code { font-size: 0.72rem; }
+
+/* ---------- health ---------- */
+.warnbox {
+  border: 1px solid var(--fail); border-left-width: 3px;
+  background: var(--fail-soft); color: var(--ink);
+  padding: 0.7rem 0.9rem; margin: 0 0 0.9rem; max-width: 52em;
+}
+.warnbox b { display: block; margin-bottom: 0.35rem; color: var(--fail); }
+.warnbox ul { margin: 0 0 0.4rem; padding-left: 1.1rem; font-size: 0.88rem; }
+.warnbox code { background: var(--surface); font-size: 0.8rem; }
+.warnbox .hint { font-family: var(--mono); font-size: 0.68rem; color: var(--ink-3); }
+.okline {
+  font-family: var(--mono); font-size: 0.68rem; color: var(--ink-3);
+  margin: 0 0 0.7rem;
+}

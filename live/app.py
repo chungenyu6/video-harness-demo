@@ -193,6 +193,37 @@ def videos() -> list[dict]:
             for k, v in sorted(inv.get("videos", {}).items())]
 
 
+@api.get("/api/health")
+def health() -> dict:
+    """Are the model servers actually up?
+
+    Without this the first symptom of a GPU that was never loaded is a run that
+    starts, sits there, and times out several minutes later - which looks like
+    the harness being broken rather than a server that is not running. Cheap to
+    check, so the UI checks before offering to start anything.
+    """
+    import urllib.error
+    import urllib.request
+
+    services = [
+        ("coder", "http://127.0.0.1:8001/v1/models", "scripts/start_coder_server.sh"),
+        ("vlm", "http://127.0.0.1:8002/v1/models", "scripts/start_vlm_server.sh"),
+    ]
+    out = []
+    for name, url, how in services:
+        entry = {"name": name, "url": url, "start_with": how, "up": False, "model": None}
+        try:
+            with urllib.request.urlopen(url, timeout=3) as r:
+                body = json.loads(r.read().decode())
+                entry["up"] = True
+                data = body.get("data") or []
+                entry["model"] = data[0].get("id") if data else None
+        except (urllib.error.URLError, OSError, ValueError, json.JSONDecodeError) as exc:
+            entry["error"] = str(exc)[:160]
+        out.append(entry)
+    return {"ok": all(e["up"] for e in out), "services": out}
+
+
 @api.get("/api/status")
 def status() -> dict:
     return {"busy": _slot.locked(),
@@ -205,6 +236,13 @@ def start(req: RunRequest) -> dict:
         raise HTTPException(400, f"unknown harness; known: {adapters.known()}")
     if not (VIDEOS / f"{req.video_id}.mp4").exists():
         raise HTTPException(400, "unknown video")
+
+    down = [e["name"] for e in health()["services"] if not e["up"]]
+    if down:
+        raise HTTPException(503,
+            f"model server not running: {', '.join(down)}. "
+            "Start it with scripts/start_coder_server.sh and "
+            "scripts/start_vlm_server.sh in the phase-0 repo, then try again.")
 
     job = Job(token=uuid.uuid4().hex, harness=req.harness,
               video_id=req.video_id, question=req.question)
