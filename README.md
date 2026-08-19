@@ -98,6 +98,38 @@ app/                        Vite + React viewer
 content/demo_tasks.jsonl    the questions used for the demo runs
 ```
 
+### Adding content
+
+Nothing here requires touching application code. To add a question:
+
+```bash
+# 1. one line in the task file
+echo '{"sample_id":"185-d3","video_path":"data/working/videos/mmKggCnGtA4.mp4",
+        "question":"Is the dance floor crowded, or only a few people?",
+        "options":["A. Crowded.","B. Only two.","C. Empty.","D. Cannot tell."],
+        "duration":"short","role":"demo"}' >> content/demo_tasks.jsonl
+
+# 2. run it on every harness, sequentially
+bash tools/run_batch.sh 185-d3
+
+# 3. turn the runs into replay bundles
+python tools/export_run.py --out bundles --run-dir <run_dir>...
+
+# 4. regenerate the picker
+python tools/make_scenarios.py
+```
+
+A new **video** needs two extra steps before that: put the file where the harness
+expects it, and `bash tools/make_proxies.sh` to produce the 480p copy the viewer
+plays. Optionally add a readable name to `content/video_labels.json`; without one
+the video id is used.
+
+`tools/make_scenarios.py` derives the whole picker from the bundles that exist.
+The two things it cannot derive live beside it and are preserved verbatim:
+`content/featured.json` (which pairing makes an argument is an editorial call)
+and `content/video_labels.json`. Run it with `--check` in CI to catch a stale
+file.
+
 ### Adding a harness
 
 1. Write `adapters/<name>.py` mapping six events (`step.begin`, `agent.say`,

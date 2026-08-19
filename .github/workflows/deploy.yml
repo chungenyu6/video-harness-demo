@@ -31,6 +31,11 @@ jobs:
       - name: Validate every bundle (schema + leak + sanity)
         run: python tools/validate_bundle.py bundles/*/
 
+      - name: Scenario list must match the bundles on disk
+        # Catches the case where bundles were added but make_scenarios.py was not
+        # re-run, which would silently publish a picker missing the new content.
+        run: python tools/make_scenarios.py --check
+
       - name: Every bundle must declare it has no gold
         run: |
           python - <<'PY'

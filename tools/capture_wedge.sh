@@ -48,11 +48,15 @@ for pid in "${PIDS[@]}"; do
     # prints the entries but drops the "-> target" half, which is the only part
     # that matters - a socket to 127.0.0.1:8001 means the request went out.
     for fd in "/proc/$pid/fd"/*; do
-      [ -e "$fd" ] || continue
+      # -L, not -e: these entries are symlinks to things like "socket:[12345]",
+      # which is not a real path, so -e follows the link, finds nothing, and
+      # skips every single fd. That silently emptied the most useful section of
+      # this report the first time it mattered.
+      [ -L "$fd" ] || continue
       printf '  %-4s -> %s\n' "$(basename "$fd")" "$(readlink "$fd" 2>/dev/null || echo '?')"
     done | head -50
     echo "=== sockets held (inode -> endpoint) ==="
-    inodes=$(for fd in "/proc/$pid/fd"/*; do readlink "$fd" 2>/dev/null; done \
+    inodes=$(for fd in "/proc/$pid/fd"/*; do [ -L "$fd" ] && readlink "$fd"; done 2>/dev/null \
              | sed -n 's/^socket:\[\([0-9]*\)\]$/\1/p')
     if [ -n "$inodes" ]; then
       python3 - "$inodes" <<'PY' 2>/dev/null || echo "  (could not decode)"

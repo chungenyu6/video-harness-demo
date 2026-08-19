@@ -99,6 +99,15 @@
     ]
   },
   {
+    "id": "185-d3",
+    "label": "Dance scene — Is the dance floor crowded with many people, or only a few?",
+    "note": "A question we wrote for the demo. There is no answer key, so correctness is not evaluated — only whether the agent did what it says it did.",
+    "bundles": [
+      "phase0-opencode-185-d3-rep_902",
+      "phase0-pi-185-d3-rep_902"
+    ]
+  },
+  {
     "id": "203-d1",
     "label": "Talent-show interview — What object sits on the table in front of the two men being interviewed?",
     "note": "A question we wrote for the demo. There is no answer key, so correctness is not evaluated — only whether the agent did what it says it did.",
