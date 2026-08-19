@@ -312,3 +312,28 @@ button:focus-visible, select:focus-visible, [tabindex]:focus-visible {
   margin: 0.4rem 0 0; border-left: 2px solid var(--accent);
   padding-left: 0.6rem; line-height: 1.55;
 }
+
+/* ---------- live mode ---------- */
+.qinput {
+  font-family: var(--mono); font-size: 0.82rem; padding: 0.4rem 0.5rem;
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--rule-strong); border-radius: 3px; width: 100%;
+}
+button.go {
+  background: var(--accent); color: #fff; border: 1px solid var(--accent);
+  border-radius: 3px; padding: 0.42rem 0.9rem;
+  font-family: var(--sans); font-weight: 600; font-size: 0.82rem;
+}
+button.go:disabled { background: var(--surface-2); color: var(--ink-3); border-color: var(--rule-strong); cursor: not-allowed; }
+.livenote {
+  font-size: 0.88rem; color: var(--ink-2); max-width: 58em;
+  border-left: 2px solid var(--hold); padding-left: 0.6rem; margin: 0 0 1rem;
+}
+.cols.n1 { grid-template-columns: 1fr; }
+.tabs { display: inline-flex; border: 1px solid var(--rule-strong); border-radius: 3px; overflow: hidden; margin-bottom: 1rem; }
+.tabs button {
+  border: none; border-radius: 0; background: var(--surface);
+  font-family: var(--sans); font-weight: 600; font-size: 0.8rem;
+  padding: 0.35rem 0.9rem; color: var(--ink-3);
+}
+.tabs button[aria-pressed="true"] { background: var(--accent); color: #fff; }

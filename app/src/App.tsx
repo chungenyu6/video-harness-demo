@@ -10,6 +10,7 @@ import ToolRack from "./panels/ToolRack";
 import Budget from "./panels/Budget";
 import Steps from "./panels/Steps";
 import Verify from "./panels/Verify";
+import LiveView from "./LiveView";
 
 type Loaded = Bundle & { _dir: string };
 
@@ -70,6 +71,17 @@ export default function App() {
   const [specs, setSpecs] = useState<ScenarioSpec[] | null>(null);
   const [scenarioKey, setScenarioKey] = useState<string | null>(null);
   const [selFrame, setSelFrame] = useState<number | null>(null);
+  // Live mode exists only when a live server is answering. The static Pages
+  // build gets a 404 here and never renders the tab, so the public site cannot
+  // offer it even by accident.
+  const [liveAvailable, setLiveAvailable] = useState(false);
+  const [mode, setMode] = useState<"replay" | "live">("replay");
+
+  useEffect(() => {
+    fetch("/api/status")
+      .then((r) => setLiveAvailable(r.ok))
+      .catch(() => setLiveAvailable(false));
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -164,6 +176,21 @@ export default function App() {
           </p>
         </header>
 
+        {liveAvailable && (
+          <div className="tabs" role="group" aria-label="Mode">
+            <button aria-pressed={mode === "replay"} onClick={() => setMode("replay")}>
+              Recorded runs
+            </button>
+            <button aria-pressed={mode === "live"} onClick={() => setMode("live")}>
+              Ask your own
+            </button>
+          </div>
+        )}
+
+        {mode === "live" ? (
+          <LiveView harnesses={harnesses} />
+        ) : (
+        <>
         <div className="picker">
           <label>
             <span className="eyebrow">Scenario</span>
@@ -258,6 +285,9 @@ export default function App() {
             ))}
           </div>
         </div>
+
+        </>
+        )}
 
         <p className="footnote">
           Runs are recorded, then replayed on one shared clock. They were executed
