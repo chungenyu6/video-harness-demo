@@ -16,8 +16,18 @@ if (!existsSync(src)) {
   console.error(`no bundles directory at ${src}`);
   process.exit(1);
 }
-await rm(dest, { recursive: true, force: true });
+// Replace the CONTENTS, never the directory itself.
+//
+// `rm -rf` on dest gives the recreated directory a new inode, and a dev server
+// that is already serving publicDir keeps the old one - so every request under
+// /bundles/ falls through to the SPA handler and returns index.html with a 200.
+// The app then tries to JSON.parse "<!doctype html>" and shows an error instead
+// of the site. Running `npm run build` while `npm run dev` was up did exactly
+// that, and the failure looks nothing like its cause.
 await mkdir(dest, { recursive: true });
+for (const entry of await readdir(dest)) {
+  await rm(join(dest, entry), { recursive: true, force: true });
+}
 await cp(src, dest, { recursive: true });
 
 const names = (await readdir(dest, { withFileTypes: true }))

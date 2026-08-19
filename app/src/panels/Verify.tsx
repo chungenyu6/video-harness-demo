@@ -5,9 +5,12 @@
 // sampling extension to reach parity and that extension is itself verified.
 // Hardcoding 23 would have quietly mislabelled every Pi run.
 
+import { useState } from "react";
 import type { Bundle } from "../types";
+import { CHECKS, NOT_CHECKED } from "../checks";
 
 export default function Verify({ bundle, t }: { bundle: Bundle; t: number }) {
+  const [open, setOpen] = useState(false);
   const answered = bundle.events.some((e) => e.t <= t && e.type === "answer.submit");
   const verified = bundle.events.some((e) => e.t <= t && e.type === "verify.result");
   const v = bundle.verification;
@@ -50,10 +53,44 @@ export default function Verify({ bundle, t }: { bundle: Bundle; t: number }) {
           <span
             key={n}
             className={`chk${verified ? (v.checks[n] ? " ok" : " no") : ""}`}
-            title={`${n}: ${verified ? (v.checks[n] ? "pass" : "FAIL") : "pending"}`}
+            title={`${n}: ${verified ? (v.checks[n] ? "pass" : "FAIL") : "pending"}\n${CHECKS[n]?.what ?? ""}`}
           />
         ))}
       </div>
+
+      <button className="disclose" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+        {open ? "▾" : "▸"} what these {names.length} checks are
+      </button>
+
+      {open && (
+        <div className="checklist">
+          {names.map((n) => {
+            const info = CHECKS[n];
+            const state = verified ? (v.checks[n] ? "ok" : "no") : "";
+            return (
+              <div className="ck" key={n}>
+                <span className={`chk ${state}`} />
+                <div>
+                  <code>{n}</code>
+                  <p>{info?.what ?? "(no description recorded)"}</p>
+                  {info?.why && <p className="why">{info.why}</p>}
+                </div>
+              </div>
+            );
+          })}
+          <p className="cknote">
+            Counts differ by harness. Pi's runs carry two extra checks —
+            <code>sampling_matches_config</code> and <code>sampling_pin_evidence</code> —
+            because Pi reaches sampling parity through an extension, so the extension is
+            verified rather than assumed. The two harnesses are therefore not scored by an
+            identical check set.
+          </p>
+          <p className="cknote">
+            <b>What V0 does not check:</b> {NOT_CHECKED.join("; ")}. It validates procedure
+            and artifacts, not meaning.
+          </p>
+        </div>
+      )}
 
       {verified && v.errors.map((e, i) => <div className="verr" key={i}>{e}</div>)}
 

@@ -68,6 +68,11 @@ def build() -> list[dict]:
 
     bundles: dict[str, dict] = {}
     for f in sorted(BUNDLES.glob("*/bundle.json")):
+        # Live runs are ad-hoc questions someone typed. They replay locally
+        # through the same viewer, but they are not curated content and must
+        # never end up in the published picker.
+        if "-live-" in f.parent.name:
+            continue
         bundles[f.parent.name] = json.loads(f.read_text())
     if not bundles:
         raise SystemExit(f"no bundles under {BUNDLES}; run tools/export_run.py first")

@@ -33,3 +33,11 @@ live/logs/
 
 # screenshots used for review, not part of the product
 docs/shots/
+
+# ---- live-mode output: never committed, never published ----
+# A live run is somebody's ad-hoc question. It lands in bundles/ so the viewer
+# can replay it locally through the same code path, but it must not reach the
+# public site: it would publish whatever anyone typed, and bury the curated
+# scenarios under a growing pile of one-offs. tools/make_scenarios.py skips
+# these too, so a local rebuild cannot surface them either.
+bundles/*-live-*/

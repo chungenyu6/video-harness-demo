@@ -56,6 +56,16 @@ show the checker doing something. Two are included:
 An agent can be right and dishonest, or honest and under-reporting. Only a checker
 with independent access to the ledger tells them apart.
 
+## Live mode output
+
+A live run produces a full run directory (~20 MB, mostly a copy of the source
+video) plus a bundle. Both are kept: a bundle whose run directory is gone can no
+longer be re-verified, and re-verifiability is the point. `tools/prune_live.py`
+keeps the most recent ten and drops the rest.
+
+Live bundles are gitignored and skipped by `tools/make_scenarios.py`, so a
+question someone typed can never reach the published site.
+
 ## What this does *not* show
 
 The checker validates **procedure and artifacts only**. It does not certify that a

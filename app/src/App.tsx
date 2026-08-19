@@ -71,8 +71,18 @@ export default function App() {
   const [mode, setMode] = useState<"replay" | "live">("replay");
 
   useEffect(() => {
+    // r.ok is not enough. A dev server answers ANY path with index.html and a
+    // 200, so the tab appeared on the static build too - and then the first
+    // click POSTed to a route that does not exist and surfaced "Not Found".
+    // Live mode exists only where this returns our JSON with our shape.
     fetch("/api/status")
-      .then((r) => setLiveAvailable(r.ok))
+      .then(async (r) => {
+        if (!r.ok) return false;
+        if (!(r.headers.get("content-type") ?? "").includes("application/json")) return false;
+        const body = await r.json().catch(() => null);
+        return Boolean(body) && typeof body.busy === "boolean";
+      })
+      .then(setLiveAvailable)
       .catch(() => setLiveAvailable(false));
   }, []);
 
