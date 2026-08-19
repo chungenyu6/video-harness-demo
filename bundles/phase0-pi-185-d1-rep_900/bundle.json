@@ -1,0 +1,623 @@
+{
+ "bundle_version": "1.0",
+ "run_id": "phase0-pi-185-d1-rep_900-20260819T060303+0000",
+ "harness": "pi",
+ "sample_id": "185-d1",
+ "exported_at": "2026-08-19T06:10:27+00:00",
+ "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
+ "task": {
+  "question": "What is the man wearing while dancing?",
+  "options": [
+   "A. A dark suit.",
+   "B. A swimsuit.",
+   "C. A football jersey.",
+   "D. A lab coat."
+  ],
+  "option_rotation": 0,
+  "duration_label": "short",
+  "has_gold": false
+ },
+ "video": {
+  "id": "mmKggCnGtA4",
+  "duration_sec": 120.419,
+  "fps": 23.976,
+  "width": 640,
+  "height": 272,
+  "nb_frames": 2885,
+  "proxy": "video/mmKggCnGtA4.480p.mp4"
+ },
+ "budget": {
+  "limits": {
+   "coarse_frames": 16,
+   "dense_frames": 16,
+   "vlm_inspected_frames": 32
+  },
+  "final": {
+   "coarse_frames": 16,
+   "dense_frames": 0,
+   "vlm_inspected_frames": 0
+  },
+  "ledger": [
+   {
+    "category": "coarse_frames",
+    "n": 16,
+    "tool": "crv_prepare",
+    "granted": true,
+    "used_before": 0,
+    "limit": 16,
+    "detail": null
+   },
+   {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "tool": "vlm_inspect",
+    "granted": true,
+    "used_before": 0,
+    "limit": 32,
+    "detail": null
+   }
+  ]
+ },
+ "frames": [
+  {
+   "id": "frame_001",
+   "t": 0.0,
+   "file": "frames/frame_001.jpg",
+   "selection_reason": "first",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_002",
+   "t": 7.007,
+   "file": "frames/frame_002.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_003",
+   "t": 15.015,
+   "file": "frames/frame_003.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_004",
+   "t": 22.022,
+   "file": "frames/frame_004.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_005",
+   "t": 30.03,
+   "file": "frames/frame_005.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_006",
+   "t": 38.038,
+   "file": "frames/frame_006.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_007",
+   "t": 44.044,
+   "file": "frames/frame_007.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_008",
+   "t": 52.052,
+   "file": "frames/frame_008.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_009",
+   "t": 60.06,
+   "file": "frames/frame_009.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_010",
+   "t": 67.067,
+   "file": "frames/frame_010.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_011",
+   "t": 75.075,
+   "file": "frames/frame_011.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_012",
+   "t": 82.082,
+   "file": "frames/frame_012.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_013",
+   "t": 89.089,
+   "file": "frames/frame_013.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_014",
+   "t": 97.097,
+   "file": "frames/frame_014.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_015",
+   "t": 104.104,
+   "file": "frames/frame_015.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_016",
+   "t": 112.112,
+   "file": "frames/frame_016.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  }
+ ],
+ "events": [
+  {
+   "t": 0.0,
+   "type": "run.start"
+  },
+  {
+   "t": 0.0,
+   "type": "step.begin"
+  },
+  {
+   "t": 0.0,
+   "type": "agent.say",
+   "text": "I'll work through this systematically, following the rules and using the provided tools to analyze the video and answer the question.\n\nFirst, let me check the video information to understand its duration:"
+  },
+  {
+   "t": 0.0,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "probe_video",
+   "args": {
+    "command": "python tools/probe_video.py --video \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/mmKggCnGtA4.mp4\""
+   }
+  },
+  {
+   "t": 0.152,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "probe_video",
+   "ok": true,
+   "detail": "{\n  \"path\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/mmKggCnGtA4.mp4\",\n  \"duration_sec\": 120.419,\n  \"fps\": 23.976,\n  \"width\": 640,\n  \"height\": 272,\n  \"codec\": \"h264\",\n  \"nb_frames\": 2885,\n  \"has_audio_stream\": true,\n  \"size_bytes\": 7133204\n}"
+  },
+  {
+   "t": 1.186,
+   "type": "step.begin"
+  },
+  {
+   "t": 1.186,
+   "type": "agent.say",
+   "text": "Now I'll examine the task to understand what I'm looking for:"
+  },
+  {
+   "t": 1.186,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-185-d1-rep_900-20260819T060303+0000/workspace/input/task.json"
+   }
+  },
+  {
+   "t": 1.195,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "{\n  \"sample_id\": \"185-d1\",\n  \"video_path\": \"data/working/videos/mmKggCnGtA4.mp4\",\n  \"question\": \"What is the man wearing while dancing?\",\n  \"options\": [\n    \"A. A dark suit.\",\n    \"B. A swimsuit.\",\n    \"C. A football jersey.\",\n    \"D. A lab coat.\"\n  ],\n  \"duration\": \"short\",\n  \"role\": \"demo\"\n}"
+  },
+  {
+   "t": 2.174,
+   "type": "step.begin"
+  },
+  {
+   "t": 2.174,
+   "type": "agent.say",
+   "text": "Let me also check the question file:"
+  },
+  {
+   "t": 2.174,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-185-d1-rep_900-20260819T060303+0000/workspace/input/question.txt"
+   }
+  },
+  {
+   "t": 2.178,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "What is the man wearing while dancing?\n\nA. A dark suit.\nB. A swimsuit.\nC. A football jersey.\nD. A lab coat."
+  },
+  {
+   "t": 3.198,
+   "type": "step.begin"
+  },
+  {
+   "t": 3.198,
+   "type": "agent.say",
+   "text": "Now I'll create a coarse scene-aware scan of the entire video to get an overview:"
+  },
+  {
+   "t": 3.198,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "args": {
+    "command": "python tools/crv_prepare.py --video \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/mmKggCnGtA4.mp4\" --output artifacts_crv --why \"looking for a man dancing to determine what he's wearing\""
+   }
+  },
+  {
+   "t": 8.906,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "ok": true,
+   "detail": "{\n  \"video\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/mmKggCnGtA4.mp4\",\n  \"output_dir\": \"artifacts_crv\",\n  \"duration_sec\": 120.419,\n  \"frames_extracted\": 16,\n  \"frame_budget_reserved\": 16,\n  \"timestamp_range\": [\n    0.0,\n    112.112\n  ],\n  \"grids\": [\n    \"grids/grid_01.jpg\",\n    \"grids/grid_02.jpg\"\n  ],\n  \"manifest\": \"artifacts_crv/MANIFEST.txt\",\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 0\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    }\n  },\n  \"frames_index\": \"artifacts_crv/frames_index.json\",\n  \"note\": \"Per-frame timestamps are in frames_index.json; pass it to vlm_inspect.py.\"\n}"
+  },
+  {
+   "t": 8.906,
+   "type": "budget.spend",
+   "script": "crv_prepare",
+   "detail": {
+    "category": "coarse_frames",
+    "n": 16,
+    "granted": true,
+    "used_before": 0,
+    "limit": 16
+   }
+  },
+  {
+   "t": 8.906,
+   "type": "frames.ready",
+   "detail": {
+    "count": 16,
+    "range": [
+     0.0,
+     112.112
+    ]
+   }
+  },
+  {
+   "t": 9.698,
+   "type": "step.begin"
+  },
+  {
+   "t": 9.698,
+   "type": "agent.say",
+   "text": "Now I'll inspect the coarse frames to see what I can observe about the man dancing:"
+  },
+  {
+   "t": 9.698,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "args": {
+    "command": "python tools/vlm_inspect.py --question-file input/question.txt --frames-json artifacts_crv/frames_index.json --max-images 8"
+   }
+  },
+  {
+   "t": 16.551,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "ok": true,
+   "detail": "{\n  \"observation_file\": \"artifacts_crv/observation_00.json\",\n  \"frames_inspected\": 8,\n  \"image_bytes_sent\": 64513,\n  \"latency_sec\": 5.708,\n  \"summary\": \"The man is dancing on a stage in a formal setting. He is consistently wearing a dark suit jacket, a white collared shirt, and dark trousers throughout all the frames.\",\n  \"answer_relevance\": [\n    \"A. A dark suit.\"\n  ],\n  \"observation_count\": 8,\n  \"parse_error\": null,\n  \"note\": \"Full per-frame observations saved to artifacts_crv/observation_00.json; re-read that file instead of relying on this context.\"\n}"
+  },
+  {
+   "t": 16.551,
+   "type": "budget.spend",
+   "script": "vlm_inspect",
+   "detail": {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "granted": true,
+    "used_before": 0,
+    "limit": 32
+   }
+  },
+  {
+   "t": 16.551,
+   "type": "observe.done",
+   "detail": {
+    "window": null,
+    "frames": 8,
+    "summary": null
+   }
+  },
+  {
+   "t": 17.862,
+   "type": "step.begin"
+  },
+  {
+   "t": 17.862,
+   "type": "agent.say",
+   "text": "Based on the initial inspection, I can see that the man is consistently wearing a dark suit throughout the frames. Let me examine the detailed observation file to confirm this:"
+  },
+  {
+   "t": 17.862,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-185-d1-rep_900-20260819T060303+0000/workspace/artifacts_crv/observation_00.json"
+   }
+  },
+  {
+   "t": 17.867,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "{\n  \"model\": \"qwen3-vl-30b-a3b\",\n  \"window\": null,\n  \"frames_sent\": [\n    {\n      \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n      \"timestamp_sec\": 0.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_003.jpg\",\n      \"timestamp_sec\": 15.015\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_005.jpg\",\n      \"timestamp_sec\": 30.03\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_007.jpg\",\n      \"timestamp_sec\": 44.044\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_009.jpg\",\n      \"timestamp_sec\": 60.06\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_011.jpg\",\n      \"timestamp_sec\": 75.075\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_013.jpg\",\n      \"timestamp_sec\": 89.089\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_015.jpg\",\n      \"timestamp_sec\": 104.104\n    }\n  ],\n  \"image_bytes_sent\": 64513,\n  \"latency_sec\": 5.708,\n  \"usage\": {\n    \"completion_tokens\": 536,\n    \"prompt_tokens\": 1688,\n    \"total_tokens\": 2224,\n    \"completion_tokens_details\": null,\n    \"prompt_tokens_details\": null\n  },\n  \"parse_error\": null,\n  \"raw_response\": \"```json\\n{\\n  \\\"observations\\\": [\\n    {\\n      \\\"timestamp_sec\\\": 0.0,\\n      \\\"frame\\\": \\\"frame_001.jpg\\\",\\n      \\\"observation\\\": \\\"A man in a dark suit is dancing with a woman in a light-colored dress on a stage. The man is wearing a dark suit jacket, a white shirt, and dark trousers.\\\"\\n\n… (+3757 chars)"
+  },
+  {
+   "t": 23.666,
+   "type": "step.begin"
+  },
+  {
+   "t": 23.666,
+   "type": "agent.say",
+   "text": "Based on my analysis of the video frames, I can confidently determine what the man is wearing while dancing. From the observation file, I can see that:\n\n1. In frame_001.jpg (timestamp 0.0 sec): \"A man in a dark suit is dancing with a woman in a light-colored dress on a stage. The man is wearing a dark suit jacket, a white shirt, and dark trousers.\"\n2. In frame_003.jpg (timestamp 15.015 sec): \"A man and a woman are dancing on a stage. The man is wearing a dark suit jacket, a white shirt, and dark trousers.\"\n3. In frame_005.jpg (timestamp 30.03 sec): \"The man and woman continue their dance. The man is wearing a dark suit jacket, a white shirt, and dark trousers.\"\n4. In frame_007.jpg (timestamp 44.044 sec): \"A close-up of the man dancing. He is wearing a white collared shirt and a dark jacket, consistent with a suit.\"\n5. And so on through all frames...\n\nThe summary confirms that \"The man is dancing on a stage in a formal setting. He is consistently wearing a dark suit jacket, a white collared shirt, and dark trousers throughout all the frames.\"\n\nThis clearly indicates that the answer is A. A dark suit.\n\nLet me now prepare and submit the evidence:"
+  },
+  {
+   "t": 23.666,
+   "type": "tool.call",
+   "tool": "write",
+   "args": {
+    "path": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-185-d1-rep_900-20260819T060303+0000/workspace/candidate_evidence.json",
+    "content": "{\n  \"sample_id\": \"185-d1\",\n  \"answer\": \"A\",\n  \"evidence\": [\n    {\n      \"timestamp_sec\": 0.0,\n      \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n      \"claim\": \"A man in a dark suit is dancing with a woman in a light-colored dress on a stage. The man is wearing a dark suit jacket, a white shirt, and dark trousers.\"\n    }\n  ],\n  \"windows_examined\": [[0.0, 112.112]],\n  \"tool_trace\": [\"probe_video\", \"crv_prepare\", \"vlm_inspect\", \"submit_evidence\"],\n  \"frames_processed\": 8,\n  \"status\": \"answered\"\n}"
+   }
+  },
+  {
+   "t": 23.677,
+   "type": "tool.result",
+   "tool": "write",
+   "ok": true,
+   "detail": "Successfully wrote 501 bytes to /home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-185-d1-rep_900-20260819T060303+0000/workspace/candidate_evidence.json"
+  },
+  {
+   "t": 24.155,
+   "type": "step.begin"
+  },
+  {
+   "t": 24.155,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "args": {
+    "command": "python tools/submit_evidence.py --input candidate_evidence.json"
+   }
+  },
+  {
+   "t": 24.328,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "ok": true,
+   "detail": "{\n  \"written\": \"/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-185-d1-rep_900-20260819T060303+0000/agent-out/evidence.json\",\n  \"sample_id\": \"185-d1\",\n  \"status\": \"answered\",\n  \"answer\": \"A\",\n  \"evidence_items\": 1,\n  \"frames_processed_claimed\": 8,\n  \"frames_processed_ledger\": 8,\n  \"frames_count_matches_ledger\": true,\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 8\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 24\n    }\n  }\n}"
+  },
+  {
+   "t": 24.328,
+   "type": "answer.submit",
+   "detail": {
+    "letter": "A",
+    "items": 1
+   }
+  },
+  {
+   "t": 26.39,
+   "type": "step.begin"
+  },
+  {
+   "t": 26.39,
+   "type": "agent.say",
+   "text": "I have successfully analyzed the video and determined the answer to the question.\n\nBased on my examination of the video frames, the man is consistently wearing a dark suit while dancing. The evidence comes from frame_001.jpg at timestamp 0.0 seconds, which shows \"A man in a dark suit is dancing with a woman in a light-colored dress on a stage. The man is wearing a dark suit jacket, a white shirt, and dark trousers.\"\n\nI have submitted my answer as \"A. A dark suit\" along with the appropriate evidence.\n\nThe submission was successful with the following details:\n- Answer: A\n- Evidence: 1 item \n- Frames processed: 8\n- Status: answered\n\nThe video analysis shows the man is dancing on a stage in a formal setting wearing a dark suit jacket, white shirt, and dark trousers throughout all inspected frames, confirming that the correct answer is A. A dark suit."
+  },
+  {
+   "t": 26.89,
+   "type": "verify.result",
+   "detail": {
+    "v0_status": "pass",
+    "errors": []
+   }
+  },
+  {
+   "t": 26.99,
+   "type": "run.end"
+  }
+ ],
+ "pipeline": {
+  "declared": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "extract_window",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "actual": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "claimed": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "agrees": true
+ },
+ "answer": {
+  "letter": "A",
+  "status": "answered",
+  "frames_processed": 8,
+  "windows_examined": [
+   [
+    0.0,
+    112.112
+   ]
+  ],
+  "evidence": [
+   {
+    "t": 0.0,
+    "frame": "frame_001.jpg",
+    "claim": "A man in a dark suit is dancing with a woman in a light-colored dress on a stage. The man is wearing a dark suit jacket, a white shirt, and dark trousers."
+   }
+  ]
+ },
+ "verification": {
+  "v0_status": "pass",
+  "checks": {
+   "run_json_present": true,
+   "evidence_present": true,
+   "evidence_parses": true,
+   "schema": true,
+   "tamper_verifier": true,
+   "tamper_evidence_schema": true,
+   "task_input_present": true,
+   "sample_id_matches": true,
+   "answer_in_options": true,
+   "video_probeable": true,
+   "timestamp_bounds": true,
+   "frame_files": true,
+   "frame_run_owned": true,
+   "windows_valid": true,
+   "budget": true,
+   "budget_ledger_agrees": true,
+   "trace_present": true,
+   "tool_logs_present": true,
+   "agent_trace_present": true,
+   "exit_status_recorded": true,
+   "service_refs": true,
+   "environment_snapshot": true,
+   "sampling_pin_evidence": true,
+   "sampling_matches_config": true,
+   "run_dir_was_new": true
+  },
+  "errors": [],
+  "leak_status": "clean",
+  "leak_note": "Under D007 the gold labels are unreadable to the agent user. A hit with blocked=true is the boundary working, not a leak; it is worth reporting because it shows the agent went looking. Only blocked=false hits set label_leak.",
+  "does_not_validate": [
+   "whether a frame semantically supports its claim",
+   "whether the evidence justifies the final answer",
+   "whether the model hallucinated",
+   "whether temporal coverage was sufficient"
+  ],
+  "boundary_probes": []
+ },
+ "telemetry": {
+  "wall_clock_sec": 29.0,
+  "layers": {
+   "perception_vlm": {
+    "measured": true,
+    "calls": 1,
+    "latency_sec": 5.708,
+    "frames_sent": 8,
+    "image_bytes": 64513,
+    "prompt_tokens": 1688,
+    "completion_tokens": 536
+   },
+   "tools": {
+    "measured": true,
+    "latency_sec": 5.575,
+    "by_channel_sec": {
+     "crv": 5.517,
+     "probe": 0.058
+    },
+    "calls_by_channel": {
+     "crv": 1,
+     "probe": 1
+    }
+   },
+   "controller": {
+    "requests": 9,
+    "prompt_tokens": 41961,
+    "completion_tokens": 1340,
+    "latency_sec": null,
+    "errors": 0,
+    "source": "pi event stream"
+   },
+   "harness_overhead": {
+    "measured": false,
+    "residual_sec": 17.717,
+    "definition": "wall clock minus measured VLM and tool time; includes controller inference, prompt assembly, retries and harness state handling"
+   }
+  },
+  "caveats": [
+   "Controller inference time is not separable from harness overhead without per-request timing from the harness; the residual bundles both.",
+   "vLLM serves one request at a time here (--max-num-seqs 1), so layers do not overlap and the sum is meaningful.",
+   "A single run is one sample. Do not compare harnesses on one run each."
+  ]
+ }
+}

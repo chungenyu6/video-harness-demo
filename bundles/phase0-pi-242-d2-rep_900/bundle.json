@@ -1,0 +1,995 @@
+{
+ "bundle_version": "1.0",
+ "run_id": "phase0-pi-242-d2-rep_900-20260819T060838+0000",
+ "harness": "pi",
+ "sample_id": "242-d2",
+ "exported_at": "2026-08-19T06:10:27+00:00",
+ "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
+ "task": {
+  "question": "What kind of product is opened partway through the video?",
+  "options": [
+   "A. A makeup palette.",
+   "B. A hair dryer.",
+   "C. A perfume bottle.",
+   "D. A nail file."
+  ],
+  "option_rotation": 0,
+  "duration_label": "short",
+  "has_gold": false
+ },
+ "video": {
+  "id": "lokFoo_QD8c",
+  "duration_sec": 110.481,
+  "fps": 29.97,
+  "width": 1280,
+  "height": 720,
+  "nb_frames": 3311,
+  "proxy": "video/lokFoo_QD8c.480p.mp4"
+ },
+ "budget": {
+  "limits": {
+   "coarse_frames": 16,
+   "dense_frames": 16,
+   "vlm_inspected_frames": 32
+  },
+  "final": {
+   "coarse_frames": 16,
+   "dense_frames": 0,
+   "vlm_inspected_frames": 0
+  },
+  "ledger": [
+   {
+    "category": "coarse_frames",
+    "n": 16,
+    "tool": "crv_prepare",
+    "granted": true,
+    "used_before": 0,
+    "limit": 16,
+    "detail": null
+   },
+   {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "tool": "vlm_inspect",
+    "granted": true,
+    "used_before": 0,
+    "limit": 32,
+    "detail": null
+   },
+   {
+    "category": "dense_frames",
+    "n": 8,
+    "tool": "extract_window",
+    "granted": true,
+    "used_before": 0,
+    "limit": 16,
+    "detail": null
+   },
+   {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "tool": "vlm_inspect",
+    "granted": true,
+    "used_before": 8,
+    "limit": 32,
+    "detail": null
+   }
+  ]
+ },
+ "frames": [
+  {
+   "id": "frame_001",
+   "t": 0.0,
+   "file": "frames/frame_001.jpg",
+   "selection_reason": "first",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_002",
+   "t": 7.007,
+   "file": "frames/frame_002.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_003",
+   "t": 14.014,
+   "file": "frames/frame_003.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_004",
+   "t": 21.021,
+   "file": "frames/frame_004.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_005",
+   "t": 29.029,
+   "file": "frames/frame_005.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_006",
+   "t": 36.036,
+   "file": "frames/frame_006.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_007",
+   "t": 42.042,
+   "file": "frames/frame_007.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_008",
+   "t": 49.049,
+   "file": "frames/frame_008.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_009",
+   "t": 56.056,
+   "file": "frames/frame_009.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "w_000_60.000s",
+   "t": 60.0,
+   "file": "frames/w_000_60.000s.jpg",
+   "selection_reason": null,
+   "pass": "dense",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_010",
+   "t": 62.062,
+   "file": "frames/frame_010.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "w_001_62.143s",
+   "t": 62.143,
+   "file": "frames/w_001_62.143s.jpg",
+   "selection_reason": null,
+   "pass": "dense",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "w_002_64.286s",
+   "t": 64.286,
+   "file": "frames/w_002_64.286s.jpg",
+   "selection_reason": null,
+   "pass": "dense",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "w_003_66.429s",
+   "t": 66.429,
+   "file": "frames/w_003_66.429s.jpg",
+   "selection_reason": null,
+   "pass": "dense",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_011",
+   "t": 68.068,
+   "file": "frames/frame_011.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "w_004_68.571s",
+   "t": 68.571,
+   "file": "frames/w_004_68.571s.jpg",
+   "selection_reason": null,
+   "pass": "dense",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "w_005_70.714s",
+   "t": 70.714,
+   "file": "frames/w_005_70.714s.jpg",
+   "selection_reason": null,
+   "pass": "dense",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "w_006_72.857s",
+   "t": 72.857,
+   "file": "frames/w_006_72.857s.jpg",
+   "selection_reason": null,
+   "pass": "dense",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "w_007_75.000s",
+   "t": 75.0,
+   "file": "frames/w_007_75.000s.jpg",
+   "selection_reason": null,
+   "pass": "dense",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_012",
+   "t": 75.075,
+   "file": "frames/frame_012.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_013",
+   "t": 83.083,
+   "file": "frames/frame_013.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_014",
+   "t": 91.091,
+   "file": "frames/frame_014.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_015",
+   "t": 97.197,
+   "file": "frames/frame_015.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_016",
+   "t": 103.303,
+   "file": "frames/frame_016.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  }
+ ],
+ "events": [
+  {
+   "t": 0.0,
+   "type": "run.start"
+  },
+  {
+   "t": 0.0,
+   "type": "step.begin"
+  },
+  {
+   "t": 0.0,
+   "type": "agent.say",
+   "text": "I'll work through this systematically, following the rules and using the provided tools to analyze the video and answer the question.\n\nFirst, let me check the task information and video file:"
+  },
+  {
+   "t": 0.0,
+   "type": "tool.call",
+   "tool": "bash",
+   "args": {
+    "command": "ls -la input/"
+   }
+  },
+  {
+   "t": 0.047,
+   "type": "tool.result",
+   "tool": "bash",
+   "ok": true,
+   "detail": "total 16\ndrwxr-xr-x 2 phase0agent phase0agent 4096 Aug 19 06:08 .\ndrwxr-xr-x 6 phase0agent phase0agent 4096 Aug 19 06:08 ..\n-rw-r--r-- 1 phase0agent phase0agent  134 Aug 19 06:08 question.txt\n-rw-r--r-- 1 phase0agent phase0agent  320 Aug 19 06:08 task.json"
+  },
+  {
+   "t": 0.383,
+   "type": "step.begin"
+  },
+  {
+   "t": 0.383,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "input/task.json"
+   }
+  },
+  {
+   "t": 0.391,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "{\n  \"sample_id\": \"242-d2\",\n  \"video_path\": \"data/working/videos/lokFoo_QD8c.mp4\",\n  \"question\": \"What kind of product is opened partway through the video?\",\n  \"options\": [\n    \"A. A makeup palette.\",\n    \"B. A hair dryer.\",\n    \"C. A perfume bottle.\",\n    \"D. A nail file.\"\n  ],\n  \"duration\": \"short\",\n  \"role\": \"demo\"\n}"
+  },
+  {
+   "t": 0.717,
+   "type": "step.begin"
+  },
+  {
+   "t": 0.717,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "input/question.txt"
+   }
+  },
+  {
+   "t": 0.721,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "What kind of product is opened partway through the video?\n\nA. A makeup palette.\nB. A hair dryer.\nC. A perfume bottle.\nD. A nail file."
+  },
+  {
+   "t": 1.354,
+   "type": "step.begin"
+  },
+  {
+   "t": 1.354,
+   "type": "agent.say",
+   "text": "Now let me probe the video to understand its duration:"
+  },
+  {
+   "t": 1.354,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "probe_video",
+   "args": {
+    "command": "python tools/probe_video.py --video data/working/videos/lokFoo_QD8c.mp4"
+   }
+  },
+  {
+   "t": 1.428,
+   "type": "tool.error",
+   "tool": "bash",
+   "script": "probe_video",
+   "detail": "{\"error\": \"DATA_DECODE\", \"message\": \"video not found: data/working/videos/lokFoo_QD8c.mp4\"}\n\n\nCommand exited with code 2"
+  },
+  {
+   "t": 1.428,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "probe_video",
+   "ok": false,
+   "detail": "{\"error\": \"DATA_DECODE\", \"message\": \"video not found: data/working/videos/lokFoo_QD8c.mp4\"}\n\n\nCommand exited with code 2"
+  },
+  {
+   "t": 2.07,
+   "type": "step.begin"
+  },
+  {
+   "t": 2.07,
+   "type": "agent.say",
+   "text": "Let me check what video files are actually available:"
+  },
+  {
+   "t": 2.07,
+   "type": "tool.call",
+   "tool": "bash",
+   "args": {
+    "command": "find /home/video-code-harness/video-agent-harness-phase0 -name \"*.mp4\" | head -10"
+   }
+  },
+  {
+   "t": 2.37,
+   "type": "tool.result",
+   "tool": "bash",
+   "ok": true,
+   "detail": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-282-1-rep_44-20260816T042004+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-282-1-rep_102-20260817T221008+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-282-1-rep_90-20260816T201542+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-282-1-rep_32-20260816T034541+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-185-1-rep_83-20260817T204632+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-282-1-rep_54-20260816T202635+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-282-1-rep_63-20260816T213003+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-242-1-rep_84-20260817T205836+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-\n… (+328 chars)"
+  },
+  {
+   "t": 3.153,
+   "type": "step.begin"
+  },
+  {
+   "t": 3.153,
+   "type": "agent.say",
+   "text": "Let me check the actual video path in the working directory:"
+  },
+  {
+   "t": 3.153,
+   "type": "tool.call",
+   "tool": "bash",
+   "args": {
+    "command": "find /home/video-code-harness/video-agent-harness-phase0/data -name \"*lokFoo*\" -o -name \"*QD8c*\""
+   }
+  },
+  {
+   "t": 3.177,
+   "type": "tool.error",
+   "tool": "bash",
+   "detail": "/home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/data/labels’: Permission denied\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/data/raw’: Permission denied\n\n\nCommand exited with code 1"
+  },
+  {
+   "t": 3.177,
+   "type": "tool.result",
+   "tool": "bash",
+   "ok": false,
+   "detail": "/home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/data/labels’: Permission denied\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/data/raw’: Permission denied\n\n\nCommand exited with code 1"
+  },
+  {
+   "t": 3.685,
+   "type": "step.begin"
+  },
+  {
+   "t": 3.685,
+   "type": "tool.call",
+   "tool": "bash",
+   "args": {
+    "command": "ls -la /home/video-code-harness/video-agent-harness-phase0/data/working/videos/"
+   }
+  },
+  {
+   "t": 3.706,
+   "type": "tool.result",
+   "tool": "bash",
+   "ok": true,
+   "detail": "total 70444\ndrwxr-xr-x 2 root root     4096 Aug 14 17:53 .\ndrwxr-xr-x 3 root root     4096 Aug 14 18:00 ..\n-rw-r--r-- 1 root root        0 Aug 14 17:04 .gitkeep\n-rw-rw-r-- 1 root root 13744597 Jan  9  2022 Kv1JXuOkAfk.mp4\n-rw-rw-r-- 1 root root 22619514 Jul 20  2023 MiPw-RZMHCQ.mp4\n-rw-rw-r-- 1 root root 10798188 Sep 17  2022 lokFoo_QD8c.mp4\n-rw-rw-r-- 1 root root 17821494 Mar  2  2024 mD_7mhnPS_Y.mp4\n-rw-rw-r-- 1 root root  7133204 Mar 12  2024 mmKggCnGtA4.mp4"
+  },
+  {
+   "t": 4.563,
+   "type": "step.begin"
+  },
+  {
+   "t": 4.563,
+   "type": "agent.say",
+   "text": "Great! Now I can see the video exists. Let me probe it again with the correct path:"
+  },
+  {
+   "t": 4.563,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "probe_video",
+   "args": {
+    "command": "python tools/probe_video.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4"
+   }
+  },
+  {
+   "t": 4.693,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "probe_video",
+   "ok": true,
+   "detail": "{\n  \"path\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4\",\n  \"duration_sec\": 110.481,\n  \"fps\": 29.97,\n  \"width\": 1280,\n  \"height\": 720,\n  \"codec\": \"h264\",\n  \"nb_frames\": 3311,\n  \"has_audio_stream\": true,\n  \"size_bytes\": 10798188\n}"
+  },
+  {
+   "t": 5.809,
+   "type": "step.begin"
+  },
+  {
+   "t": 5.809,
+   "type": "agent.say",
+   "text": "Perfect! The video is 110.481 seconds long. Now let me prepare a coarse scene-aware scan of the entire video:"
+  },
+  {
+   "t": 5.809,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "args": {
+    "command": "python tools/crv_prepare.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4 --output artifacts_crv --why \"looking for a product being opened partway through the video\""
+   }
+  },
+  {
+   "t": 24.42,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "ok": true,
+   "detail": "{\n  \"video\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4\",\n  \"output_dir\": \"artifacts_crv\",\n  \"duration_sec\": 110.481,\n  \"frames_extracted\": 16,\n  \"frame_budget_reserved\": 16,\n  \"timestamp_range\": [\n    0.0,\n    103.303\n  ],\n  \"grids\": [\n    \"grids/grid_01.jpg\",\n    \"grids/grid_02.jpg\"\n  ],\n  \"manifest\": \"artifacts_crv/MANIFEST.txt\",\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 0\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    }\n  },\n  \"frames_index\": \"artifacts_crv/frames_index.json\",\n  \"note\": \"Per-frame timestamps are in frames_index.json; pass it to vlm_inspect.py.\"\n}"
+  },
+  {
+   "t": 24.42,
+   "type": "budget.spend",
+   "script": "crv_prepare",
+   "detail": {
+    "category": "coarse_frames",
+    "n": 16,
+    "granted": true,
+    "used_before": 0,
+    "limit": 16
+   }
+  },
+  {
+   "t": 24.42,
+   "type": "frames.ready",
+   "detail": {
+    "count": 16,
+    "range": [
+     0.0,
+     103.303
+    ]
+   }
+  },
+  {
+   "t": 25.256,
+   "type": "step.begin"
+  },
+  {
+   "t": 25.256,
+   "type": "agent.say",
+   "text": "Now let me examine what these 16 coarse frames show by sending them to the vision model:"
+  },
+  {
+   "t": 25.256,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "args": {
+    "command": "python tools/vlm_inspect.py --question-file input/question.txt --frames-json artifacts_crv/frames_index.json --max-images 8"
+   }
+  },
+  {
+   "t": 31.905,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "ok": true,
+   "detail": "{\n  \"observation_file\": \"artifacts_crv/observation_00.json\",\n  \"frames_inspected\": 8,\n  \"image_bytes_sent\": 55501,\n  \"latency_sec\": 5.532,\n  \"summary\": \"The video frames show a woman in a bathroom setting, demonstrating various beauty products. She applies makeup, including mascara and blush, and holds up a blush palette and a lipstick. The title 'Beauty Secrets' suggests a beauty tutorial context.\",\n  \"answer_relevance\": [\n    \"frame_011.jpg shows a makeup palette being opened and displayed, which is directly relevant to the question.\"\n  ],\n  \"observation_count\": 8,\n  \"parse_error\": null,\n  \"note\": \"Full per-frame observations saved to artifacts_crv/observation_00.json; re-read that file instead of relying on this context.\"\n}"
+  },
+  {
+   "t": 31.905,
+   "type": "budget.spend",
+   "script": "vlm_inspect",
+   "detail": {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "granted": true,
+    "used_before": 0,
+    "limit": 32
+   }
+  },
+  {
+   "t": 31.905,
+   "type": "observe.done",
+   "detail": {
+    "window": null,
+    "frames": 8,
+    "summary": null
+   }
+  },
+  {
+   "t": 32.789,
+   "type": "step.begin"
+  },
+  {
+   "t": 32.789,
+   "type": "agent.say",
+   "text": "Based on the initial analysis, I can see that frame_011.jpg shows a makeup palette being opened and displayed, which is directly relevant to the question. Let me examine this observation file more closely to confirm the details:"
+  },
+  {
+   "t": 32.789,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "artifacts_crv/observation_00.json"
+   }
+  },
+  {
+   "t": 32.793,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "{\n  \"model\": \"qwen3-vl-30b-a3b\",\n  \"window\": null,\n  \"frames_sent\": [\n    {\n      \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n      \"timestamp_sec\": 0.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_003.jpg\",\n      \"timestamp_sec\": 14.014\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_005.jpg\",\n      \"timestamp_sec\": 29.029\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_007.jpg\",\n      \"timestamp_sec\": 42.042\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_009.jpg\",\n      \"timestamp_sec\": 56.056\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_011.jpg\",\n      \"timestamp_sec\": 68.068\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_013.jpg\",\n      \"timestamp_sec\": 83.083\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_015.jpg\",\n      \"timestamp_sec\": 97.197\n    }\n  ],\n  \"image_bytes_sent\": 55501,\n  \"latency_sec\": 5.532,\n  \"usage\": {\n    \"completion_tokens\": 513,\n    \"prompt_tokens\": 2173,\n    \"total_tokens\": 2686,\n    \"completion_tokens_details\": null,\n    \"prompt_tokens_details\": null\n  },\n  \"parse_error\": null,\n  \"raw_response\": \"{\\n  \\\"observations\\\": [\\n    {\\n      \\\"timestamp_sec\\\": 0.0,\\n      \\\"frame\\\": \\\"frame_001.jpg\\\",\\n      \\\"observation\\\": \\\"The text 'Beauty Secrets' is displayed in black font on a white background.\\\"\\n    },\\n    {\\n      \\\"timestamp_sec\\\": 14.014,\\n      \\\"frame\\\": \\\"frame_003.jpg\\\",\\n \n… (+3740 chars)"
+  },
+  {
+   "t": 34.9,
+   "type": "step.begin"
+  },
+  {
+   "t": 34.9,
+   "type": "agent.say",
+   "text": "Perfect! From the observation file, I can see that frame_011.jpg (timestamp 68.068 seconds) shows \"A woman holds up a black makeup palette labeled 'Blush' with a brush, showing the product to the camera.\" This directly answers the question.\n\nLet me also check if there are any other frames that might give additional context by looking at a few more frames around this time:"
+  },
+  {
+   "t": 34.9,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "extract_window",
+   "args": {
+    "command": "python tools/extract_window.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4 --start 60 --end 75 --num-frames 8 --output win1 --reason \"examining the area around frame 011 which shows the makeup palette being opened\""
+   }
+  },
+  {
+   "t": 36.225,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "extract_window",
+   "ok": true,
+   "detail": "{\n  \"video\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4\",\n  \"window\": [\n    60.0,\n    75.0\n  ],\n  \"reason\": \"examining the area around frame 011 which shows the makeup palette being opened\",\n  \"num_frames\": 8,\n  \"output_dir\": \"win1\",\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 8,\n      \"vlm_inspected_frames\": 8\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 8,\n      \"vlm_inspected_frames\": 24\n    }\n  },\n  \"window_json\": \"win1/window.json\",\n  \"timestamps\": [\n    60.0,\n    62.143,\n    64.286,\n    66.429,\n    68.571,\n    70.714,\n    72.857,\n    75.0\n  ],\n  \"note\": \"Pass window.json to vlm_inspect.py --frames-json.\"\n}"
+  },
+  {
+   "t": 36.225,
+   "type": "budget.spend",
+   "script": "extract_window",
+   "detail": {
+    "category": "dense_frames",
+    "n": 8,
+    "granted": true,
+    "used_before": 0,
+    "limit": 16
+   }
+  },
+  {
+   "t": 36.92,
+   "type": "step.begin"
+  },
+  {
+   "t": 36.92,
+   "type": "agent.say",
+   "text": "Now let me examine this dense window to get a better understanding:"
+  },
+  {
+   "t": 36.92,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "args": {
+    "command": "python tools/vlm_inspect.py --frames-json win1/window.json --window 60 75"
+   }
+  },
+  {
+   "t": 37.023,
+   "type": "tool.error",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "detail": "{\"error\": \"TOOL_EXEC\", \"message\": \"provide --question or --question-file\"}\n\n\nCommand exited with code 2"
+  },
+  {
+   "t": 37.023,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "ok": false,
+   "detail": "{\"error\": \"TOOL_EXEC\", \"message\": \"provide --question or --question-file\"}\n\n\nCommand exited with code 2"
+  },
+  {
+   "t": 37.023,
+   "type": "budget.spend",
+   "script": "vlm_inspect",
+   "detail": {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "granted": true,
+    "used_before": 8,
+    "limit": 32
+   }
+  },
+  {
+   "t": 37.753,
+   "type": "step.begin"
+  },
+  {
+   "t": 37.753,
+   "type": "agent.say",
+   "text": "Let me try again with the question file:"
+  },
+  {
+   "t": 37.753,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "args": {
+    "command": "python tools/vlm_inspect.py --question-file input/question.txt --frames-json win1/window.json --window 60 75"
+   }
+  },
+  {
+   "t": 46.094,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "ok": true,
+   "detail": "{\n  \"observation_file\": \"win1/observation_00.json\",\n  \"frames_inspected\": 8,\n  \"image_bytes_sent\": 565765,\n  \"latency_sec\": 7.227,\n  \"summary\": \"The video shows a woman in a bathroom applying makeup. She opens a black rectangular makeup palette, which is identified by the on-screen text 'Contour'. She uses a brush to apply the product from the palette to her face. The product is a makeup palette.\",\n  \"answer_relevance\": [\n    \"A. A makeup palette.\",\n    \"B. A hair dryer.\",\n    \"C. A perfume bottle.\",\n    \"D. A nail file.\"\n  ],\n  \"observation_count\": 8,\n  \"parse_error\": null,\n  \"note\": \"Full per-frame observations saved to win1/observation_00.json; re-read that file instead of relying on this context.\"\n}"
+  },
+  {
+   "t": 46.613,
+   "type": "step.begin"
+  },
+  {
+   "t": 46.613,
+   "type": "agent.say",
+   "text": "Let me examine the detailed observations from this dense window:"
+  },
+  {
+   "t": 46.613,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "win1/observation_00.json"
+   }
+  },
+  {
+   "t": 46.617,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "{\n  \"model\": \"qwen3-vl-30b-a3b\",\n  \"window\": [\n    60.0,\n    75.0\n  ],\n  \"frames_sent\": [\n    {\n      \"frame\": \"win1/w_000_60.000s.jpg\",\n      \"timestamp_sec\": 60.0\n    },\n    {\n      \"frame\": \"win1/w_001_62.143s.jpg\",\n      \"timestamp_sec\": 62.143\n    },\n    {\n      \"frame\": \"win1/w_002_64.286s.jpg\",\n      \"timestamp_sec\": 64.286\n    },\n    {\n      \"frame\": \"win1/w_003_66.429s.jpg\",\n      \"timestamp_sec\": 66.429\n    },\n    {\n      \"frame\": \"win1/w_004_68.571s.jpg\",\n      \"timestamp_sec\": 68.571\n    },\n    {\n      \"frame\": \"win1/w_005_70.714s.jpg\",\n      \"timestamp_sec\": 70.714\n    },\n    {\n      \"frame\": \"win1/w_006_72.857s.jpg\",\n      \"timestamp_sec\": 72.857\n    },\n    {\n      \"frame\": \"win1/w_007_75.000s.jpg\",\n      \"timestamp_sec\": 75.0\n    }\n  ],\n  \"image_bytes_sent\": 565765,\n  \"latency_sec\": 7.227,\n  \"usage\": {\n    \"completion_tokens\": 640,\n    \"prompt_tokens\": 7522,\n    \"total_tokens\": 8162,\n    \"completion_tokens_details\": null,\n    \"prompt_tokens_details\": null\n  },\n  \"parse_error\": null,\n  \"raw_response\": \"{\\n  \\\"observations\\\": [\\n    {\\n      \\\"timestamp_sec\\\": 60.0,\\n      \\\"frame\\\": \\\"w_000_60.000s.jpg\\\",\\n      \\\"observation\\\": \\\"A woman is in a bathroom, holding a black rectangular makeup palette. The word 'Contour' is overlaid on the image. She is opening the palette, revealing a mirror and makeup pans.\\\"\\n    },\\n    {\\n      \\\"timestamp_sec\\\": 62.143,\\n      \n… (+4299 chars)"
+  },
+  {
+   "t": 51.305,
+   "type": "step.begin"
+  },
+  {
+   "t": 51.305,
+   "type": "agent.say",
+   "text": "Based on my analysis, I now have clear evidence that the answer is A. A makeup palette.\n\nFrom the detailed observations:\n1. Frame 011.jpg (timestamp 68.068 seconds) from the coarse scan shows \"A woman holds up a black makeup palette labeled 'Blush' with a brush, showing the product to the camera.\"\n2. In the dense window analysis (60-75 seconds), frame w_000_60.000s.jpg shows \"A woman is in a bathroom, holding a black rectangular makeup palette. The word 'Contour' is overlaid on the image. She is opening the palette, revealing a mirror and makeup pans.\"\n\nBoth observations clearly show a makeup palette being opened and displayed. This directly answers the question about what kind of product is opened partway through the video.\n\nLet me create the candidate evidence file:"
+  },
+  {
+   "t": 51.305,
+   "type": "tool.call",
+   "tool": "write",
+   "args": {
+    "path": "candidate_evidence.json",
+    "content": "{\n  \"sample_id\": \"242-d2\",\n  \"answer\": \"A\",\n  \"evidence\": [\n    {\n      \"timestamp_sec\": 68.068,\n      \"frame\": \"artifacts_crv/frames/frame_011.jpg\",\n      \"claim\": \"A woman holds up a black makeup palette labeled 'Blush' with a brush, showing the product to the camera.\"\n    }\n  ],\n  \"windows_examined\": [\n    [\n      0.0,\n      103.303\n    ],\n    [\n      60.0,\n      75.0\n    ]\n  ],\n  \"tool_trace\": [\n    \"probe_video\",\n    \"crv_prepare\",\n    \"vlm_inspect\",\n    \"extract_window\",\n    \"vlm_inspect\",\n    \"submit_evidence\"\n  ],\n  \"frames_processed\": 16,\n  \"status\": \"answered\"\n}"
+   }
+  },
+  {
+   "t": 51.316,
+   "type": "tool.result",
+   "tool": "write",
+   "ok": true,
+   "detail": "Successfully wrote 578 bytes to candidate_evidence.json"
+  },
+  {
+   "t": 51.836,
+   "type": "step.begin"
+  },
+  {
+   "t": 51.836,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "args": {
+    "command": "python tools/submit_evidence.py --input candidate_evidence.json"
+   }
+  },
+  {
+   "t": 52.014,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "ok": true,
+   "detail": "{\n  \"written\": \"/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-242-d2-rep_900-20260819T060838+0000/agent-out/evidence.json\",\n  \"sample_id\": \"242-d2\",\n  \"status\": \"answered\",\n  \"answer\": \"A\",\n  \"evidence_items\": 1,\n  \"frames_processed_claimed\": 16,\n  \"frames_processed_ledger\": 16,\n  \"frames_count_matches_ledger\": true,\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 8,\n      \"vlm_inspected_frames\": 16\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 8,\n      \"vlm_inspected_frames\": 16\n    }\n  }\n}"
+  },
+  {
+   "t": 52.014,
+   "type": "answer.submit",
+   "detail": {
+    "letter": "A",
+    "items": 1
+   }
+  },
+  {
+   "t": 54.008,
+   "type": "step.begin"
+  },
+  {
+   "t": 54.008,
+   "type": "agent.say",
+   "text": "I have successfully analyzed the video and answered the question. \n\nBased on my examination of the video \"lokFoo_QD8c.mp4\", I determined that the answer is A. A makeup palette.\n\nMy analysis showed that:\n1. The coarse scan revealed frame 011.jpg at timestamp 68.068 seconds showing \"A woman holds up a black makeup palette labeled 'Blush' with a brush, showing the product to the camera.\"\n2. A denser examination of the window around 60-75 seconds confirmed this was a black rectangular makeup palette being opened, with on-screen text identifying it as 'Contour'.\n\nI have submitted my evidence with the required format, citing the specific frame and timestamp that demonstrates the makeup palette being opened partway through the video.\n\nThe task has been completed successfully."
+  },
+  {
+   "t": 54.508,
+   "type": "verify.result",
+   "detail": {
+    "v0_status": "pass",
+    "errors": []
+   }
+  },
+  {
+   "t": 54.608,
+   "type": "run.end"
+  }
+ ],
+ "pipeline": {
+  "declared": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "extract_window",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "actual": [
+   "probe_video",
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "extract_window",
+   "vlm_inspect",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "claimed": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "extract_window",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "agrees": false
+ },
+ "answer": {
+  "letter": "A",
+  "status": "answered",
+  "frames_processed": 16,
+  "windows_examined": [
+   [
+    0.0,
+    103.303
+   ],
+   [
+    60.0,
+    75.0
+   ]
+  ],
+  "evidence": [
+   {
+    "t": 68.068,
+    "frame": "frame_011.jpg",
+    "claim": "A woman holds up a black makeup palette labeled 'Blush' with a brush, showing the product to the camera."
+   }
+  ]
+ },
+ "verification": {
+  "v0_status": "pass",
+  "checks": {
+   "run_json_present": true,
+   "evidence_present": true,
+   "evidence_parses": true,
+   "schema": true,
+   "tamper_verifier": true,
+   "tamper_evidence_schema": true,
+   "task_input_present": true,
+   "sample_id_matches": true,
+   "answer_in_options": true,
+   "video_probeable": true,
+   "timestamp_bounds": true,
+   "frame_files": true,
+   "frame_run_owned": true,
+   "windows_valid": true,
+   "budget": true,
+   "budget_ledger_agrees": true,
+   "trace_present": true,
+   "tool_logs_present": true,
+   "agent_trace_present": true,
+   "exit_status_recorded": true,
+   "service_refs": true,
+   "environment_snapshot": true,
+   "sampling_pin_evidence": true,
+   "sampling_matches_config": true,
+   "run_dir_was_new": true
+  },
+  "errors": [],
+  "leak_status": "clean",
+  "leak_note": "Under D007 the gold labels are unreadable to the agent user. A hit with blocked=true is the boundary working, not a leak; it is worth reporting because it shows the agent went looking. Only blocked=false hits set label_leak.",
+  "does_not_validate": [
+   "whether a frame semantically supports its claim",
+   "whether the evidence justifies the final answer",
+   "whether the model hallucinated",
+   "whether temporal coverage was sufficient"
+  ],
+  "boundary_probes": [
+   {
+    "path": "data/labels",
+    "blocked": true
+   },
+   {
+    "path": "data/raw",
+    "blocked": true
+   }
+  ]
+ },
+ "telemetry": {
+  "wall_clock_sec": 58.0,
+  "layers": {
+   "perception_vlm": {
+    "measured": true,
+    "calls": 2,
+    "latency_sec": 12.759,
+    "frames_sent": 16,
+    "image_bytes": 621266,
+    "prompt_tokens": 9695,
+    "completion_tokens": 1153
+   },
+   "tools": {
+    "measured": true,
+    "latency_sec": 19.617,
+    "by_channel_sec": {
+     "crv": 18.416,
+     "extraction": 1.143,
+     "probe": 0.058
+    },
+    "calls_by_channel": {
+     "crv": 1,
+     "extraction": 8,
+     "probe": 1
+    }
+   },
+   "controller": {
+    "requests": 18,
+    "prompt_tokens": 110190,
+    "completion_tokens": 1590,
+    "latency_sec": null,
+    "errors": 0,
+    "source": "pi event stream"
+   },
+   "harness_overhead": {
+    "measured": false,
+    "residual_sec": 25.624,
+    "definition": "wall clock minus measured VLM and tool time; includes controller inference, prompt assembly, retries and harness state handling"
+   }
+  },
+  "caveats": [
+   "Controller inference time is not separable from harness overhead without per-request timing from the harness; the residual bundles both.",
+   "vLLM serves one request at a time here (--max-num-seqs 1), so layers do not overlap and the sum is meaningful.",
+   "A single run is one sample. Do not compare harnesses on one run each."
+  ]
+ }
+}

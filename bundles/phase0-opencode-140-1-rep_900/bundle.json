@@ -1,0 +1,633 @@
+{
+ "bundle_version": "1.0",
+ "run_id": "phase0-opencode-140-1-rep_900-20260819T054240+0000",
+ "harness": "opencode",
+ "sample_id": "140-1",
+ "exported_at": "2026-08-19T06:10:27+00:00",
+ "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
+ "task": {
+  "question": "What is the color of the car in this video?",
+  "options": [
+   "A. White.",
+   "B. Blue.",
+   "C. Purple.",
+   "D. Pink."
+  ],
+  "option_rotation": 0,
+  "duration_label": "short",
+  "has_gold": false
+ },
+ "video": {
+  "id": "Kv1JXuOkAfk",
+  "duration_sec": 42.214,
+  "fps": 30.0,
+  "width": 1280,
+  "height": 720,
+  "nb_frames": 1266,
+  "proxy": "video/Kv1JXuOkAfk.480p.mp4"
+ },
+ "budget": {
+  "limits": {
+   "coarse_frames": 16,
+   "dense_frames": 16,
+   "vlm_inspected_frames": 32
+  },
+  "final": {
+   "coarse_frames": 16,
+   "dense_frames": 0,
+   "vlm_inspected_frames": 0
+  },
+  "ledger": [
+   {
+    "category": "coarse_frames",
+    "n": 16,
+    "tool": "crv_prepare",
+    "granted": true,
+    "used_before": 0,
+    "limit": 16,
+    "detail": null
+   },
+   {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "tool": "vlm_inspect",
+    "granted": true,
+    "used_before": 0,
+    "limit": 32,
+    "detail": null
+   }
+  ]
+ },
+ "frames": [
+  {
+   "id": "frame_001",
+   "t": 0.0,
+   "file": "frames/frame_001.jpg",
+   "selection_reason": "first",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_002",
+   "t": 2.0,
+   "file": "frames/frame_002.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_003",
+   "t": 5.0,
+   "file": "frames/frame_003.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_004",
+   "t": 8.0,
+   "file": "frames/frame_004.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_005",
+   "t": 11.0,
+   "file": "frames/frame_005.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_006",
+   "t": 13.0,
+   "file": "frames/frame_006.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_007",
+   "t": 16.0,
+   "file": "frames/frame_007.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_008",
+   "t": 18.0,
+   "file": "frames/frame_008.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_009",
+   "t": 20.2,
+   "file": "frames/frame_009.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_010",
+   "t": 23.0,
+   "file": "frames/frame_010.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_011",
+   "t": 25.0,
+   "file": "frames/frame_011.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_012",
+   "t": 28.0,
+   "file": "frames/frame_012.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_013",
+   "t": 30.0,
+   "file": "frames/frame_013.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_014",
+   "t": 33.0,
+   "file": "frames/frame_014.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_015",
+   "t": 35.0,
+   "file": "frames/frame_015.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_016",
+   "t": 38.0,
+   "file": "frames/frame_016.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  }
+ ],
+ "events": [
+  {
+   "t": 0.0,
+   "type": "run.start"
+  },
+  {
+   "t": 0.0,
+   "type": "step.begin"
+  },
+  {
+   "t": 1.044,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "filePath": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-1-rep_900-20260819T054240+0000/workspace/input/task.json"
+   }
+  },
+  {
+   "t": 1.057,
+   "type": "agent.say",
+   "text": "I'll help you answer this Video-MME question by following the prescribed workflow. First, let me check the video information and task details."
+  },
+  {
+   "t": 1.165,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "<path>/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-1-rep_900-20260819T054240+0000/workspace/input/task.json</path>\n<type>file</type>\n<content>\n1: {\n2:   \"sample_id\": \"140-1\",\n3:   \"video_path\": \"data/working/videos/Kv1JXuOkAfk.mp4\",\n4:   \"question\": \"What is the color of the car in this video?\",\n5:   \"options\": [\n6:     \"A. White.\",\n7:     \"B. Blue.\",\n8:     \"C. Purple.\",\n9:     \"D. Pink.\"\n10:   ],\n11:   \"duration\": \"short\",\n12:   \"role\": \"expansion\"\n13: }\n\n(End of file - total 13 lines)\n</content>",
+   "elapsed_sec": 0.121
+  },
+  {
+   "t": 1.908,
+   "type": "step.begin"
+  },
+  {
+   "t": 2.297,
+   "type": "agent.say",
+   "text": "Let me first check the video duration:"
+  },
+  {
+   "t": 2.495,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "probe_video",
+   "args": {
+    "command": "python tools/probe_video.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/Kv1JXuOkAfk.mp4"
+   }
+  },
+  {
+   "t": 2.503,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "probe_video",
+   "ok": true,
+   "detail": "{\n  \"path\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/Kv1JXuOkAfk.mp4\",\n  \"duration_sec\": 42.214,\n  \"fps\": 30.0,\n  \"width\": 1280,\n  \"height\": 720,\n  \"codec\": \"h264\",\n  \"nb_frames\": 1266,\n  \"has_audio_stream\": true,\n  \"size_bytes\": 13744597\n}",
+   "elapsed_sec": 0.008
+  },
+  {
+   "t": 2.931,
+   "type": "step.begin"
+  },
+  {
+   "t": 3.826,
+   "type": "agent.say",
+   "text": "Now let me prepare a coarse scene-aware scan of the entire video:"
+  },
+  {
+   "t": 12.063,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "args": {
+    "command": "python tools/crv_prepare.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/Kv1JXuOkAfk.mp4 --output artifacts_crv --why \"Looking for the color of a car in the video\""
+   }
+  },
+  {
+   "t": 12.087,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "ok": true,
+   "detail": "{\n  \"video\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/Kv1JXuOkAfk.mp4\",\n  \"output_dir\": \"artifacts_crv\",\n  \"duration_sec\": 42.214,\n  \"frames_extracted\": 16,\n  \"frame_budget_reserved\": 16,\n  \"timestamp_range\": [\n    0.0,\n    38.0\n  ],\n  \"grids\": [\n    \"grids/grid_01.jpg\",\n    \"grids/grid_02.jpg\"\n  ],\n  \"manifest\": \"artifacts_crv/MANIFEST.txt\",\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 0\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    }\n  },\n  \"frames_index\": \"artifacts_crv/frames_index.json\",\n  \"note\": \"Per-frame timestamps are in frames_index.json; pass it to vlm_inspect.py.\"\n}",
+   "elapsed_sec": 0.024
+  },
+  {
+   "t": 12.087,
+   "type": "budget.spend",
+   "script": "crv_prepare",
+   "detail": {
+    "category": "coarse_frames",
+    "n": 16,
+    "granted": true,
+    "used_before": 0,
+    "limit": 16
+   }
+  },
+  {
+   "t": 12.087,
+   "type": "frames.ready",
+   "detail": {
+    "count": 16,
+    "range": [
+     0.0,
+     38.0
+    ]
+   }
+  },
+  {
+   "t": 13.165,
+   "type": "step.begin"
+  },
+  {
+   "t": 14.384,
+   "type": "agent.say",
+   "text": "Now let me examine what the coarse frames show by querying the vision model:"
+  },
+  {
+   "t": 22.205,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "args": {
+    "command": "python tools/vlm_inspect.py --question-file /home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-1-rep_900-20260819T054240+0000/workspace/input/question.txt --frames-json artifacts_crv/frames_index.json --max-images 8"
+   }
+  },
+  {
+   "t": 22.426,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "ok": true,
+   "detail": "{\n  \"observation_file\": \"artifacts_crv/observation_00.json\",\n  \"frames_inspected\": 8,\n  \"image_bytes_sent\": 103006,\n  \"latency_sec\": 6.886,\n  \"summary\": \"The video shows a blue car with red wheels on a racetrack in a video game. The car is seen from various angles and positions, including on the track and off-track in a desert environment. The car's color is consistently blue throughout all frames.\",\n  \"answer_relevance\": [\n    \"A. White.\",\n    \"B. Blue.\",\n    \"C. Purple.\",\n    \"D. Pink.\"\n  ],\n  \"observation_count\": 8,\n  \"parse_error\": null,\n  \"note\": \"Full per-frame observations saved to artifacts_crv/observation_00.json; re-read that file instead of relying on this context.\"\n}",
+   "elapsed_sec": 0.221
+  },
+  {
+   "t": 22.426,
+   "type": "budget.spend",
+   "script": "vlm_inspect",
+   "detail": {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "granted": true,
+    "used_before": 0,
+    "limit": 32
+   }
+  },
+  {
+   "t": 22.426,
+   "type": "observe.done",
+   "detail": {
+    "window": null,
+    "frames": 8,
+    "summary": null
+   }
+  },
+  {
+   "t": 23.417,
+   "type": "step.begin"
+  },
+  {
+   "t": 24.898,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "filePath": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-1-rep_900-20260819T054240+0000/workspace/artifacts_crv/observation_00.json"
+   }
+  },
+  {
+   "t": 24.915,
+   "type": "agent.say",
+   "text": "Based on the initial examination, I can see that the video shows a blue car with red wheels on a racetrack in a video game. The car's color is consistently blue throughout all frames. Let me read the full observation file to confirm this finding and then create the evidence file:"
+  },
+  {
+   "t": 24.922,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "<path>/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-1-rep_900-20260819T054240+0000/workspace/artifacts_crv/observation_00.json</path>\n<type>file</type>\n<content>\n1: {\n2:   \"model\": \"qwen3-vl-30b-a3b\",\n3:   \"window\": null,\n4:   \"frames_sent\": [\n5:     {\n6:       \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n7:       \"timestamp_sec\": 0.0\n8:     },\n9:     {\n10:       \"frame\": \"artifacts_crv/frames/frame_003.jpg\",\n11:       \"timestamp_sec\": 5.0\n12:     },\n13:     {\n14:       \"frame\": \"artifacts_crv/frames/frame_005.jpg\",\n15:       \"timestamp_sec\": 11.0\n16:     },\n17:     {\n18:       \"frame\": \"artifacts_crv/frames/frame_007.jpg\",\n19:       \"timestamp_sec\": 16.0\n20:     },\n21:     {\n22:       \"frame\": \"artifacts_crv/frames/frame_009.jpg\",\n23:       \"timestamp_sec\": 20.2\n24:     },\n25:     {\n26:       \"frame\": \"artifacts_crv/frames/frame_011.jpg\",\n27:       \"timestamp_sec\": 25.0\n28:     },\n29:     {\n30:       \"frame\": \"artifacts_crv/frames/frame_013.jpg\",\n31:       \"timestamp_sec\": 30.0\n32:     },\n33:     {\n34:       \"frame\": \"artifacts_crv/frames/frame_015.jpg\",\n35:       \"timestamp_sec\": 35.0\n36:     }\n37:   ],\n38:   \"image_bytes_sent\": 103006,\n39:   \"latency_sec\": 6.886,\n40:   \"usage\": {\n41:     \"completion_tokens\": 651,\n42:     \"prompt_tokens\": 2149,\n43:     \"total_tokens\": 2800,\n44:     \"completion_tokens_details\": \n… (+4916 chars)",
+   "elapsed_sec": 0.024
+  },
+  {
+   "t": 25.961,
+   "type": "step.begin"
+  },
+  {
+   "t": 30.456,
+   "type": "tool.error",
+   "tool": "write",
+   "detail": "Model tried to call unavailable tool 'write'. Available tools: bash, glob, grep, invalid, read, task, todowrite."
+  },
+  {
+   "t": 30.484,
+   "type": "agent.say",
+   "text": "Now I'll create the candidate_evidence.json file with my findings:"
+  },
+  {
+   "t": 31.265,
+   "type": "step.begin"
+  },
+  {
+   "t": 34.589,
+   "type": "tool.call",
+   "tool": "bash",
+   "args": {
+    "command": "cat > candidate_evidence.json << 'EOF'\n{\n  \"sample_id\": \"140-1\",\n  \"answer\": \"B\",\n  \"evidence\": [\n    {\n      \"timestamp_sec\": 0.0,\n      \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n      \"claim\": \"A small, blue car with red wheels is on a racetrack. The car has a white hand logo on its side.\"\n    },\n    {\n      \"timestamp_sec\": 5.0,\n      \"frame\": \"artifacts_crv/frames/frame_003.jpg\",\n      \"claim\": \"The blue car is on the racetrack, positioned behind a red car.\"\n    },\n    {\n      \"timestamp_sec\": 11.0,\n      \"frame\": \"artifacts_crv/frames/frame_005.jpg\",\n      \"claim\": \"The blue car is on the racetrack, with a red car ahead.\"\n    }\n  ],\n  \"windows_examined\": [\n    [\n      0.0,\n      38.0\n    ]\n  ],\n  \"tool_trace\": [\n    \"probe_video\",\n    \"crv_prepare\",\n    \"vlm_inspect\",\n    \"submit_evidence\"\n  ],\n  \"frames_processed\": 8,\n  \"status\": \"answered\"\n}\nEOF"
+   }
+  },
+  {
+   "t": 34.612,
+   "type": "agent.say",
+   "text": "Let me create the evidence file using the bash tool to write it directly:"
+  },
+  {
+   "t": 34.623,
+   "type": "tool.result",
+   "tool": "bash",
+   "ok": true,
+   "detail": "(no output)",
+   "elapsed_sec": 0.034
+  },
+  {
+   "t": 35.26,
+   "type": "step.begin"
+  },
+  {
+   "t": 35.665,
+   "type": "agent.say",
+   "text": "Now let me submit the evidence:"
+  },
+  {
+   "t": 35.808,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "args": {
+    "command": "python tools/submit_evidence.py --input candidate_evidence.json"
+   }
+  },
+  {
+   "t": 35.825,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "ok": true,
+   "detail": "{\n  \"written\": \"/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-1-rep_900-20260819T054240+0000/agent-out/evidence.json\",\n  \"sample_id\": \"140-1\",\n  \"status\": \"answered\",\n  \"answer\": \"B\",\n  \"evidence_items\": 3,\n  \"frames_processed_claimed\": 8,\n  \"frames_processed_ledger\": 8,\n  \"frames_count_matches_ledger\": true,\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 8\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 24\n    }\n  }\n}",
+   "elapsed_sec": 0.017
+  },
+  {
+   "t": 35.825,
+   "type": "answer.submit",
+   "detail": {
+    "letter": "B",
+    "items": 3
+   }
+  },
+  {
+   "t": 36.524,
+   "type": "step.begin"
+  },
+  {
+   "t": 37.821,
+   "type": "agent.say",
+   "text": "I've successfully analyzed the video and submitted my answer. Based on my examination of the video frames, the car is blue, so the correct answer is B.\n\nMy analysis showed:\n1. The video shows a blue car with red wheels on a racetrack in a video game\n2. The car's color is consistently blue throughout all frames examined\n3. Evidence was gathered from three key frames (0.0s, 5.0s, and 11.0s) that clearly show the blue car\n\nThe submission was successful with the correct answer (B) and proper evidence citations."
+  },
+  {
+   "t": 38.321,
+   "type": "verify.result",
+   "detail": {
+    "v0_status": "pass",
+    "errors": []
+   }
+  },
+  {
+   "t": 38.421,
+   "type": "run.end"
+  }
+ ],
+ "pipeline": {
+  "declared": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "extract_window",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "actual": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "claimed": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "agrees": true
+ },
+ "answer": {
+  "letter": "B",
+  "status": "answered",
+  "frames_processed": 8,
+  "windows_examined": [
+   [
+    0.0,
+    38.0
+   ]
+  ],
+  "evidence": [
+   {
+    "t": 0.0,
+    "frame": "frame_001.jpg",
+    "claim": "A small, blue car with red wheels is on a racetrack. The car has a white hand logo on its side."
+   },
+   {
+    "t": 5.0,
+    "frame": "frame_003.jpg",
+    "claim": "The blue car is on the racetrack, positioned behind a red car."
+   },
+   {
+    "t": 11.0,
+    "frame": "frame_005.jpg",
+    "claim": "The blue car is on the racetrack, with a red car ahead."
+   }
+  ]
+ },
+ "verification": {
+  "v0_status": "pass",
+  "checks": {
+   "run_json_present": true,
+   "evidence_present": true,
+   "evidence_parses": true,
+   "schema": true,
+   "tamper_verifier": true,
+   "tamper_evidence_schema": true,
+   "task_input_present": true,
+   "sample_id_matches": true,
+   "answer_in_options": true,
+   "video_probeable": true,
+   "timestamp_bounds": true,
+   "frame_files": true,
+   "frame_run_owned": true,
+   "windows_valid": true,
+   "budget": true,
+   "budget_ledger_agrees": true,
+   "trace_present": true,
+   "tool_logs_present": true,
+   "agent_trace_present": true,
+   "exit_status_recorded": true,
+   "service_refs": true,
+   "environment_snapshot": true,
+   "run_dir_was_new": true
+  },
+  "errors": [],
+  "leak_status": "clean",
+  "leak_note": "Under D007 the gold labels are unreadable to the agent user. A hit with blocked=true is the boundary working, not a leak; it is worth reporting because it shows the agent went looking. Only blocked=false hits set label_leak.",
+  "does_not_validate": [
+   "whether a frame semantically supports its claim",
+   "whether the evidence justifies the final answer",
+   "whether the model hallucinated",
+   "whether temporal coverage was sufficient"
+  ],
+  "boundary_probes": []
+ },
+ "telemetry": {
+  "wall_clock_sec": 45.0,
+  "layers": {
+   "perception_vlm": {
+    "measured": true,
+    "calls": 1,
+    "latency_sec": 6.886,
+    "frames_sent": 8,
+    "image_bytes": 103006,
+    "prompt_tokens": 2149,
+    "completion_tokens": 651
+   },
+   "tools": {
+    "measured": true,
+    "latency_sec": 8.126,
+    "by_channel_sec": {
+     "crv": 8.059,
+     "probe": 0.067
+    },
+    "calls_by_channel": {
+     "crv": 1,
+     "probe": 1
+    }
+   },
+   "controller": {
+    "requests": 9,
+    "prompt_tokens": 94274,
+    "completion_tokens": 1448,
+    "latency_sec": null,
+    "errors": 0,
+    "source": "opencode event stream"
+   },
+   "harness_overhead": {
+    "measured": false,
+    "residual_sec": 29.988,
+    "definition": "wall clock minus measured VLM and tool time; includes controller inference, prompt assembly, retries and harness state handling"
+   }
+  },
+  "caveats": [
+   "Controller inference time is not separable from harness overhead without per-request timing from the harness; the residual bundles both.",
+   "vLLM serves one request at a time here (--max-num-seqs 1), so layers do not overlap and the sum is meaningful.",
+   "A single run is one sample. Do not compare harnesses on one run each."
+  ]
+ }
+}

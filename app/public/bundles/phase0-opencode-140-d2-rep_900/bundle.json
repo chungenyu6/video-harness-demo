@@ -1,0 +1,664 @@
+{
+ "bundle_version": "1.0",
+ "run_id": "phase0-opencode-140-d2-rep_900-20260819T055222+0000",
+ "harness": "opencode",
+ "sample_id": "140-d2",
+ "exported_at": "2026-08-19T06:10:27+00:00",
+ "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
+ "task": {
+  "question": "At some point in the video, how many cars are visible together?",
+  "options": [
+   "A. One.",
+   "B. Two.",
+   "C. Five.",
+   "D. Ten."
+  ],
+  "option_rotation": 0,
+  "duration_label": "short",
+  "has_gold": false
+ },
+ "video": {
+  "id": "Kv1JXuOkAfk",
+  "duration_sec": 42.214,
+  "fps": 30.0,
+  "width": 1280,
+  "height": 720,
+  "nb_frames": 1266,
+  "proxy": "video/Kv1JXuOkAfk.480p.mp4"
+ },
+ "budget": {
+  "limits": {
+   "coarse_frames": 16,
+   "dense_frames": 16,
+   "vlm_inspected_frames": 32
+  },
+  "final": {
+   "coarse_frames": 16,
+   "dense_frames": 0,
+   "vlm_inspected_frames": 0
+  },
+  "ledger": [
+   {
+    "category": "coarse_frames",
+    "n": 16,
+    "tool": "crv_prepare",
+    "granted": true,
+    "used_before": 0,
+    "limit": 16,
+    "detail": null
+   },
+   {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "tool": "vlm_inspect",
+    "granted": true,
+    "used_before": 0,
+    "limit": 32,
+    "detail": null
+   }
+  ]
+ },
+ "frames": [
+  {
+   "id": "frame_001",
+   "t": 0.0,
+   "file": "frames/frame_001.jpg",
+   "selection_reason": "first",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_002",
+   "t": 2.0,
+   "file": "frames/frame_002.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_003",
+   "t": 5.0,
+   "file": "frames/frame_003.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_004",
+   "t": 8.0,
+   "file": "frames/frame_004.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_005",
+   "t": 11.0,
+   "file": "frames/frame_005.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_006",
+   "t": 13.0,
+   "file": "frames/frame_006.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_007",
+   "t": 16.0,
+   "file": "frames/frame_007.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_008",
+   "t": 18.0,
+   "file": "frames/frame_008.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_009",
+   "t": 20.2,
+   "file": "frames/frame_009.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_010",
+   "t": 23.0,
+   "file": "frames/frame_010.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_011",
+   "t": 25.0,
+   "file": "frames/frame_011.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_012",
+   "t": 28.0,
+   "file": "frames/frame_012.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_013",
+   "t": 30.0,
+   "file": "frames/frame_013.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_014",
+   "t": 33.0,
+   "file": "frames/frame_014.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_015",
+   "t": 35.0,
+   "file": "frames/frame_015.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_016",
+   "t": 38.0,
+   "file": "frames/frame_016.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  }
+ ],
+ "events": [
+  {
+   "t": 0.0,
+   "type": "run.start"
+  },
+  {
+   "t": 0.0,
+   "type": "step.begin"
+  },
+  {
+   "t": 0.759,
+   "type": "agent.say",
+   "text": "I'll analyze this video-MME task systematically. First, let me check the video metadata to understand its duration."
+  },
+  {
+   "t": 0.934,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "probe_video",
+   "args": {
+    "command": "python tools/probe_video.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/Kv1JXuOkAfk.mp4"
+   }
+  },
+  {
+   "t": 0.955,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "probe_video",
+   "ok": true,
+   "detail": "{\n  \"path\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/Kv1JXuOkAfk.mp4\",\n  \"duration_sec\": 42.214,\n  \"fps\": 30.0,\n  \"width\": 1280,\n  \"height\": 720,\n  \"codec\": \"h264\",\n  \"nb_frames\": 1266,\n  \"has_audio_stream\": true,\n  \"size_bytes\": 13744597\n}",
+   "elapsed_sec": 0.021
+  },
+  {
+   "t": 1.428,
+   "type": "step.begin"
+  },
+  {
+   "t": 2.37,
+   "type": "agent.say",
+   "text": "Now I'll prepare a coarse scene-aware scan of the entire video to get an overview."
+  },
+  {
+   "t": 10.579,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "args": {
+    "command": "python tools/crv_prepare.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/Kv1JXuOkAfk.mp4 --output artifacts_crv --why \"general overview of the video content for the MME task\""
+   }
+  },
+  {
+   "t": 10.593,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "ok": true,
+   "detail": "{\n  \"video\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/Kv1JXuOkAfk.mp4\",\n  \"output_dir\": \"artifacts_crv\",\n  \"duration_sec\": 42.214,\n  \"frames_extracted\": 16,\n  \"frame_budget_reserved\": 16,\n  \"timestamp_range\": [\n    0.0,\n    38.0\n  ],\n  \"grids\": [\n    \"grids/grid_01.jpg\",\n    \"grids/grid_02.jpg\"\n  ],\n  \"manifest\": \"artifacts_crv/MANIFEST.txt\",\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 0\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    }\n  },\n  \"frames_index\": \"artifacts_crv/frames_index.json\",\n  \"note\": \"Per-frame timestamps are in frames_index.json; pass it to vlm_inspect.py.\"\n}",
+   "elapsed_sec": 0.014
+  },
+  {
+   "t": 10.593,
+   "type": "budget.spend",
+   "script": "crv_prepare",
+   "detail": {
+    "category": "coarse_frames",
+    "n": 16,
+    "granted": true,
+    "used_before": 0,
+    "limit": 16
+   }
+  },
+  {
+   "t": 10.593,
+   "type": "frames.ready",
+   "detail": {
+    "count": 16,
+    "range": [
+     0.0,
+     38.0
+    ]
+   }
+  },
+  {
+   "t": 11.34,
+   "type": "step.begin"
+  },
+  {
+   "t": 11.989,
+   "type": "agent.say",
+   "text": "Now I'll examine what the coarse frames show by running the vision model inspection."
+  },
+  {
+   "t": 19.738,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "args": {
+    "command": "python tools/vlm_inspect.py --question-file input/question.txt --frames-json artifacts_crv/frames_index.json --max-images 8"
+   }
+  },
+  {
+   "t": 19.962,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "ok": true,
+   "detail": "{\n  \"observation_file\": \"artifacts_crv/observation_00.json\",\n  \"frames_inspected\": 8,\n  \"image_bytes_sent\": 103006,\n  \"latency_sec\": 6.796,\n  \"summary\": \"The video shows a blue car and a red car on a racetrack. In the first four frames (0.0 to 16.0 seconds), both cars are visible together. In the subsequent frames (20.2 to 35.0 seconds), only the blue car is visible. Therefore, at some point in the video, two cars are visible together.\",\n  \"answer_relevance\": [\n    \"frame_001.jpg\",\n    \"frame_003.jpg\",\n    \"frame_005.jpg\",\n    \"frame_007.jpg\"\n  ],\n  \"observation_count\": 8,\n  \"parse_error\": null,\n  \"note\": \"Full per-frame observations saved to artifacts_crv/observation_00.json; re-read that file instead of relying on this context.\"\n}",
+   "elapsed_sec": 0.224
+  },
+  {
+   "t": 19.962,
+   "type": "budget.spend",
+   "script": "vlm_inspect",
+   "detail": {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "granted": true,
+    "used_before": 0,
+    "limit": 32
+   }
+  },
+  {
+   "t": 19.962,
+   "type": "observe.done",
+   "detail": {
+    "window": null,
+    "frames": 8,
+    "summary": null
+   }
+  },
+  {
+   "t": 20.862,
+   "type": "step.begin"
+  },
+  {
+   "t": 21.933,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "filePath": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-d2-rep_900-20260819T055222+0000/workspace/artifacts_crv/observation_00.json"
+   }
+  },
+  {
+   "t": 21.949,
+   "type": "agent.say",
+   "text": "Let me read the full observation file to get detailed information about what's shown in each frame."
+  },
+  {
+   "t": 22.032,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "<path>/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-d2-rep_900-20260819T055222+0000/workspace/artifacts_crv/observation_00.json</path>\n<type>file</type>\n<content>\n1: {\n2:   \"model\": \"qwen3-vl-30b-a3b\",\n3:   \"window\": null,\n4:   \"frames_sent\": [\n5:     {\n6:       \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n7:       \"timestamp_sec\": 0.0\n8:     },\n9:     {\n10:       \"frame\": \"artifacts_crv/frames/frame_003.jpg\",\n11:       \"timestamp_sec\": 5.0\n12:     },\n13:     {\n14:       \"frame\": \"artifacts_crv/frames/frame_005.jpg\",\n15:       \"timestamp_sec\": 11.0\n16:     },\n17:     {\n18:       \"frame\": \"artifacts_crv/frames/frame_007.jpg\",\n19:       \"timestamp_sec\": 16.0\n20:     },\n21:     {\n22:       \"frame\": \"artifacts_crv/frames/frame_009.jpg\",\n23:       \"timestamp_sec\": 20.2\n24:     },\n25:     {\n26:       \"frame\": \"artifacts_crv/frames/frame_011.jpg\",\n27:       \"timestamp_sec\": 25.0\n28:     },\n29:     {\n30:       \"frame\": \"artifacts_crv/frames/frame_013.jpg\",\n31:       \"timestamp_sec\": 30.0\n32:     },\n33:     {\n34:       \"frame\": \"artifacts_crv/frames/frame_015.jpg\",\n35:       \"timestamp_sec\": 35.0\n36:     }\n37:   ],\n38:   \"image_bytes_sent\": 103006,\n39:   \"latency_sec\": 6.796,\n40:   \"usage\": {\n41:     \"completion_tokens\": 615,\n42:     \"prompt_tokens\": 2152,\n43:     \"total_tokens\": 2767,\n44:     \"completion_tokens_details\":\n… (+4551 chars)",
+   "elapsed_sec": 0.099
+  },
+  {
+   "t": 23.006,
+   "type": "step.begin"
+  },
+  {
+   "t": 24.474,
+   "type": "tool.call",
+   "tool": "todowrite",
+   "args": {
+    "todos": [
+     {
+      "content": "Create candidate_evidence.json with the correct answer and evidence",
+      "status": "in_progress",
+      "priority": "high"
+     }
+    ]
+   }
+  },
+  {
+   "t": 24.478,
+   "type": "tool.result",
+   "tool": "todowrite",
+   "ok": true,
+   "detail": "[\n  {\n    \"content\": \"Create candidate_evidence.json with the correct answer and evidence\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\"\n  }\n]",
+   "elapsed_sec": 0.004
+  },
+  {
+   "t": 24.493,
+   "type": "agent.say",
+   "text": "Based on my analysis of the video, I now understand the situation clearly. The video shows a blue car and a red car on a racetrack. From the first four frames (0.0 to 16.0 seconds), both cars are visible together. Starting at 20.2 seconds, only the blue car is visible, indicating that the red car has disappeared from view.\n\nLet me create the evidence file and submit it:"
+  },
+  {
+   "t": 25.023,
+   "type": "step.begin"
+  },
+  {
+   "t": 31.199,
+   "type": "tool.error",
+   "tool": "write",
+   "detail": "Model tried to call unavailable tool 'write'. Available tools: bash, glob, grep, invalid, read, task, todowrite."
+  },
+  {
+   "t": 31.239,
+   "type": "agent.say",
+   "text": "Looking at the observations, I can see that:\n1. Frames 0.0-16.0 seconds show both cars together (frames 001, 003, 005, 007)\n2. Starting at 20.2 seconds, only the blue car is visible\n\nThis confirms that the answer is B: \"At some point in the video, two cars are visible together.\"\n\nLet me create the evidence file:"
+  },
+  {
+   "t": 31.872,
+   "type": "step.begin"
+  },
+  {
+   "t": 32.854,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "filePath": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-d2-rep_900-20260819T055222+0000/workspace/input/question.txt"
+   }
+  },
+  {
+   "t": 32.877,
+   "type": "agent.say",
+   "text": "Let me check the question to make sure I understand what I'm looking for:"
+  },
+  {
+   "t": 32.913,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "<path>/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-d2-rep_900-20260819T055222+0000/workspace/input/question.txt</path>\n<type>file</type>\n<content>\n1: At some point in the video, how many cars are visible together?\n2: \n3: A. One.\n4: B. Two.\n5: C. Five.\n6: D. Ten.\n\n(End of file - total 6 lines)\n</content>",
+   "elapsed_sec": 0.059
+  },
+  {
+   "t": 33.493,
+   "type": "step.begin"
+  },
+  {
+   "t": 38.08,
+   "type": "tool.call",
+   "tool": "bash",
+   "args": {
+    "command": "cat > candidate_evidence.json << 'EOF'\n{\n  \"sample_id\": \"140-d2\",\n  \"answer\": \"B\",\n  \"evidence\": [\n    {\n      \"timestamp_sec\": 0.0,\n      \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n      \"claim\": \"A blue car and a red car are visible on a racetrack. The blue car is in the foreground, and the red car is further ahead on the track.\"\n    },\n    {\n      \"timestamp_sec\": 5.0,\n      \"frame\": \"artifacts_crv/frames/frame_003.jpg\",\n      \"claim\": \"A blue car and a red car are visible on a racetrack. The blue car is in the foreground, and the red car is behind it, to the right.\"\n    },\n    {\n      \"timestamp_sec\": 11.0,\n      \"frame\": \"artifacts_crv/frames/frame_005.jpg\",\n      \"claim\": \"A blue car and a red car are visible on a racetrack. The blue car is in the foreground, and the red car is behind it, to the right.\"\n    },\n    {\n      \"timestamp_sec\": 16.0,\n      \"frame\": \"artifacts_crv/frames/frame_007.jpg\",\n      \"claim\": \"A blue car and a red car are visible on a racetrack. The blue car is in the foreground, and the red car is behind it, to the left.\"\n    }\n  ],\n  \"windows_examined\": [\n    [\n      0.0,\n      38.0\n    ]\n  ],\n  \"tool_trace\": [\n    \"probe_video\",\n    \"crv_prepare\",\n    \"vlm_inspect\",\n    \"submit_evidence\"\n  ],\n  \"frames_processed\": 8,\n  \"status\": \"answered\"\n}\nEOF"
+   }
+  },
+  {
+   "t": 38.102,
+   "type": "agent.say",
+   "text": "Now I'll create the evidence file using bash to write it directly:"
+  },
+  {
+   "t": 38.134,
+   "type": "tool.result",
+   "tool": "bash",
+   "ok": true,
+   "detail": "(no output)",
+   "elapsed_sec": 0.054
+  },
+  {
+   "t": 38.691,
+   "type": "step.begin"
+  },
+  {
+   "t": 39.181,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "args": {
+    "command": "python tools/submit_evidence.py --input candidate_evidence.json"
+   }
+  },
+  {
+   "t": 39.2,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "ok": true,
+   "detail": "{\n  \"written\": \"/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-140-d2-rep_900-20260819T055222+0000/agent-out/evidence.json\",\n  \"sample_id\": \"140-d2\",\n  \"status\": \"answered\",\n  \"answer\": \"B\",\n  \"evidence_items\": 4,\n  \"frames_processed_claimed\": 8,\n  \"frames_processed_ledger\": 8,\n  \"frames_count_matches_ledger\": true,\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 8\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 24\n    }\n  }\n}",
+   "elapsed_sec": 0.019
+  },
+  {
+   "t": 39.2,
+   "type": "answer.submit",
+   "detail": {
+    "letter": "B",
+    "items": 4
+   }
+  },
+  {
+   "t": 40.139,
+   "type": "step.begin"
+  },
+  {
+   "t": 41.958,
+   "type": "agent.say",
+   "text": "I've successfully analyzed the video and submitted my answer. Based on my examination of the frames, I found that at some point in the video (specifically between 0.0 and 16.0 seconds), both a blue car and a red car are visible together on the racetrack. This confirms that the answer is B: \"Two.\"\n\nMy evidence includes observations from four key frames (0.0, 5.0, 11.0, and 16.0 seconds) that show both vehicles present in the scene. The analysis shows that while the red car disappears from view after 20.2 seconds, there was definitely a period when both cars were visible together, which directly supports option B.\n\nThe submission was successful with all requirements met, including proper citation of frame evidence and adherence to the frame budget."
+  },
+  {
+   "t": 42.458,
+   "type": "verify.result",
+   "detail": {
+    "v0_status": "pass",
+    "errors": []
+   }
+  },
+  {
+   "t": 42.558,
+   "type": "run.end"
+  }
+ ],
+ "pipeline": {
+  "declared": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "extract_window",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "actual": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "claimed": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "agrees": true
+ },
+ "answer": {
+  "letter": "B",
+  "status": "answered",
+  "frames_processed": 8,
+  "windows_examined": [
+   [
+    0.0,
+    38.0
+   ]
+  ],
+  "evidence": [
+   {
+    "t": 0.0,
+    "frame": "frame_001.jpg",
+    "claim": "A blue car and a red car are visible on a racetrack. The blue car is in the foreground, and the red car is further ahead on the track."
+   },
+   {
+    "t": 5.0,
+    "frame": "frame_003.jpg",
+    "claim": "A blue car and a red car are visible on a racetrack. The blue car is in the foreground, and the red car is behind it, to the right."
+   },
+   {
+    "t": 11.0,
+    "frame": "frame_005.jpg",
+    "claim": "A blue car and a red car are visible on a racetrack. The blue car is in the foreground, and the red car is behind it, to the right."
+   },
+   {
+    "t": 16.0,
+    "frame": "frame_007.jpg",
+    "claim": "A blue car and a red car are visible on a racetrack. The blue car is in the foreground, and the red car is behind it, to the left."
+   }
+  ]
+ },
+ "verification": {
+  "v0_status": "pass",
+  "checks": {
+   "run_json_present": true,
+   "evidence_present": true,
+   "evidence_parses": true,
+   "schema": true,
+   "tamper_verifier": true,
+   "tamper_evidence_schema": true,
+   "task_input_present": true,
+   "sample_id_matches": true,
+   "answer_in_options": true,
+   "video_probeable": true,
+   "timestamp_bounds": true,
+   "frame_files": true,
+   "frame_run_owned": true,
+   "windows_valid": true,
+   "budget": true,
+   "budget_ledger_agrees": true,
+   "trace_present": true,
+   "tool_logs_present": true,
+   "agent_trace_present": true,
+   "exit_status_recorded": true,
+   "service_refs": true,
+   "environment_snapshot": true,
+   "run_dir_was_new": true
+  },
+  "errors": [],
+  "leak_status": "clean",
+  "leak_note": "Under D007 the gold labels are unreadable to the agent user. A hit with blocked=true is the boundary working, not a leak; it is worth reporting because it shows the agent went looking. Only blocked=false hits set label_leak.",
+  "does_not_validate": [
+   "whether a frame semantically supports its claim",
+   "whether the evidence justifies the final answer",
+   "whether the model hallucinated",
+   "whether temporal coverage was sufficient"
+  ],
+  "boundary_probes": []
+ },
+ "telemetry": {
+  "wall_clock_sec": 50.0,
+  "layers": {
+   "perception_vlm": {
+    "measured": true,
+    "calls": 1,
+    "latency_sec": 6.796,
+    "frames_sent": 8,
+    "image_bytes": 103006,
+    "prompt_tokens": 2152,
+    "completion_tokens": 615
+   },
+   "tools": {
+    "measured": true,
+    "latency_sec": 8.13,
+    "by_channel_sec": {
+     "crv": 8.064,
+     "probe": 0.066
+    },
+    "calls_by_channel": {
+     "crv": 1,
+     "probe": 1
+    }
+   },
+   "controller": {
+    "requests": 10,
+    "prompt_tokens": 108429,
+    "completion_tokens": 1813,
+    "latency_sec": null,
+    "errors": 0,
+    "source": "opencode event stream"
+   },
+   "harness_overhead": {
+    "measured": false,
+    "residual_sec": 35.074,
+    "definition": "wall clock minus measured VLM and tool time; includes controller inference, prompt assembly, retries and harness state handling"
+   }
+  },
+  "caveats": [
+   "Controller inference time is not separable from harness overhead without per-request timing from the harness; the residual bundles both.",
+   "vLLM serves one request at a time here (--max-num-seqs 1), so layers do not overlap and the sum is meaningful.",
+   "A single run is one sample. Do not compare harnesses on one run each."
+  ]
+ }
+}

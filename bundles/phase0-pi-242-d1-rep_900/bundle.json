@@ -1,0 +1,695 @@
+{
+ "bundle_version": "1.0",
+ "run_id": "phase0-pi-242-d1-rep_900-20260819T060624+0000",
+ "harness": "pi",
+ "sample_id": "242-d1",
+ "exported_at": "2026-08-19T06:10:27+00:00",
+ "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
+ "task": {
+  "question": "In what kind of room is this tutorial filmed?",
+  "options": [
+   "A. A kitchen.",
+   "B. A bathroom.",
+   "C. A car.",
+   "D. A garden."
+  ],
+  "option_rotation": 0,
+  "duration_label": "short",
+  "has_gold": false
+ },
+ "video": {
+  "id": "lokFoo_QD8c",
+  "duration_sec": 110.481,
+  "fps": 29.97,
+  "width": 1280,
+  "height": 720,
+  "nb_frames": 3311,
+  "proxy": "video/lokFoo_QD8c.480p.mp4"
+ },
+ "budget": {
+  "limits": {
+   "coarse_frames": 16,
+   "dense_frames": 16,
+   "vlm_inspected_frames": 32
+  },
+  "final": {
+   "coarse_frames": 16,
+   "dense_frames": 0,
+   "vlm_inspected_frames": 0
+  },
+  "ledger": [
+   {
+    "category": "coarse_frames",
+    "n": 16,
+    "tool": "crv_prepare",
+    "granted": true,
+    "used_before": 0,
+    "limit": 16,
+    "detail": null
+   },
+   {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "tool": "vlm_inspect",
+    "granted": true,
+    "used_before": 0,
+    "limit": 32,
+    "detail": null
+   }
+  ]
+ },
+ "frames": [
+  {
+   "id": "frame_001",
+   "t": 0.0,
+   "file": "frames/frame_001.jpg",
+   "selection_reason": "first",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_002",
+   "t": 7.007,
+   "file": "frames/frame_002.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_003",
+   "t": 14.014,
+   "file": "frames/frame_003.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_004",
+   "t": 21.021,
+   "file": "frames/frame_004.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_005",
+   "t": 29.029,
+   "file": "frames/frame_005.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_006",
+   "t": 36.036,
+   "file": "frames/frame_006.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_007",
+   "t": 42.042,
+   "file": "frames/frame_007.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_008",
+   "t": 49.049,
+   "file": "frames/frame_008.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_009",
+   "t": 56.056,
+   "file": "frames/frame_009.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_010",
+   "t": 62.062,
+   "file": "frames/frame_010.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_011",
+   "t": 68.068,
+   "file": "frames/frame_011.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_012",
+   "t": 75.075,
+   "file": "frames/frame_012.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_013",
+   "t": 83.083,
+   "file": "frames/frame_013.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_014",
+   "t": 91.091,
+   "file": "frames/frame_014.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_015",
+   "t": 97.197,
+   "file": "frames/frame_015.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_016",
+   "t": 103.303,
+   "file": "frames/frame_016.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  }
+ ],
+ "events": [
+  {
+   "t": 0.0,
+   "type": "run.start"
+  },
+  {
+   "t": 0.0,
+   "type": "step.begin"
+  },
+  {
+   "t": 0.0,
+   "type": "agent.say",
+   "text": "I'll work through this systematically, following the rules and using the provided tools to analyze the video and answer the question.\n\nFirst, let me check the task information to understand what I'm working with."
+  },
+  {
+   "t": 0.0,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "input/task.json"
+   }
+  },
+  {
+   "t": 0.018,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "{\n  \"sample_id\": \"242-d1\",\n  \"video_path\": \"data/working/videos/lokFoo_QD8c.mp4\",\n  \"question\": \"In what kind of room is this tutorial filmed?\",\n  \"options\": [\n    \"A. A kitchen.\",\n    \"B. A bathroom.\",\n    \"C. A car.\",\n    \"D. A garden.\"\n  ],\n  \"duration\": \"short\",\n  \"role\": \"demo\"\n}"
+  },
+  {
+   "t": 0.497,
+   "type": "step.begin"
+  },
+  {
+   "t": 0.497,
+   "type": "agent.say",
+   "text": "Now let me check the question file to make sure I have all the information:"
+  },
+  {
+   "t": 0.497,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "input/question.txt"
+   }
+  },
+  {
+   "t": 0.501,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "In what kind of room is this tutorial filmed?\n\nA. A kitchen.\nB. A bathroom.\nC. A car.\nD. A garden."
+  },
+  {
+   "t": 1.129,
+   "type": "step.begin"
+  },
+  {
+   "t": 1.129,
+   "type": "agent.say",
+   "text": "Let me start by probing the video to understand its duration:"
+  },
+  {
+   "t": 1.129,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "probe_video",
+   "args": {
+    "command": "python tools/probe_video.py --video data/working/videos/lokFoo_QD8c.mp4"
+   }
+  },
+  {
+   "t": 1.215,
+   "type": "tool.error",
+   "tool": "bash",
+   "script": "probe_video",
+   "detail": "{\"error\": \"DATA_DECODE\", \"message\": \"video not found: data/working/videos/lokFoo_QD8c.mp4\"}\n\n\nCommand exited with code 2"
+  },
+  {
+   "t": 1.215,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "probe_video",
+   "ok": false,
+   "detail": "{\"error\": \"DATA_DECODE\", \"message\": \"video not found: data/working/videos/lokFoo_QD8c.mp4\"}\n\n\nCommand exited with code 2"
+  },
+  {
+   "t": 1.818,
+   "type": "step.begin"
+  },
+  {
+   "t": 1.818,
+   "type": "agent.say",
+   "text": "Let me check the actual video path:"
+  },
+  {
+   "t": 1.818,
+   "type": "tool.call",
+   "tool": "bash",
+   "args": {
+    "command": "find /home/video-code-harness/video-agent-harness-phase0 -name \"*lokFoo*\" -type f"
+   }
+  },
+  {
+   "t": 3.767,
+   "type": "tool.error",
+   "tool": "bash",
+   "detail": "/home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/data/labels’: Permission denied\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/data/raw’: Permission denied\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/docs’: Permission denied\n\n\nCommand exited with code 1"
+  },
+  {
+   "t": 3.767,
+   "type": "tool.result",
+   "tool": "bash",
+   "ok": false,
+   "detail": "/home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/data/labels’: Permission denied\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/data/raw’: Permission denied\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/docs’: Permission denied\n\n\nCommand exited with code 1"
+  },
+  {
+   "t": 4.491,
+   "type": "step.begin"
+  },
+  {
+   "t": 4.491,
+   "type": "agent.say",
+   "text": "Let me try again with the correct path:"
+  },
+  {
+   "t": 4.491,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "probe_video",
+   "args": {
+    "command": "python tools/probe_video.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4"
+   }
+  },
+  {
+   "t": 4.625,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "probe_video",
+   "ok": true,
+   "detail": "{\n  \"path\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4\",\n  \"duration_sec\": 110.481,\n  \"fps\": 29.97,\n  \"width\": 1280,\n  \"height\": 720,\n  \"codec\": \"h264\",\n  \"nb_frames\": 3311,\n  \"has_audio_stream\": true,\n  \"size_bytes\": 10798188\n}"
+  },
+  {
+   "t": 5.656,
+   "type": "step.begin"
+  },
+  {
+   "t": 5.656,
+   "type": "agent.say",
+   "text": "Great! Now I know the video is about 110 seconds long. Let me create a coarse scene-aware scan of the whole video:"
+  },
+  {
+   "t": 5.656,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "args": {
+    "command": "python tools/crv_prepare.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4 --output artifacts_crv --why \"general room type identification\""
+   }
+  },
+  {
+   "t": 23.804,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "ok": true,
+   "detail": "{\n  \"video\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/lokFoo_QD8c.mp4\",\n  \"output_dir\": \"artifacts_crv\",\n  \"duration_sec\": 110.481,\n  \"frames_extracted\": 16,\n  \"frame_budget_reserved\": 16,\n  \"timestamp_range\": [\n    0.0,\n    103.303\n  ],\n  \"grids\": [\n    \"grids/grid_01.jpg\",\n    \"grids/grid_02.jpg\"\n  ],\n  \"manifest\": \"artifacts_crv/MANIFEST.txt\",\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 0\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    }\n  },\n  \"frames_index\": \"artifacts_crv/frames_index.json\",\n  \"note\": \"Per-frame timestamps are in frames_index.json; pass it to vlm_inspect.py.\"\n}"
+  },
+  {
+   "t": 23.804,
+   "type": "budget.spend",
+   "script": "crv_prepare",
+   "detail": {
+    "category": "coarse_frames",
+    "n": 16,
+    "granted": true,
+    "used_before": 0,
+    "limit": 16
+   }
+  },
+  {
+   "t": 23.804,
+   "type": "frames.ready",
+   "detail": {
+    "count": 16,
+    "range": [
+     0.0,
+     103.303
+    ]
+   }
+  },
+  {
+   "t": 24.626,
+   "type": "step.begin"
+  },
+  {
+   "t": 24.626,
+   "type": "agent.say",
+   "text": "Now let me inspect these 16 frames to understand what kind of room this tutorial is filmed in:"
+  },
+  {
+   "t": 24.626,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "args": {
+    "command": "python tools/vlm_inspect.py --question-file input/question.txt --frames-json artifacts_crv/frames_index.json --max-images 8"
+   }
+  },
+  {
+   "t": 31.482,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "ok": true,
+   "detail": "{\n  \"observation_file\": \"artifacts_crv/observation_00.json\",\n  \"frames_inspected\": 8,\n  \"image_bytes_sent\": 55501,\n  \"latency_sec\": 5.694,\n  \"summary\": \"The tutorial is filmed in a bathroom. The background consistently shows a tiled shower area with a showerhead, a towel rack, and a towel, which are characteristic features of a bathroom.\",\n  \"answer_relevance\": [\n    \"B. A bathroom.\"\n  ],\n  \"observation_count\": 8,\n  \"parse_error\": null,\n  \"note\": \"Full per-frame observations saved to artifacts_crv/observation_00.json; re-read that file instead of relying on this context.\"\n}"
+  },
+  {
+   "t": 31.482,
+   "type": "budget.spend",
+   "script": "vlm_inspect",
+   "detail": {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "granted": true,
+    "used_before": 0,
+    "limit": 32
+   }
+  },
+  {
+   "t": 31.482,
+   "type": "observe.done",
+   "detail": {
+    "window": null,
+    "frames": 8,
+    "summary": null
+   }
+  },
+  {
+   "t": 32.21,
+   "type": "step.begin"
+  },
+  {
+   "t": 32.21,
+   "type": "agent.say",
+   "text": "Based on the initial analysis, it appears the tutorial is filmed in a bathroom. Let me examine the full observation file to confirm this finding and get more detailed evidence:"
+  },
+  {
+   "t": 32.21,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "artifacts_crv/observation_00.json"
+   }
+  },
+  {
+   "t": 32.214,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "{\n  \"model\": \"qwen3-vl-30b-a3b\",\n  \"window\": null,\n  \"frames_sent\": [\n    {\n      \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n      \"timestamp_sec\": 0.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_003.jpg\",\n      \"timestamp_sec\": 14.014\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_005.jpg\",\n      \"timestamp_sec\": 29.029\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_007.jpg\",\n      \"timestamp_sec\": 42.042\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_009.jpg\",\n      \"timestamp_sec\": 56.056\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_011.jpg\",\n      \"timestamp_sec\": 68.068\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_013.jpg\",\n      \"timestamp_sec\": 83.083\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_015.jpg\",\n      \"timestamp_sec\": 97.197\n    }\n  ],\n  \"image_bytes_sent\": 55501,\n  \"latency_sec\": 5.694,\n  \"usage\": {\n    \"completion_tokens\": 529,\n    \"prompt_tokens\": 2167,\n    \"total_tokens\": 2696,\n    \"completion_tokens_details\": null,\n    \"prompt_tokens_details\": null\n  },\n  \"parse_error\": null,\n  \"raw_response\": \"{\\n  \\\"observations\\\": [\\n    {\\n      \\\"timestamp_sec\\\": 0.0,\\n      \\\"frame\\\": \\\"frame_001.jpg\\\",\\n      \\\"observation\\\": \\\"A white background with the text 'Beauty Secrets' in black font.\\\"\\n    },\\n    {\\n      \\\"timestamp_sec\\\": 14.014,\\n      \\\"frame\\\": \\\"frame_003.jpg\\\",\\n      \\\"obse\n… (+3798 chars)"
+  },
+  {
+   "t": 37.355,
+   "type": "step.begin"
+  },
+  {
+   "t": 37.355,
+   "type": "agent.say",
+   "text": "Based on my analysis of the video frames, I can confidently determine that the tutorial is filmed in a bathroom. The evidence is clear from multiple frames showing:\n\n1. Frame 003 (14.014s): Shows a tiled wall and mirror in the background\n2. Frame 005 (29.029s): Shows a tiled shower area with a towel on a rack\n3. Frame 007 (42.042s): Shows a tiled shower area with a towel on a rack while applying makeup\n4. Frame 009 (56.056s): Shows a detailed tiled shower area with showerhead, built-in shelf, and towel on a rack\n5. Frame 011 (68.068s): Shows a tiled shower area with a towel on a rack while holding makeup\n6. Frame 013 (83.083s): Shows a tiled shower area with a towel on a rack while holding lipstick\n7. Frame 015 (97.197s): Shows a tiled shower area with a towel on a rack\n\nAll these frames consistently show the same bathroom environment with tiled walls, a shower area, towel rack, and towel - all characteristic features of a bathroom setting.\n\nLet me now create the candidate evidence file and submit it:"
+  },
+  {
+   "t": 37.355,
+   "type": "tool.call",
+   "tool": "write",
+   "args": {
+    "path": "candidate_evidence.json",
+    "content": "{\n  \"sample_id\": \"242-d1\",\n  \"answer\": \"B\",\n  \"evidence\": [\n    {\n      \"timestamp_sec\": 56.056,\n      \"frame\": \"artifacts_crv/frames/frame_009.jpg\",\n      \"claim\": \"A tiled shower area with a showerhead, a built-in shelf, and a towel on a rack. The wall is covered in small, light-colored tiles.\"\n    }\n  ],\n  \"windows_examined\": [\n    [\n      0.0,\n      103.303\n    ]\n  ],\n  \"tool_trace\": [\n    \"probe_video\",\n    \"crv_prepare\",\n    \"vlm_inspect\"\n  ],\n  \"frames_processed\": 8,\n  \"status\": \"answered\"\n}"
+   }
+  },
+  {
+   "t": 37.375,
+   "type": "tool.result",
+   "tool": "write",
+   "ok": true,
+   "detail": "Successfully wrote 503 bytes to candidate_evidence.json"
+  },
+  {
+   "t": 37.85,
+   "type": "step.begin"
+  },
+  {
+   "t": 37.85,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "args": {
+    "command": "python tools/submit_evidence.py --input candidate_evidence.json"
+   }
+  },
+  {
+   "t": 38.029,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "ok": true,
+   "detail": "{\n  \"written\": \"/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-242-d1-rep_900-20260819T060624+0000/agent-out/evidence.json\",\n  \"sample_id\": \"242-d1\",\n  \"status\": \"answered\",\n  \"answer\": \"B\",\n  \"evidence_items\": 1,\n  \"frames_processed_claimed\": 8,\n  \"frames_processed_ledger\": 8,\n  \"frames_count_matches_ledger\": true,\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 8\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 24\n    }\n  }\n}"
+  },
+  {
+   "t": 38.029,
+   "type": "answer.submit",
+   "detail": {
+    "letter": "B",
+    "items": 1
+   }
+  },
+  {
+   "t": 40.336,
+   "type": "step.begin"
+  },
+  {
+   "t": 40.336,
+   "type": "agent.say",
+   "text": "I've successfully analyzed the video and submitted my answer. Here's a summary of what I did:\n\n1. First, I probed the video to understand its duration (110.481 seconds)\n2. Then I created a coarse scene-aware scan of the entire video using crv_prepare.py\n3. I inspected 8 of the 16 extracted frames using vlm_inspect.py\n4. From the observations, I determined that the tutorial is filmed in a bathroom based on consistent visual elements across multiple frames:\n   - Tiled shower areas\n   - Showerheads\n   - Towel racks with towels\n   - Built-in shelves\n   - Light-colored tiles\n\n5. I selected one representative frame (frame_009.jpg at 56.056 seconds) that clearly shows the bathroom features to include in my evidence\n\nMy answer is B (A bathroom), supported by evidence from the video analysis. The submission was successful and confirmed that I used 8 frames as required, which matches the actual frames processed."
+  },
+  {
+   "t": 40.836,
+   "type": "verify.result",
+   "detail": {
+    "v0_status": "pass",
+    "errors": []
+   }
+  },
+  {
+   "t": 40.936,
+   "type": "run.end"
+  }
+ ],
+ "pipeline": {
+  "declared": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "extract_window",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "actual": [
+   "probe_video",
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "claimed": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect"
+  ],
+  "agrees": false
+ },
+ "answer": {
+  "letter": "B",
+  "status": "answered",
+  "frames_processed": 8,
+  "windows_examined": [
+   [
+    0.0,
+    103.303
+   ]
+  ],
+  "evidence": [
+   {
+    "t": 56.056,
+    "frame": "frame_009.jpg",
+    "claim": "A tiled shower area with a showerhead, a built-in shelf, and a towel on a rack. The wall is covered in small, light-colored tiles."
+   }
+  ]
+ },
+ "verification": {
+  "v0_status": "pass",
+  "checks": {
+   "run_json_present": true,
+   "evidence_present": true,
+   "evidence_parses": true,
+   "schema": true,
+   "tamper_verifier": true,
+   "tamper_evidence_schema": true,
+   "task_input_present": true,
+   "sample_id_matches": true,
+   "answer_in_options": true,
+   "video_probeable": true,
+   "timestamp_bounds": true,
+   "frame_files": true,
+   "frame_run_owned": true,
+   "windows_valid": true,
+   "budget": true,
+   "budget_ledger_agrees": true,
+   "trace_present": true,
+   "tool_logs_present": true,
+   "agent_trace_present": true,
+   "exit_status_recorded": true,
+   "service_refs": true,
+   "environment_snapshot": true,
+   "sampling_pin_evidence": true,
+   "sampling_matches_config": true,
+   "run_dir_was_new": true
+  },
+  "errors": [],
+  "leak_status": "clean",
+  "leak_note": "Under D007 the gold labels are unreadable to the agent user. A hit with blocked=true is the boundary working, not a leak; it is worth reporting because it shows the agent went looking. Only blocked=false hits set label_leak.",
+  "does_not_validate": [
+   "whether a frame semantically supports its claim",
+   "whether the evidence justifies the final answer",
+   "whether the model hallucinated",
+   "whether temporal coverage was sufficient"
+  ],
+  "boundary_probes": [
+   {
+    "path": "data/labels",
+    "blocked": true
+   },
+   {
+    "path": "data/raw",
+    "blocked": true
+   }
+  ]
+ },
+ "telemetry": {
+  "wall_clock_sec": 43.0,
+  "layers": {
+   "perception_vlm": {
+    "measured": true,
+    "calls": 1,
+    "latency_sec": 5.694,
+    "frames_sent": 8,
+    "image_bytes": 55501,
+    "prompt_tokens": 2167,
+    "completion_tokens": 529
+   },
+   "tools": {
+    "measured": true,
+    "latency_sec": 18.02,
+    "by_channel_sec": {
+     "crv": 17.962,
+     "probe": 0.058
+    },
+    "calls_by_channel": {
+     "crv": 1,
+     "probe": 1
+    }
+   },
+   "controller": {
+    "requests": 11,
+    "prompt_tokens": 49176,
+    "completion_tokens": 1233,
+    "latency_sec": null,
+    "errors": 0,
+    "source": "pi event stream"
+   },
+   "harness_overhead": {
+    "measured": false,
+    "residual_sec": 19.286,
+    "definition": "wall clock minus measured VLM and tool time; includes controller inference, prompt assembly, retries and harness state handling"
+   }
+  },
+  "caveats": [
+   "Controller inference time is not separable from harness overhead without per-request timing from the harness; the residual bundles both.",
+   "vLLM serves one request at a time here (--max-num-seqs 1), so layers do not overlap and the sum is meaningful.",
+   "A single run is one sample. Do not compare harnesses on one run each."
+  ]
+ }
+}

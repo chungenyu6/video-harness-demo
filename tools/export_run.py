@@ -427,8 +427,28 @@ def main() -> int:
 
     out_root = Path(args.out)
     out_root.mkdir(parents=True, exist_ok=True)
+
+    # One unusable run must not abort a batch. A wedged run leaves a directory
+    # with an empty event log; that is a fact about the run, not a reason to stop
+    # exporting the thirty that succeeded. Skipped runs are named, not swallowed.
+    skipped: list[tuple[str, str]] = []
+    done = 0
     for rd in args.run_dir:
-        export(Path(rd).resolve(), out_root, args.force)
+        path = Path(rd).resolve()
+        try:
+            export(path, out_root, args.force)
+            done += 1
+        except SystemExit as exc:
+            msg = str(exc)
+            if "REFUSING" in msg:
+                raise                      # a leak is never survivable
+            skipped.append((path.name, msg))
+
+    if skipped:
+        print(f"\nskipped {len(skipped)} run(s):")
+        for name, why in skipped:
+            print(f"  {name}\n    {why}")
+    print(f"\nexported {done}, skipped {len(skipped)}")
     return 0
 
 

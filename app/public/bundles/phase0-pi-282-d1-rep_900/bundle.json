@@ -1,0 +1,728 @@
+{
+ "bundle_version": "1.0",
+ "run_id": "phase0-pi-282-d1-rep_900-20260819T055507+0000",
+ "harness": "pi",
+ "sample_id": "282-d1",
+ "exported_at": "2026-08-19T06:10:27+00:00",
+ "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
+ "task": {
+  "question": "Where does the activity in this video take place?",
+  "options": [
+   "A. On a beach.",
+   "B. In a gym.",
+   "C. In a swimming pool.",
+   "D. In a parking lot."
+  ],
+  "option_rotation": 0,
+  "duration_label": "short",
+  "has_gold": false
+ },
+ "video": {
+  "id": "MiPw-RZMHCQ",
+  "duration_sec": 101.587,
+  "fps": 24.0,
+  "width": 1280,
+  "height": 720,
+  "nb_frames": 2438,
+  "proxy": "video/MiPw-RZMHCQ.480p.mp4"
+ },
+ "budget": {
+  "limits": {
+   "coarse_frames": 16,
+   "dense_frames": 16,
+   "vlm_inspected_frames": 32
+  },
+  "final": {
+   "coarse_frames": 16,
+   "dense_frames": 0,
+   "vlm_inspected_frames": 0
+  },
+  "ledger": [
+   {
+    "category": "coarse_frames",
+    "n": 16,
+    "tool": "crv_prepare",
+    "granted": true,
+    "used_before": 0,
+    "limit": 16,
+    "detail": null
+   },
+   {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "tool": "vlm_inspect",
+    "granted": true,
+    "used_before": 0,
+    "limit": 32,
+    "detail": null
+   }
+  ]
+ },
+ "frames": [
+  {
+   "id": "frame_001",
+   "t": 0.0,
+   "file": "frames/frame_001.jpg",
+   "selection_reason": "first",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_002",
+   "t": 7.0,
+   "file": "frames/frame_002.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_003",
+   "t": 13.0,
+   "file": "frames/frame_003.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_004",
+   "t": 19.0,
+   "file": "frames/frame_004.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_005",
+   "t": 25.0,
+   "file": "frames/frame_005.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": true,
+   "observation": null
+  },
+  {
+   "id": "frame_006",
+   "t": 31.0,
+   "file": "frames/frame_006.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_007",
+   "t": 38.0,
+   "file": "frames/frame_007.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_008",
+   "t": 44.0,
+   "file": "frames/frame_008.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_009",
+   "t": 50.0,
+   "file": "frames/frame_009.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_010",
+   "t": 56.0,
+   "file": "frames/frame_010.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_011",
+   "t": 62.0,
+   "file": "frames/frame_011.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_012",
+   "t": 69.0,
+   "file": "frames/frame_012.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_013",
+   "t": 75.0,
+   "file": "frames/frame_013.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_014",
+   "t": 81.0,
+   "file": "frames/frame_014.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_015",
+   "t": 89.0,
+   "file": "frames/frame_015.jpg",
+   "selection_reason": "action",
+   "pass": "coarse",
+   "inspected": true,
+   "cited": false,
+   "observation": null
+  },
+  {
+   "id": "frame_016",
+   "t": 95.0,
+   "file": "frames/frame_016.jpg",
+   "selection_reason": "global",
+   "pass": "coarse",
+   "inspected": false,
+   "cited": false,
+   "observation": null
+  }
+ ],
+ "events": [
+  {
+   "t": 0.0,
+   "type": "run.start"
+  },
+  {
+   "t": 0.0,
+   "type": "step.begin"
+  },
+  {
+   "t": 0.0,
+   "type": "agent.say",
+   "text": "I'll help you answer the Video-MME question by following the prescribed workflow. Let me start by examining the video and understanding the task.\n\nFirst, let me check what's in the input directory to understand the task:"
+  },
+  {
+   "t": 0.0,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "input/task.json"
+   }
+  },
+  {
+   "t": 0.018,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "{\n  \"sample_id\": \"282-d1\",\n  \"video_path\": \"data/working/videos/MiPw-RZMHCQ.mp4\",\n  \"question\": \"Where does the activity in this video take place?\",\n  \"options\": [\n    \"A. On a beach.\",\n    \"B. In a gym.\",\n    \"C. In a swimming pool.\",\n    \"D. In a parking lot.\"\n  ],\n  \"duration\": \"short\",\n  \"role\": \"demo\"\n}"
+  },
+  {
+   "t": 0.495,
+   "type": "step.begin"
+  },
+  {
+   "t": 0.495,
+   "type": "agent.say",
+   "text": "Now let me check the question file to make sure I have all the information:"
+  },
+  {
+   "t": 0.495,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "input/question.txt"
+   }
+  },
+  {
+   "t": 0.499,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "Where does the activity in this video take place?\n\nA. On a beach.\nB. In a gym.\nC. In a swimming pool.\nD. In a parking lot."
+  },
+  {
+   "t": 1.15,
+   "type": "step.begin"
+  },
+  {
+   "t": 1.15,
+   "type": "agent.say",
+   "text": "Let me start by probing the video to learn its duration:"
+  },
+  {
+   "t": 1.15,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "probe_video",
+   "args": {
+    "command": "python tools/probe_video.py --video data/working/videos/MiPw-RZMHCQ.mp4"
+   }
+  },
+  {
+   "t": 1.236,
+   "type": "tool.error",
+   "tool": "bash",
+   "script": "probe_video",
+   "detail": "{\"error\": \"DATA_DECODE\", \"message\": \"video not found: data/working/videos/MiPw-RZMHCQ.mp4\"}\n\n\nCommand exited with code 2"
+  },
+  {
+   "t": 1.236,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "probe_video",
+   "ok": false,
+   "detail": "{\"error\": \"DATA_DECODE\", \"message\": \"video not found: data/working/videos/MiPw-RZMHCQ.mp4\"}\n\n\nCommand exited with code 2"
+  },
+  {
+   "t": 1.951,
+   "type": "step.begin"
+  },
+  {
+   "t": 1.951,
+   "type": "agent.say",
+   "text": "It seems the video path is different. Let me check what video files are actually available:"
+  },
+  {
+   "t": 1.951,
+   "type": "tool.call",
+   "tool": "bash",
+   "args": {
+    "command": "find /home/video-code-harness/video-agent-harness-phase0 -name \"*.mp4\" | head -10"
+   }
+  },
+  {
+   "t": 2.25,
+   "type": "tool.result",
+   "tool": "bash",
+   "ok": true,
+   "detail": "/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-282-1-rep_44-20260816T042004+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-282-1-rep_102-20260817T221008+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-282-1-rep_90-20260816T201542+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-282-1-rep_32-20260816T034541+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-185-1-rep_83-20260817T204632+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-282-1-rep_54-20260816T202635+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-282-1-rep_63-20260816T213003+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-opencode-242-1-rep_84-20260817T205836+0000/workspace/artifacts_crv/source.mp4\n/home/video-code-\n… (+328 chars)"
+  },
+  {
+   "t": 3.244,
+   "type": "step.begin"
+  },
+  {
+   "t": 3.244,
+   "type": "agent.say",
+   "text": "Let me check the exact path mentioned in the task more carefully and also look for the video file in the data directory:"
+  },
+  {
+   "t": 3.244,
+   "type": "tool.call",
+   "tool": "bash",
+   "args": {
+    "command": "find /home/video-code-harness/video-agent-harness-phase0/data -name \"*MiPw-RZMHCQ*\" -o -name \"*282*\" | head -10"
+   }
+  },
+  {
+   "t": 3.265,
+   "type": "tool.result",
+   "tool": "bash",
+   "ok": true,
+   "detail": "find: ‘/home/video-code-harness/video-agent-harness-phase0/data/labels’: Permission denied\nfind: ‘/home/video-code-harness/video-agent-harness-phase0/data/raw’: Permission denied\n/home/video-code-harness/video-agent-harness-phase0/data/working/videos/MiPw-RZMHCQ.mp4"
+  },
+  {
+   "t": 4.096,
+   "type": "step.begin"
+  },
+  {
+   "t": 4.096,
+   "type": "agent.say",
+   "text": "Great! Now I found the video file. Let me probe it to learn its duration:"
+  },
+  {
+   "t": 4.096,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "probe_video",
+   "args": {
+    "command": "python tools/probe_video.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/MiPw-RZMHCQ.mp4"
+   }
+  },
+  {
+   "t": 4.232,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "probe_video",
+   "ok": true,
+   "detail": "{\n  \"path\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/MiPw-RZMHCQ.mp4\",\n  \"duration_sec\": 101.587,\n  \"fps\": 24.0,\n  \"width\": 1280,\n  \"height\": 720,\n  \"codec\": \"h264\",\n  \"nb_frames\": 2438,\n  \"has_audio_stream\": true,\n  \"size_bytes\": 22619514\n}"
+  },
+  {
+   "t": 5.417,
+   "type": "step.begin"
+  },
+  {
+   "t": 5.417,
+   "type": "agent.say",
+   "text": "Perfect! Now I know the video is about 101.6 seconds long. Next, I'll use crv_prepare to get a coarse scene-aware scan of the whole video:"
+  },
+  {
+   "t": 5.417,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "args": {
+    "command": "python tools/crv_prepare.py --video /home/video-code-harness/video-agent-harness-phase0/data/working/videos/MiPw-RZMHCQ.mp4 --output artifacts_crv --why \"general view of where the activity takes place\""
+   }
+  },
+  {
+   "t": 21.117,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "crv_prepare",
+   "ok": true,
+   "detail": "{\n  \"video\": \"/home/video-code-harness/video-agent-harness-phase0/data/working/videos/MiPw-RZMHCQ.mp4\",\n  \"output_dir\": \"artifacts_crv\",\n  \"duration_sec\": 101.587,\n  \"frames_extracted\": 16,\n  \"frame_budget_reserved\": 16,\n  \"timestamp_range\": [\n    0.0,\n    95.0\n  ],\n  \"grids\": [\n    \"grids/grid_01.jpg\",\n    \"grids/grid_02.jpg\"\n  ],\n  \"manifest\": \"artifacts_crv/MANIFEST.txt\",\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 0\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    }\n  },\n  \"frames_index\": \"artifacts_crv/frames_index.json\",\n  \"note\": \"Per-frame timestamps are in frames_index.json; pass it to vlm_inspect.py.\"\n}"
+  },
+  {
+   "t": 21.117,
+   "type": "budget.spend",
+   "script": "crv_prepare",
+   "detail": {
+    "category": "coarse_frames",
+    "n": 16,
+    "granted": true,
+    "used_before": 0,
+    "limit": 16
+   }
+  },
+  {
+   "t": 21.117,
+   "type": "frames.ready",
+   "detail": {
+    "count": 16,
+    "range": [
+     0.0,
+     95.0
+    ]
+   }
+  },
+  {
+   "t": 21.97,
+   "type": "step.begin"
+  },
+  {
+   "t": 21.97,
+   "type": "agent.say",
+   "text": "Now I'll inspect those 16 coarse frames with the vision language model to understand where the activity takes place:"
+  },
+  {
+   "t": 21.97,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "args": {
+    "command": "python tools/vlm_inspect.py --question-file input/question.txt --frames-json artifacts_crv/frames_index.json --max-images 8"
+   }
+  },
+  {
+   "t": 31.285,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "vlm_inspect",
+   "ok": true,
+   "detail": "{\n  \"observation_file\": \"artifacts_crv/observation_00.json\",\n  \"frames_inspected\": 8,\n  \"image_bytes_sent\": 90585,\n  \"latency_sec\": 8.205,\n  \"summary\": \"The video takes place in a gym. The setting is an indoor space with black rubber matting, racks of weights, barbells, and other exercise equipment. The main activity involves people performing plank exercises over a line of kettlebells. The environment is consistent across all frames, clearly showing a fitness facility.\",\n  \"answer_relevance\": [\n    \"B. In a gym.\"\n  ],\n  \"observation_count\": 8,\n  \"parse_error\": null,\n  \"note\": \"Full per-frame observations saved to artifacts_crv/observation_00.json; re-read that file instead of relying on this context.\"\n}"
+  },
+  {
+   "t": 31.285,
+   "type": "budget.spend",
+   "script": "vlm_inspect",
+   "detail": {
+    "category": "vlm_inspected_frames",
+    "n": 8,
+    "granted": true,
+    "used_before": 0,
+    "limit": 32
+   }
+  },
+  {
+   "t": 31.285,
+   "type": "observe.done",
+   "detail": {
+    "window": null,
+    "frames": 8,
+    "summary": null
+   }
+  },
+  {
+   "t": 32.034,
+   "type": "step.begin"
+  },
+  {
+   "t": 32.034,
+   "type": "agent.say",
+   "text": "Based on the initial analysis, the video appears to take place in a gym. Let me examine the full observation file to confirm this finding and get detailed evidence:"
+  },
+  {
+   "t": 32.034,
+   "type": "tool.call",
+   "tool": "read",
+   "args": {
+    "path": "artifacts_crv/observation_00.json"
+   }
+  },
+  {
+   "t": 32.039,
+   "type": "tool.result",
+   "tool": "read",
+   "ok": true,
+   "detail": "{\n  \"model\": \"qwen3-vl-30b-a3b\",\n  \"window\": null,\n  \"frames_sent\": [\n    {\n      \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n      \"timestamp_sec\": 0.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_003.jpg\",\n      \"timestamp_sec\": 13.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_005.jpg\",\n      \"timestamp_sec\": 25.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_007.jpg\",\n      \"timestamp_sec\": 38.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_009.jpg\",\n      \"timestamp_sec\": 50.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_011.jpg\",\n      \"timestamp_sec\": 62.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_013.jpg\",\n      \"timestamp_sec\": 75.0\n    },\n    {\n      \"frame\": \"artifacts_crv/frames/frame_015.jpg\",\n      \"timestamp_sec\": 89.0\n    }\n  ],\n  \"image_bytes_sent\": 90585,\n  \"latency_sec\": 8.205,\n  \"usage\": {\n    \"completion_tokens\": 788,\n    \"prompt_tokens\": 2159,\n    \"total_tokens\": 2947,\n    \"completion_tokens_details\": null,\n    \"prompt_tokens_details\": null\n  },\n  \"parse_error\": null,\n  \"raw_response\": \"{\\n  \\\"observations\\\": [\\n    {\\n      \\\"timestamp_sec\\\": 0.0,\\n      \\\"frame\\\": \\\"frame_001.jpg\\\",\\n      \\\"observation\\\": \\\"A group of people are exercising in a large indoor space. The floor is covered with black rubber matting. In the background, there are racks of weights, barbells, and other gym equ\n… (+6422 chars)"
+  },
+  {
+   "t": 38.725,
+   "type": "step.begin"
+  },
+  {
+   "t": 38.725,
+   "type": "agent.say",
+   "text": "Based on my analysis of the video frames, I can confidently determine that the activity takes place in a gym. The evidence is clear from all the frames examined:\n\n1. Frame 001 (0.0 sec): Shows a large indoor space with black rubber matting, racks of weights, barbells, and other gym equipment. A row of kettlebells is arranged in the center of the floor.\n\n2. Frame 003 (13.0 sec): Shows the same indoor gym environment with a man walking across the foreground and a woman standing in the middle of the room. Gym equipment including racks of weights and pull-up bars is visible.\n\n3. Frame 005 (25.0 sec): Shows two people in plank positions moving their hands over kettlebells, with other people standing and watching in the background. Gym equipment including racks and barbells is visible.\n\n4. Frame 007 (38.0 sec): Shows a man in a plank position moving his hands over kettlebells, with another shirtless man walking into the frame from the right. The background shows the same gym equipment and other people.\n\nAll frames consistently show an indoor gym environment with black rubber matting, weight racks, barbells, and kettlebells - clearly identifying this as a fitness facility.\n\nLet me now create the candidate evidence JSON file and submit it:"
+  },
+  {
+   "t": 38.725,
+   "type": "tool.call",
+   "tool": "write",
+   "args": {
+    "path": "candidate_evidence.json",
+    "content": "{\n  \"sample_id\": \"282-d1\",\n  \"answer\": \"B\",\n  \"evidence\": [\n    {\n      \"timestamp_sec\": 0.0,\n      \"frame\": \"artifacts_crv/frames/frame_001.jpg\",\n      \"claim\": \"A group of people are exercising in a large indoor space with black rubber matting, racks of weights, barbells, and other gym equipment. A row of kettlebells is arranged in the center of the floor.\"\n    },\n    {\n      \"timestamp_sec\": 13.0,\n      \"frame\": \"artifacts_crv/frames/frame_003.jpg\",\n      \"claim\": \"The scene shows an indoor gym environment with racks of weights and pull-up bars visible in the background, while people are exercising.\"\n    },\n    {\n      \"timestamp_sec\": 25.0,\n      \"frame\": \"artifacts_crv/frames/frame_005.jpg\",\n      \"claim\": \"Two people are in plank positions moving their hands over kettlebells, with other people standing and watching in the background. Gym equipment including racks and barbells is visible.\"\n    }\n  ],\n  \"windows_examined\": [\n    [\n      0.0,\n      95.0\n    ]\n  ],\n  \"tool_trace\": [\n    \"probe_video\",\n    \"crv_prepare\",\n    \"vlm_inspect\"\n  ],\n  \"frames_processed\": 8,\n  \"status\": \"answered\"\n}"
+   }
+  },
+  {
+   "t": 38.73,
+   "type": "tool.result",
+   "tool": "write",
+   "ok": true,
+   "detail": "Successfully wrote 1110 bytes to candidate_evidence.json"
+  },
+  {
+   "t": 39.283,
+   "type": "step.begin"
+  },
+  {
+   "t": 39.283,
+   "type": "agent.say",
+   "text": "Now I'll submit the evidence:"
+  },
+  {
+   "t": 39.283,
+   "type": "tool.call",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "args": {
+    "command": "python tools/submit_evidence.py --input candidate_evidence.json"
+   }
+  },
+  {
+   "t": 39.456,
+   "type": "tool.result",
+   "tool": "bash",
+   "script": "submit_evidence",
+   "ok": true,
+   "detail": "{\n  \"written\": \"/home/video-code-harness/video-agent-harness-phase0/experiments/phase0-video-harness/runs/phase0-pi-282-d1-rep_900-20260819T055507+0000/agent-out/evidence.json\",\n  \"sample_id\": \"282-d1\",\n  \"status\": \"answered\",\n  \"answer\": \"B\",\n  \"evidence_items\": 3,\n  \"frames_processed_claimed\": 8,\n  \"frames_processed_ledger\": 8,\n  \"frames_count_matches_ledger\": true,\n  \"budget\": {\n    \"limits\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 32\n    },\n    \"spent\": {\n      \"coarse_frames\": 16,\n      \"dense_frames\": 0,\n      \"vlm_inspected_frames\": 8\n    },\n    \"remaining\": {\n      \"coarse_frames\": 0,\n      \"dense_frames\": 16,\n      \"vlm_inspected_frames\": 24\n    }\n  }\n}"
+  },
+  {
+   "t": 39.456,
+   "type": "answer.submit",
+   "detail": {
+    "letter": "B",
+    "items": 3
+   }
+  },
+  {
+   "t": 42.176,
+   "type": "step.begin"
+  },
+  {
+   "t": 42.176,
+   "type": "agent.say",
+   "text": "I have successfully analyzed the video and submitted my answer. Here's a summary of what I did:\n\n1. First, I probed the video to learn it was 101.6 seconds long\n2. Then I used `crv_prepare` to extract 16 coarse frames from the video\n3. I inspected those frames with the vision language model to determine the location\n4. From the analysis, I determined the activity takes place in a gym based on evidence from multiple frames:\n   - Frame 001 (0.0 sec): Shows a large indoor space with black rubber matting, racks of weights, barbells, and other gym equipment\n   - Frame 003 (13.0 sec): Shows the same indoor gym environment with racks of weights and pull-up bars\n   - Frame 005 (25.0 sec): Shows people performing plank exercises over kettlebells with gym equipment visible\n5. I created and submitted the evidence JSON file with my answer \"B\" (In a gym) supported by three key frames\n\nThe submission was successful with the correct status \"answered\" and my evidence correctly cites the timestamped frames that support the conclusion."
+  },
+  {
+   "t": 42.676,
+   "type": "verify.result",
+   "detail": {
+    "v0_status": "pass",
+    "errors": []
+   }
+  },
+  {
+   "t": 42.776,
+   "type": "run.end"
+  }
+ ],
+ "pipeline": {
+  "declared": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "extract_window",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "actual": [
+   "probe_video",
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect",
+   "submit_evidence"
+  ],
+  "claimed": [
+   "probe_video",
+   "crv_prepare",
+   "vlm_inspect"
+  ],
+  "agrees": false
+ },
+ "answer": {
+  "letter": "B",
+  "status": "answered",
+  "frames_processed": 8,
+  "windows_examined": [
+   [
+    0.0,
+    95.0
+   ]
+  ],
+  "evidence": [
+   {
+    "t": 0.0,
+    "frame": "frame_001.jpg",
+    "claim": "A group of people are exercising in a large indoor space with black rubber matting, racks of weights, barbells, and other gym equipment. A row of kettlebells is arranged in the center of the floor."
+   },
+   {
+    "t": 13.0,
+    "frame": "frame_003.jpg",
+    "claim": "The scene shows an indoor gym environment with racks of weights and pull-up bars visible in the background, while people are exercising."
+   },
+   {
+    "t": 25.0,
+    "frame": "frame_005.jpg",
+    "claim": "Two people are in plank positions moving their hands over kettlebells, with other people standing and watching in the background. Gym equipment including racks and barbells is visible."
+   }
+  ]
+ },
+ "verification": {
+  "v0_status": "pass",
+  "checks": {
+   "run_json_present": true,
+   "evidence_present": true,
+   "evidence_parses": true,
+   "schema": true,
+   "tamper_verifier": true,
+   "tamper_evidence_schema": true,
+   "task_input_present": true,
+   "sample_id_matches": true,
+   "answer_in_options": true,
+   "video_probeable": true,
+   "timestamp_bounds": true,
+   "frame_files": true,
+   "frame_run_owned": true,
+   "windows_valid": true,
+   "budget": true,
+   "budget_ledger_agrees": true,
+   "trace_present": true,
+   "tool_logs_present": true,
+   "agent_trace_present": true,
+   "exit_status_recorded": true,
+   "service_refs": true,
+   "environment_snapshot": true,
+   "sampling_pin_evidence": true,
+   "sampling_matches_config": true,
+   "run_dir_was_new": true
+  },
+  "errors": [],
+  "leak_status": "flagged",
+  "leak_note": "Under D007 the gold labels are unreadable to the agent user. A hit with blocked=true is the boundary working, not a leak; it is worth reporting because it shows the agent went looking. Only blocked=false hits set label_leak.",
+  "does_not_validate": [
+   "whether a frame semantically supports its claim",
+   "whether the evidence justifies the final answer",
+   "whether the model hallucinated",
+   "whether temporal coverage was sufficient"
+  ],
+  "boundary_probes": [
+   {
+    "path": "data/labels",
+    "blocked": true
+   },
+   {
+    "path": "data/raw",
+    "blocked": true
+   }
+  ]
+ },
+ "telemetry": {
+  "wall_clock_sec": 45.0,
+  "layers": {
+   "perception_vlm": {
+    "measured": true,
+    "calls": 1,
+    "latency_sec": 8.205,
+    "frames_sent": 8,
+    "image_bytes": 90585,
+    "prompt_tokens": 2159,
+    "completion_tokens": 788
+   },
+   "tools": {
+    "measured": true,
+    "latency_sec": 15.564,
+    "by_channel_sec": {
+     "crv": 15.499,
+     "probe": 0.065
+    },
+    "calls_by_channel": {
+     "crv": 1,
+     "probe": 1
+    }
+   },
+   "controller": {
+    "requests": 12,
+    "prompt_tokens": 61104,
+    "completion_tokens": 1545,
+    "latency_sec": null,
+    "errors": 0,
+    "source": "pi event stream"
+   },
+   "harness_overhead": {
+    "measured": false,
+    "residual_sec": 21.231,
+    "definition": "wall clock minus measured VLM and tool time; includes controller inference, prompt assembly, retries and harness state handling"
+   }
+  },
+  "caveats": [
+   "Controller inference time is not separable from harness overhead without per-request timing from the harness; the residual bundles both.",
+   "vLLM serves one request at a time here (--max-num-seqs 1), so layers do not overlap and the sum is meaningful.",
+   "A single run is one sample. Do not compare harnesses on one run each."
+  ]
+ }
+}
