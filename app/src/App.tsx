@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Bundle, HarnessMeta } from "./types";
 import type { ScenarioSpec } from "./data";
-import { loadBundle, loadBundleIndex, loadHarnesses, loadScenarios, runDuration } from "./data";
+import { frameUrl, loadBundle, loadBundleIndex, loadHarnesses, loadScenarios, runDuration } from "./data";
 import { useClock } from "./clock";
 import Video from "./panels/Video";
 import Filmstrip from "./panels/Filmstrip";
@@ -64,12 +64,61 @@ function group(bundles: Loaded[]): Scenario[] {
   return [...map.values()].sort((a, b) => a.videoId.localeCompare(b.videoId));
 }
 
+/** One video, with every scenario recorded against it.
+ *  Derived from the bundles rather than declared anywhere: a video exists in the
+ *  picker exactly when there is a run to show for it. */
+interface VideoGroup {
+  id: string;
+  label: string;
+  durationSec: number;
+  thumb: string | null;
+  scenarios: Scenario[];
+}
+
+function groupByVideo(scenarios: Scenario[]): VideoGroup[] {
+  const map = new Map<string, VideoGroup>();
+  for (const s of scenarios) {
+    const run = s.runs[0];
+    if (!run) continue;
+    const id = run.video.id;
+    if (!map.has(id)) {
+      // Strip the video name the label is prefixed with; inside a video's own
+      // question list, repeating it on every row is noise.
+      const label = s.label?.includes(" — ") ? s.label.split(" — ")[0] : id;
+      const first = run.frames[0];
+      map.set(id, {
+        id,
+        label: s.label?.startsWith("Featured") ? id : label,
+        durationSec: run.video.duration_sec,
+        thumb: first ? frameUrl(run._dir, first.file) : null,
+        scenarios: [],
+      });
+    }
+    map.get(id)!.scenarios.push(s);
+  }
+  // A featured pairing should lead its video's list - it is the one worth watching.
+  for (const g of map.values()) {
+    g.scenarios.sort((a, b) => Number(b.label?.startsWith("Featured") ?? false) -
+                               Number(a.label?.startsWith("Featured") ?? false));
+    if (g.label === g.id) {
+      // Must skip the featured entries: their label starts with "Featured", so
+      // using one here names the video "Featured" instead of what it shows.
+      const named = g.scenarios.find(
+        (x) => x.label?.includes(" — ") && !x.label.startsWith("Featured")
+      );
+      if (named) g.label = named.label!.split(" — ")[0];
+    }
+  }
+  return [...map.values()];
+}
+
 export default function App() {
   const [harnesses, setHarnesses] = useState<HarnessMeta[]>([]);
   const [bundles, setBundles] = useState<Loaded[]>([]);
   const [err, setErr] = useState<string | null>(null);
   const [specs, setSpecs] = useState<ScenarioSpec[] | null>(null);
   const [scenarioKey, setScenarioKey] = useState<string | null>(null);
+  const [videoId, setVideoId] = useState<string | null>(null);
   const [selFrame, setSelFrame] = useState<number | null>(null);
   // Live mode exists only when a live server is answering. The static Pages
   // build gets a 404 here and never renders the tab, so the public site cannot
@@ -107,7 +156,10 @@ export default function App() {
     }
     return group(bundles);
   }, [bundles, specs]);
-  const scenario = scenarios.find((s) => s.key === scenarioKey) ?? scenarios[0] ?? null;
+  const videos = useMemo(() => groupByVideo(scenarios), [scenarios]);
+  const video = videos.find((v) => v.id === videoId) ?? videos[0] ?? null;
+  const scenario =
+    video?.scenarios.find((s) => s.key === scenarioKey) ?? video?.scenarios[0] ?? null;
 
   // Registry order, not bundle order: the columns must not reshuffle between
   // scenarios just because one harness happened to be exported first.
@@ -191,16 +243,35 @@ export default function App() {
           <LiveView harnesses={harnesses} />
         ) : (
         <>
+        <div className="videopick" role="group" aria-label="Choose a video">
+          {videos.map((v) => (
+            <button
+              key={v.id}
+              className={`vcard${v.id === video?.id ? " on" : ""}`}
+              aria-pressed={v.id === video?.id}
+              onClick={() => { setVideoId(v.id); setScenarioKey(null); setSelFrame(null); }}
+            >
+              {v.thumb && <img src={v.thumb} alt="" loading="lazy" />}
+              <span className="vmeta">
+                <b>{v.label}</b>
+                <span>{Math.round(v.durationSec)}s · {v.scenarios.length} question{v.scenarios.length > 1 ? "s" : ""}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+
         <div className="picker">
           <label>
-            <span className="eyebrow">Scenario</span>
+            <span className="eyebrow">Question</span>
             <select
               value={scenario.key}
               onChange={(e) => { setScenarioKey(e.target.value); setSelFrame(null); }}
             >
-              {scenarios.map((s) => (
+              {(video?.scenarios ?? []).map((s) => (
                 <option key={s.key} value={s.key}>
-                  {s.label ?? `${s.videoId} — ${s.question.slice(0, 62)}`}
+                  {s.label?.startsWith("Featured")
+                    ? `★ ${s.label}`
+                    : (s.label?.split(" — ").slice(1).join(" — ") || s.question)}
                 </option>
               ))}
             </select>

@@ -337,3 +337,28 @@ button.go:disabled { background: var(--surface-2); color: var(--ink-3); border-c
   padding: 0.35rem 0.9rem; color: var(--ink-3);
 }
 .tabs button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+
+/* ---------- video picker ---------- */
+.videopick {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.5rem; margin-bottom: 0.9rem;
+}
+.vcard {
+  display: flex; flex-direction: column; gap: 0; padding: 0;
+  background: var(--surface); border: 1px solid var(--rule-strong);
+  border-radius: 3px; overflow: hidden; text-align: left;
+  transition: border-color 0.12s ease, transform 0.12s ease;
+}
+@media (prefers-reduced-motion: reduce) { .vcard { transition: none; } }
+.vcard img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; opacity: 0.72; }
+.vcard:hover { border-color: var(--warm); transform: translateY(-2px); }
+.vcard:hover img { opacity: 0.92; }
+.vcard.on { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.vcard.on img { opacity: 1; }
+.vmeta {
+  display: flex; flex-direction: column; gap: 1px;
+  padding: 0.4rem 0.5rem; font-family: var(--mono); font-size: 0.63rem;
+  color: var(--ink-3); line-height: 1.35;
+}
+.vmeta b { font-family: var(--sans); font-size: 0.78rem; color: var(--ink); font-weight: 600; }
+.vcard.on .vmeta b { color: var(--accent); }
