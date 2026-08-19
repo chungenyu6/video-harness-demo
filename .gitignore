@@ -9,8 +9,16 @@ __pycache__/
 *.pyc
 .venv/
 
-# ---- generated media proxies (regenerate with tools/make_proxies.sh) ----
-public/video/*.mp4
+# ---- generated, never committed ----
+# app/public/bundles is a copy of bundles/ made by `npm run sync`, which the
+# build (and CI) runs automatically. Committing it duplicated 11 MB and, worse,
+# created a second source of truth: edit bundles/ without re-syncing and the
+# stale copy is what gets deployed.
+app/public/bundles/
+
+# NOTE: app/public/video/*.mp4 IS committed on purpose. CI does not run
+# tools/make_proxies.sh - it has no access to the source media - so if the
+# proxies were ignored the deployed site would have no video at all.
 
 # ---- live mode runtime ----
 live/logs/
