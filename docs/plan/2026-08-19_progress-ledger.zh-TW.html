@@ -510,6 +510,26 @@ ls experiments/phase0-video-harness/runs/ | tail -1</pre>
     無法重現，所以無法斷定根因。批次腳本已改為<strong>先清殘留、遇 timeout 立即中止</strong>，
     避免 30 個 run 各空轉 5 分鐘。如果再次出現，這是需要往下追的線索。
   </p>
+  <h3>5 · 我自己犯了這個 demo 在講的那個錯</h3>
+  <p>
+    D3.6 的 gold 守衛我原本標成完成，依據是我跑了一個<strong>簡化版</strong>的 grep，
+    而不是 workflow 裡真正那一行。實際執行後才發現：那個守衛掃整個 checkout，
+    因此會擋下<strong>它自己的原始碼</strong> ——
+    <code>tools/export_run.py</code>、<code>tools/validate_bundle.py</code>、
+    <code>live/sanitize.py</code> 與 workflow 本身都含有 <code>phase0_gold</code>，
+    正因為它們是<em>阻擋</em>它的程式。<strong>那個 CI 從來不可能通過。</strong>
+  </p>
+  <p>
+    已改為掃 <code>app/dist</code>（真正會被發布的產物），並比照 <code>tamper_tools</code>
+    做了正反面驗證：對真實建置產物通過，植入一筆參照後確實被抓到。
+  </p>
+  <p>
+    值得記下來的不是這個 bug，而是它的形狀：<strong>「我跑了一個像那樣的檢查」不等於
+    「我跑了那個檢查」</strong> —— 正是 <span class="mono">rep_84</span> 的
+    <code>tool_trace</code> 與 ledger 不符的同一種落差，只是發生在我這一邊。
+    這也說明為什麼這份稽核表的「產出／證據」欄要寫檔案路徑，而 gate 要附指令給你自己跑。
+  </p>
+
 </section>
 
 <!-- ================= 變更記錄 ================= -->
@@ -517,6 +537,14 @@ ls experiments/phase0-video-harness/runs/ | tail -1</pre>
   <div class="sec-head"><span class="sec-num">C</span><h2>變更記錄</h2><span class="sub">append-only</span></div>
 
   <div class="log">
+    <div class="log-row">
+      <span class="log-d">2026-08-19 (3)</span>
+      <p>
+        修正 D3.6：CI 的 gold 守衛原本會擋下自己的原始碼，等於永遠無法通過。
+        改為掃 <code>app/dist</code> 並完成正反面驗證。同時把規劃與稽核文件納入版控
+        （原本只在 <code>/tmp</code> 的 scratchpad，重開機就沒了）。見發現 5。
+      </p>
+    </div>
     <div class="log-row">
       <span class="log-d">2026-08-19 (2)</span>
       <p>
