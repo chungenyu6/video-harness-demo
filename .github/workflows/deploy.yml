@@ -31,16 +31,6 @@ jobs:
       - name: Validate every bundle (schema + leak + sanity)
         run: python tools/validate_bundle.py bundles/*/
 
-      - name: Refuse to publish an answer key
-        run: |
-          # Belt and braces over the validator: a plain text scan of everything
-          # that will be served, including files the schema does not describe.
-          if grep -rIl --exclude-dir=.git -e 'phase0_gold' -e 'videomme/test-' . ; then
-            echo "::error::answer-key reference found in published content"
-            exit 1
-          fi
-          echo "no answer-key reference found"
-
       - name: Every bundle must declare it has no gold
         run: |
           python - <<'PY'
@@ -77,6 +67,22 @@ jobs:
           # Pages serves from /<repo>/, so assets need that prefix.
           BASE_PATH: /${{ github.event.repository.name }}/
         run: npm run build
+
+      - name: Refuse to publish an answer key
+        run: |
+          # Scans the BUILT SITE, not the repository.
+          #
+          # An earlier version of this step scanned the whole checkout and would
+          # never have gone green: tools/export_run.py, tools/validate_bundle.py,
+          # live/sanitize.py and this workflow all contain the string
+          # "phase0_gold" precisely because they are the code that blocks it.
+          # The guard's job is "do not publish an answer key", so the thing to
+          # scan is what gets published.
+          if grep -rIl -e 'phase0_gold' -e 'videomme/test-' app/dist ; then
+            echo "::error::answer-key reference found in the built site"
+            exit 1
+          fi
+          echo "no answer-key reference in app/dist"
 
       - uses: actions/configure-pages@v5
 
