@@ -1,0 +1,518 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/chungenyu6/video-harness-demo/schema/bundle.schema.json",
+  "title": "Harness replay bundle",
+  "description": "A self-contained, replayable record of one harness run. Produced by tools/export_run.py from a phase-0 run directory, consumed by the demo UI. This schema is the contract between the harness and the UI: the UI never reads a run directory, and never learns which harness produced a bundle except through the `harness` field.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bundle_version",
+    "run_id",
+    "harness",
+    "sample_id",
+    "task",
+    "video",
+    "budget",
+    "frames",
+    "events",
+    "pipeline",
+    "answer",
+    "verification",
+    "telemetry"
+  ],
+  "properties": {
+    "bundle_version": {
+      "const": "1.0"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "harness": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Registry id. Not an enum: adding a harness must not require a schema change."
+    },
+    "sample_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exported_at": {
+      "type": "string"
+    },
+    "source_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "What the agent was asked. Deliberately closed: `additionalProperties:false` is the schema-level guard that stops a gold answer riding along in a field nobody thought to exclude.",
+      "required": [
+        "question",
+        "options",
+        "option_rotation",
+        "has_gold"
+      ],
+      "properties": {
+        "question": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "option_rotation": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "duration_label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "has_gold": {
+          "const": false,
+          "description": "Always false. A bundle never carries the answer key; correctness is scored outside the bundle."
+        }
+      }
+    },
+    "video": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "duration_sec",
+        "nb_frames"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "duration_sec": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "fps": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "width": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "nb_frames": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "proxy": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Relative path to the 480p proxy the UI plays. Null until D3 generates proxies."
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "limits",
+        "final",
+        "ledger"
+      ],
+      "properties": {
+        "limits": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "final": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "ledger": {
+          "type": "array",
+          "description": "Every reservation the tools recorded, granted or denied. This is the ground truth V0 cross-checks the agent's self-report against.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "category",
+              "n",
+              "tool",
+              "granted"
+            ],
+            "properties": {
+              "category": {
+                "type": "string"
+              },
+              "n": {
+                "type": "integer"
+              },
+              "tool": {
+                "type": "string"
+              },
+              "granted": {
+                "type": "boolean"
+              },
+              "used_before": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "limit": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "detail": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "frames": {
+      "type": "array",
+      "description": "Every frame crv_prepare extracted, in time order, annotated with whether the VLM actually saw it and whether the agent cited it. The gap between `length` and the count of `inspected:true` is the demo's central fact.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "t",
+          "file",
+          "inspected",
+          "cited"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "t": {
+            "type": "number",
+            "minimum": 0
+          },
+          "file": {
+            "type": "string",
+            "description": "Path relative to the bundle directory."
+          },
+          "selection_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "inspected": {
+            "type": "boolean"
+          },
+          "cited": {
+            "type": "boolean"
+          },
+          "observation": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "What the VLM said about this frame. Null when never inspected."
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "description": "The normalized stream. `t` is seconds since run start on a single clock, so two bundles can be played side by side.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "t",
+          "type"
+        ],
+        "properties": {
+          "t": {
+            "type": "number",
+            "minimum": 0
+          },
+          "type": {
+            "enum": [
+              "run.start",
+              "step.begin",
+              "agent.say",
+              "tool.call",
+              "tool.result",
+              "tool.error",
+              "budget.spend",
+              "frames.ready",
+              "observe.done",
+              "answer.submit",
+              "verify.result",
+              "run.end"
+            ]
+          },
+          "tool": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Harness-level tool (bash/read/write), not the script it invoked."
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The instrumented script the bash command ran, when recognizable: probe_video, crv_prepare, vlm_inspect, extract_window, submit_evidence."
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "args": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "ok": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "detail": {
+            "type": [
+              "object",
+              "string",
+              "null"
+            ]
+          },
+          "elapsed_sec": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "pipeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Three views of the same procedure. `declared` is the prompt's intended order; `actual` is reconstructed from tool logs; `claimed` is the agent's own tool_trace. Where `actual` and `claimed` disagree, an agent misreported what it did.",
+      "required": [
+        "declared",
+        "actual",
+        "claimed"
+      ],
+      "properties": {
+        "declared": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actual": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "claimed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "agrees": {
+          "type": "boolean"
+        }
+      }
+    },
+    "answer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "letter",
+        "status",
+        "evidence",
+        "windows_examined",
+        "frames_processed"
+      ],
+      "properties": {
+        "letter": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-D]?$"
+        },
+        "status": {
+          "type": "string"
+        },
+        "frames_processed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "windows_examined": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "t",
+              "frame",
+              "claim"
+            ],
+            "properties": {
+              "t": {
+                "type": "number"
+              },
+              "frame": {
+                "type": "string"
+              },
+              "claim": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "v0_status",
+        "checks"
+      ],
+      "properties": {
+        "v0_status": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_run"
+          ]
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "leak_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "leak_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "does_not_validate": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "boundary_probes": {
+          "type": "array",
+          "description": "Off-limits paths the agent reached for and the kernel refused. Present means the isolation was exercised and held; absent means the agent never went looking. Never a failure condition.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "blocked"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "blocked": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "wall_clock_sec"
+      ],
+      "properties": {
+        "wall_clock_sec": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "caveats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

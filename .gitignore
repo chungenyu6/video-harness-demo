@@ -1,0 +1,24 @@
+# ---- node / build ----
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# ---- python ----
+__pycache__/
+*.pyc
+.venv/
+
+# ---- generated media proxies (regenerate with tools/make_proxies.sh) ----
+public/video/*.mp4
+
+# ---- live mode runtime ----
+live/logs/
+*.pid
+
+# ---- secrets ----
+.env
+*.token
+
+# NOTE: bundles/ IS committed. A bundle is the demo's input data and must be
+# reviewable in diff. tools/validate_bundle.py gates what may enter it.
