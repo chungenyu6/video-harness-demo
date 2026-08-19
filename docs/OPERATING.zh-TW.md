@@ -100,6 +100,39 @@ nvidia-smi                                 # GPU 0–3 應該各佔約 40 GB
 
 ---
 
+## 4-bis. 關掉模型、釋放 GPU
+
+```bash
+cd /home/video-code-harness/video-agent-harness-phase0
+
+bash scripts/stop_services.sh --dry-run   # 先看會關掉哪些行程
+bash scripts/stop_services.sh             # 兩個都關
+bash scripts/stop_services.sh coder       # 只關其中一個
+```
+
+關完會印出 port 狀態和 GPU 用量。**權重在行程結束時就釋放了,沒有其他要做的。**
+
+### 為什麼不能直接 kill pid 檔裡那個
+
+服務記錄的 pid 只是最外層的 shell。實際的行程鏈是:
+
+```
+bash start_coder_server.sh
+└─ uv run vllm serve
+   └─ python3
+      └─ VLLM::EngineCore
+         ├─ VLLM::Worker_TP0     ← 這兩個才是佔 GPU 的
+         └─ VLLM::Worker_TP1
+```
+
+只殺最上層,worker 會變成孤兒繼續佔著約 40 GB —— 看起來像「關了但沒關」。
+`stop_services.sh` 會走完整棵樹。
+
+> `nvidia-smi` 在 container 裡顯示的是 **host PID**,跟這裡的 `/proc` 對不起來,
+> 不要試著比對。看**釋放的記憶體**就好。
+
+---
+
 ## 5. 日常流程
 
 ```bash
@@ -116,6 +149,17 @@ setsid env LIVE_HOST=0.0.0.0 bash scripts.live.sh > /tmp/live.log 2>&1 &
 
 # 4. 瀏覽器 http://localhost:8080/
 ```
+
+收工：
+
+```bash
+pkill -f "uvicorn live.app"                                    # 關 Live Web
+cd /home/video-code-harness/video-agent-harness-phase0
+bash scripts/stop_services.sh                                   # 關模型、放 GPU
+```
+
+模型放著不關也可以（它們只是佔記憶體，不吃算力）。
+但如果別人要用那幾張卡，就該關。
 
 ---
 
