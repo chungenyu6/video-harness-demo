@@ -14,9 +14,24 @@ When the run finishes it runs the ordinary finalize + export path and sends the
 finished bundle, so live mode's end state is byte-identical to what a replay
 would have shown. Live mode never becomes a second, divergent code path.
 
+Reaching it. The default bind is 127.0.0.1, which is the safe answer and works
+when the forwarder runs in the same place as the server - VS Code Dev Containers,
+for instance, runs its server inside this container and can reach loopback.
+
+It does NOT work for `ssh -L 8080:<container-ip>:8080` from the host, because
+nothing is listening on that interface. If you need that route, bind wider and
+know what you are choosing:
+
+    LIVE_HOST=0.0.0.0 ...uvicorn live.app:api --port 8080
+
+Inside a container with no published ports that exposes the service to the Docker
+bridge - the host and sibling containers - and not to the internet. That is a
+real widening of a service that can start agent runs, so it is opt-in and never
+the default. Do not pair it with `docker run -p`.
+
 Run:
-    /home/video-code-harness/video-agent-harness-phase0/.venv/bin/python \
-        -m uvicorn live.app:api --host 127.0.0.1 --port 8080
+    scripts/live.sh                      # 127.0.0.1, the default
+    LIVE_HOST=0.0.0.0 scripts/live.sh    # reachable from the host
 """
 
 from __future__ import annotations

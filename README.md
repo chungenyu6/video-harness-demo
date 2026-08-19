@@ -56,6 +56,27 @@ show the checker doing something. Two are included:
 An agent can be right and dishonest, or honest and under-reporting. Only a checker
 with independent access to the ledger tells them apart.
 
+## Reaching live mode
+
+```bash
+bash scripts.live.sh                      # 127.0.0.1:8080 - the default
+LIVE_HOST=0.0.0.0 bash scripts.live.sh    # also reachable from the Docker host
+```
+
+The default bind is loopback, which works when the port forwarder runs in the
+same place as the server — VS Code Dev Containers runs its server inside the
+container and can reach it.
+
+It is **not** enough for `ssh -L 8080:<container-ip>:8080` from the host: nothing
+is listening on that interface, so the tunnel opens onto nothing. That route
+needs `LIVE_HOST=0.0.0.0`, which inside a container with no published ports
+exposes the service to the Docker bridge — the host and sibling containers — and
+not to the internet. It is a real widening of a service that can start agent
+runs, so it is opt-in. Do not combine it with `docker run -p`.
+
+The static viewer has no such constraint and binds all interfaces already: it
+only hands out files.
+
 ## Live mode output
 
 A live run produces a full run directory (~20 MB, mostly a copy of the source
