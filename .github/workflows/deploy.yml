@@ -1,0 +1,95 @@
+name: build and deploy
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    # This job exists to fail the build rather than publish a leak. It runs
+    # before anything is built, so a bad bundle can never reach Pages.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+
+      - name: Install validator dependency
+        run: pip install --quiet jsonschema
+
+      - name: Validate every bundle (schema + leak + sanity)
+        run: python tools/validate_bundle.py bundles/*/
+
+      - name: Refuse to publish an answer key
+        run: |
+          # Belt and braces over the validator: a plain text scan of everything
+          # that will be served, including files the schema does not describe.
+          if grep -rIl --exclude-dir=.git -e 'phase0_gold' -e 'videomme/test-' . ; then
+            echo "::error::answer-key reference found in published content"
+            exit 1
+          fi
+          echo "no answer-key reference found"
+
+      - name: Every bundle must declare it has no gold
+        run: |
+          python - <<'PY'
+          import json, pathlib, sys
+          bad = []
+          for p in pathlib.Path("bundles").glob("*/bundle.json"):
+              b = json.loads(p.read_text())
+              if b.get("task", {}).get("has_gold") is not False:
+                  bad.append(str(p))
+          if bad:
+              print("::error::has_gold is not false in: " + ", ".join(bad))
+              sys.exit(1)
+          print(f"checked {len(list(pathlib.Path('bundles').glob('*/bundle.json')))} bundles")
+          PY
+
+  build:
+    needs: guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - run: npm ci
+        working-directory: app
+
+      - name: Build
+        working-directory: app
+        env:
+          # Pages serves from /<repo>/, so assets need that prefix.
+          BASE_PATH: /${{ github.event.repository.name }}/
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

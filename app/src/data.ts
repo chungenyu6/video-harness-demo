@@ -14,6 +14,21 @@ export async function loadHarnesses(): Promise<HarnessMeta[]> {
   return r.json();
 }
 
+export interface ScenarioSpec {
+  id: string;
+  label: string;
+  note?: string;
+  bundles: string[];
+}
+
+/** Curated scenarios. Optional: without the file the app groups bundles itself,
+ *  which is what a freshly exported batch looks like before anyone curates it. */
+export async function loadScenarios(): Promise<ScenarioSpec[] | null> {
+  const r = await fetch(asset("scenarios.json"));
+  if (!r.ok) return null;
+  try { return await r.json(); } catch { return null; }
+}
+
 export async function loadBundleIndex(): Promise<string[]> {
   const r = await fetch(asset("bundles/index.json"));
   if (!r.ok) throw new Error(`bundle index: ${r.status}`);

@@ -50,8 +50,21 @@ SOURCES = {
 }
 #: Observation files are numbered, so they are globbed rather than named.
 OBSERVATION_GLOB = "workspace/artifacts_crv/observation_*.json"
-#: The only binaries that may enter a bundle.
-COPY_RULES = [("workspace/artifacts_crv/frames", "*.jpg", "frames")]
+
+#: Dense passes write their own index. The agent chooses the output directory,
+#: and rep_81 pointed extract_window at artifacts_crv - clobbering its own coarse
+#: output. So both the canonical location and the collided one must be searched,
+#: or a real run becomes unexportable.
+WINDOW_GLOBS = ["workspace/artifacts_crv/window.json", "workspace/*/window.json"]
+
+#: The only binaries that may enter a bundle. Three rules because the frames can
+#: land in three places: the coarse subdirectory, the artifacts root (dense pass
+#: writing over the coarse output), or a separate window directory.
+COPY_RULES = [
+    ("workspace/artifacts_crv/frames", "*.jpg", "frames"),
+    ("workspace/artifacts_crv", "*.jpg", "frames"),
+    ("workspace", "win*/*.jpg", "frames"),
+]
 
 #: A reference to the answer key itself. If this string survives into a trace,
 #: something actually read the file — there is no innocent reason for it.
@@ -197,6 +210,12 @@ def export(run_dir: Path, out_root: Path, force: bool) -> Path:
                                  "limit": row.get("limit")}))
 
     frames_index = src["frames_index"] or {}
+    windows = []
+    for g in WINDOW_GLOBS:
+        for wp in sorted(run_dir.glob(g)):
+            w = read_json(wp)
+            if w:
+                windows.append(w)
     crv_summary = next((r["summary"] for r in src["crv_log"] if "summary" in r), None)
     if frames_index:
         crv_done = results_for("crv_prepare")
@@ -252,18 +271,45 @@ def export(run_dir: Path, out_root: Path, force: bool) -> Path:
                 obs_by_frame[n] = o.get("observation") or ""
 
     cited = {basename(item.get("frame")) for item in (evidence.get("evidence") or [])}
+
+    # Coarse frames first, then anything a dense pass added. Keyed by basename so
+    # a frame that appears in both indexes is listed once, as coarse.
+    sources: list[tuple[str, list]] = [("coarse", frames_index.get("frames") or [])]
+    for w in windows:
+        sources.append(("dense", w.get("frames") or []))
+
     frames = []
-    for f in frames_index.get("frames") or []:
-        name = basename(f.get("frame"))
-        frames.append({
-            "id": Path(name).stem if name else "?",
-            "t": float(f.get("timestamp_sec") or 0.0),
-            "file": f"frames/{name}",
-            "selection_reason": f.get("selection_reason"),
-            "inspected": name in inspected,
-            "cited": name in cited,
-            "observation": obs_by_frame.get(name),
-        })
+    seen_names: set[str] = set()
+    for pass_name, items in sources:
+        for f in items:
+            name = basename(f.get("frame"))
+            if not name or name in seen_names:
+                continue
+            seen_names.add(name)
+            frames.append({
+                "id": Path(name).stem,
+                "t": float(f.get("timestamp_sec") or 0.0),
+                "file": f"frames/{name}",
+                "selection_reason": f.get("selection_reason"),
+                "pass": pass_name,
+                "inspected": name in inspected,
+                "cited": name in cited,
+                "observation": obs_by_frame.get(name),
+            })
+
+    # An agent may cite a frame that is in neither index - rep_81 cited a stray
+    # frame_007.jpg left in the artifacts root. Carry it so the UI can show what
+    # was cited rather than silently dropping the citation.
+    for name in sorted(n for n in cited if n and n not in seen_names):
+        if (run_dir / "workspace" / "artifacts_crv" / name).exists():
+            frames.append({
+                "id": Path(name).stem, "t": 0.0, "file": f"frames/{name}",
+                "selection_reason": "cited but absent from any frame index",
+                "pass": "unindexed",
+                "inspected": name in inspected, "cited": True,
+                "observation": obs_by_frame.get(name),
+            })
+    frames.sort(key=lambda f: (f["t"], f["id"]))
 
     # --- pipeline: declared vs actual vs claimed --------------------------
     actual = [e.get("script") for e in norm

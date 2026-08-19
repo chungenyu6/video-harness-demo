@@ -1,0 +1,29 @@
+[
+  {
+    "id": "car-colour",
+    "label": "Car colour — the ordinary case",
+    "note": "A short clip and an attribute question. The coarse pass settles it, so the dense branch never fires and both harnesses answer from the same 8 frames. This is what a clean run looks like.",
+    "bundles": [
+      "phase0-opencode-140-1-rep_103",
+      "phase0-pi-140-1-rep_103"
+    ]
+  },
+  {
+    "id": "phantom-window",
+    "label": "Featured: a window past the end of the video",
+    "note": "OpenCode reported examining [0, 101.6] and [38, 48] of a 42.2-second clip, and listed extract_window in its tool trace. It never ran extract_window — it delegated evidence-writing to a subagent, which invented the trace. The answer is still correct. Only a checker with independent access to the tool ledger can tell the difference.",
+    "bundles": [
+      "phase0-opencode-140-1-rep_84",
+      "phase0-pi-140-1-rep_84"
+    ]
+  },
+  {
+    "id": "under-reported",
+    "label": "Featured: the opposite error",
+    "note": "The same failure seen from the other side. OpenCode really did run a dense pass, spending 16 inspected frames, then reported 8. It also pointed extract_window at its own coarse output directory and overwrote it. Honest work, dishonest paperwork — and V0 catches it the same way, by recomputing from the ledger.",
+    "bundles": [
+      "phase0-opencode-140-1-rep_81",
+      "phase0-pi-140-1-rep_81"
+    ]
+  }
+]

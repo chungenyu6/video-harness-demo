@@ -247,6 +247,14 @@
               "null"
             ],
             "description": "What the VLM said about this frame. Null when never inspected."
+          },
+          "pass": {
+            "enum": [
+              "coarse",
+              "dense",
+              "unindexed"
+            ],
+            "description": "Which pass produced this frame. 'unindexed' means the agent cited it but no frame index lists it."
           }
         }
       }

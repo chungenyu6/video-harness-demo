@@ -1,5 +1,109 @@
-# video-harness-demo
+# Two Agents, One Video
 
-Replay and compare coding-harness runs on video question answering.
+A replay viewer for a **verifiable video-QA harness**. It shows two coding
+harnesses — [OpenCode](https://opencode.ai) and Pi — answering the same question
+about the same video, driven by the same model with the same tools, and it shows
+what each one *actually looked at* before answering.
 
-Status: under construction. See `docs/plan/` for the build plan.
+The interesting claim here is not "the agent answered correctly". It is
+**"the agent actually looked, and we can prove it."** Three things carry that
+claim, and the UI is built around them:
+
+| | |
+|---|---|
+| **Perception is metered** | Frames are a budget: 16 coarse, 16 dense, 32 total to the vision model. You watch it deplete. |
+| **Evidence is anchored in time** | Every claim cites a frame at a timestamp. Citations land on the video's own timeline. |
+| **Procedure is checked externally** | An independent checker recomputes what the agent did from tool logs it cannot write to. |
+
+For one 42-second clip, the agent answered having seen **8 of 1,266 frames —
+0.63% of the video**. The viewer has a toggle that collapses the clip to exactly
+those 8 stills, so that gap is something you watch rather than something you are told.
+
+## What you are looking at
+
+- **Tools** — every tool the agent could call, dimmed until used. An idle tool is
+  as informative as a busy one.
+- **Procedure** — the declared pipeline with the actual path traced over it.
+  A dashed, faded `extract_window` means coarse sampling settled the question.
+  A red dashed node means the agent *claimed* a step the tool logs do not support.
+- **Frames on the video timeline** — extracted frames at their real timestamps.
+  Outlined means the vision model saw it; ringed means the agent cited it.
+- **Perception budget** — three gauges depleting live. A refused reservation is a
+  hard limit visibly biting.
+- **Steps** — the normalized trace, errors and retries inline, raw payload one click away.
+- **Answer & verification** — the answer, its cited evidence, and the checker's verdict.
+
+## Featured cases
+
+Runs that *fail* verification are worth more than runs that pass, because they
+show the checker doing something. Two are included:
+
+- **A window past the end of the video.** One agent reported examining `[0, 101.6]`
+  and `[38, 48]` of a 42.2-second clip and listed `extract_window` in its trace. It
+  never ran `extract_window`; it delegated evidence-writing to a subagent that
+  invented the trace. **The answer was still correct.**
+- **The opposite error.** Another really did run a dense pass, spending 16 inspected
+  frames, then reported 8 — and pointed `extract_window` at its own coarse output
+  directory, overwriting it.
+
+An agent can be right and dishonest, or honest and under-reporting. Only a checker
+with independent access to the ledger tells them apart.
+
+## What this does *not* show
+
+The checker validates **procedure and artifacts only**. It does not certify that a
+frame semantically supports its claim, that the evidence justifies the answer, or
+that the model did not hallucinate.
+
+Most scenarios here have no answer key at all. That is deliberate: **procedure can
+be verified without one.** We cannot tell you whether an answer is right, but we can
+tell you whether the agent probed the video, how many frames it spent, whether the
+frames it cited exist, and whether the windows it claims to have examined are
+physically possible.
+
+## Running locally
+
+```bash
+source scripts.env.sh          # node >= 20.5 is required; the host default is v16
+cd app && npm install
+npm run dev                    # http://localhost:5173
+```
+
+## Repository layout
+
+```
+schema/bundle.schema.json   the contract between harness and UI
+adapters/                   one file per harness; the only harness-aware code
+tools/export_run.py         allowlist exporter: run directory -> replay bundle
+tools/validate_bundle.py    schema + leak + sanity gate
+bundles/                    committed replay data
+app/                        Vite + React viewer
+content/demo_tasks.jsonl    the questions used for the demo runs
+```
+
+### Adding a harness
+
+1. Write `adapters/<name>.py` mapping six events (`step.begin`, `agent.say`,
+   `tool.call`, `tool.result`, `tool.error`, plus run metadata).
+2. Add an entry to `app/public/harnesses.json`.
+
+There is no step 3. Everything downstream of the tools is already
+harness-independent, because every harness runs the same instrumented scripts.
+The viewer renders *N* columns; two is just the current value of *N*.
+
+## Provenance and limits
+
+Runs were executed **sequentially, not concurrently**. Both model servers run with
+`--max-num-seqs 1` on shared GPUs, so running two harnesses at once would queue
+inside the server and corrupt the timings rather than reveal them. The side-by-side
+view is a synchronized replay on one normalized clock.
+
+A single run is one sample. Do not read harness differences off one pairing.
+
+Videos are 480p, audio-stripped excerpts from
+[Video-MME](https://huggingface.co/datasets/lmms-eval/Video-MME), used here to
+illustrate research. Frames are shipped unmodified, because they are the evidence.
+
+## Licence
+
+MIT. See `LICENSE`.

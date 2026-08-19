@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Bundle, HarnessMeta } from "./types";
-import { loadBundle, loadBundleIndex, loadHarnesses, runDuration } from "./data";
+import type { ScenarioSpec } from "./data";
+import { loadBundle, loadBundleIndex, loadHarnesses, loadScenarios, runDuration } from "./data";
 import { useClock } from "./clock";
 import Video from "./panels/Video";
 import Filmstrip from "./panels/Filmstrip";
@@ -19,6 +20,29 @@ interface Scenario {
   question: string;
   options: string[];
   runs: Loaded[];
+  label?: string;
+  note?: string;
+}
+
+/** Curated order and framing. Grouping by video+question alone cannot express
+ *  "these two replicates of the same question are the interesting pair", which
+ *  is exactly what the failing runs are. */
+function curate(specs: ScenarioSpec[], byName: Map<string, Loaded>): Scenario[] {
+  const out: Scenario[] = [];
+  for (const spec of specs) {
+    const runs = spec.bundles.map((n) => byName.get(n)).filter((b): b is Loaded => Boolean(b));
+    if (!runs.length) continue;
+    out.push({
+      key: spec.id,
+      videoId: runs[0].video.id,
+      question: runs[0].task.question,
+      options: runs[0].task.options,
+      runs,
+      label: spec.label,
+      note: spec.note,
+    });
+  }
+  return out;
 }
 
 function group(bundles: Loaded[]): Scenario[] {
@@ -43,22 +67,34 @@ export default function App() {
   const [harnesses, setHarnesses] = useState<HarnessMeta[]>([]);
   const [bundles, setBundles] = useState<Loaded[]>([]);
   const [err, setErr] = useState<string | null>(null);
+  const [specs, setSpecs] = useState<ScenarioSpec[] | null>(null);
   const [scenarioKey, setScenarioKey] = useState<string | null>(null);
   const [selFrame, setSelFrame] = useState<number | null>(null);
 
   useEffect(() => {
     (async () => {
       try {
-        const [hs, index] = await Promise.all([loadHarnesses(), loadBundleIndex()]);
+        const [hs, index, specs] = await Promise.all([
+          loadHarnesses(), loadBundleIndex(), loadScenarios(),
+        ]);
         setHarnesses(hs);
         setBundles(await Promise.all(index.map(loadBundle)));
+        setSpecs(specs);
       } catch (e) {
         setErr(String(e));
       }
     })();
   }, []);
 
-  const scenarios = useMemo(() => group(bundles), [bundles]);
+  const scenarios = useMemo(() => {
+    if (!bundles.length) return [];
+    if (specs?.length) {
+      const byName = new Map(bundles.map((b) => [b._dir, b]));
+      const curated = curate(specs, byName);
+      if (curated.length) return curated;
+    }
+    return group(bundles);
+  }, [bundles, specs]);
   const scenario = scenarios.find((s) => s.key === scenarioKey) ?? scenarios[0] ?? null;
 
   // Registry order, not bundle order: the columns must not reshuffle between
@@ -137,7 +173,7 @@ export default function App() {
             >
               {scenarios.map((s) => (
                 <option key={s.key} value={s.key}>
-                  {s.videoId} — {s.question.slice(0, 62)}
+                  {s.label ?? `${s.videoId} — ${s.question.slice(0, 62)}`}
                 </option>
               ))}
             </select>
@@ -145,6 +181,7 @@ export default function App() {
           <div>
             <p className="question">{scenario.question}</p>
             <p className="opts">{scenario.options.join("   ")}</p>
+            {scenario.note && <p className="note">{scenario.note}</p>}
           </div>
         </div>
 
