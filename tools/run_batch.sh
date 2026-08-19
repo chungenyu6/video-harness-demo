@@ -42,8 +42,17 @@ ok=0; fail=0
 for sid in "${SAMPLES[@]}"; do
   for h in opencode pi; do
     start=$(date +%s)
+    # Watchdog: a healthy run of this content finishes in 30-90 s. If one is still
+    # alive well past that, capture its state while it is STILL RUNNING - once the
+    # timeout fires the process is gone and with it the only evidence.
+    wedge_dir="$DEMO/live/logs/wedge-$(date +%s)-$sid-$h"
+    ( sleep "$(( PHASE0_RUN_TIMEOUT - 20 ))"
+      pgrep -u "${PHASE0_AGENT_USER:-phase0agent}" >/dev/null 2>&1 &&
+        bash "$DEMO/tools/capture_wedge.sh" "$wedge_dir" >/dev/null 2>&1
+    ) & watchdog=$!
     out="$(bash "scripts/run_${h}.sh" "$sid" "$REP" 2>&1)"
     code=$?
+    kill "$watchdog" 2>/dev/null; wait "$watchdog" 2>/dev/null
     elapsed=$(( $(date +%s) - start ))
     status="$(printf '%s' "$out" | python3 -c "
 import json,sys
@@ -59,6 +68,11 @@ except Exception:
 
     if printf '%s' "$out" | grep -q 'exit_code": 124' || [ "$elapsed" -ge "$PHASE0_RUN_TIMEOUT" ]; then
       echo "ABORT: $sid/$h hit the ${PHASE0_RUN_TIMEOUT}s ceiling - the harness is wedged."
+      # The timeout has already killed the agent by now, so this usually finds
+      # nothing. It is still worth attempting: on the runs where a child survives
+      # the kill, /proc/<pid>/wchan names the syscall it is stuck in, which is the
+      # one piece of evidence the OPEN issue is missing.
+      bash "$DEMO/tools/capture_wedge.sh" "$DEMO/live/logs/wedge-$(date +%s)-$sid-$h" || true
       echo "       Clear stale agents (pkill -u phase0agent) and re-run."
       exit 1
     fi
