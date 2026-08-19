@@ -22,3 +22,6 @@ live/logs/
 
 # NOTE: bundles/ IS committed. A bundle is the demo's input data and must be
 # reviewable in diff. tools/validate_bundle.py gates what may enter it.
+
+# screenshots used for review, not part of the product
+docs/shots/

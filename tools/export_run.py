@@ -290,7 +290,9 @@ def export(run_dir: Path, out_root: Path, force: bool) -> Path:
             "width": probe.get("width"),
             "height": probe.get("height"),
             "nb_frames": probe.get("nb_frames"),
-            "proxy": None,
+            # Resolved by the app against its public/ root. D3 guarantees the
+            # file exists; tools/make_proxies.sh generates it.
+            "proxy": f"video/{Path(run.get('video_path', '')).stem}.480p.mp4",
         },
         "budget": {
             "limits": (crv_summary or {}).get("budget", {}).get("limits", run.get("budget", {})),

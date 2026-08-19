@@ -1,0 +1,14 @@
+[
+  {
+    "id": "opencode",
+    "label": "OpenCode",
+    "color": "#0E7C86",
+    "note": "v1.18.18 - compiled binary, tools declared in opencode.json"
+  },
+  {
+    "id": "pi",
+    "label": "Pi",
+    "color": "#B4611A",
+    "note": "pi-coding-agent v0.82.1 - node script, sampling pinned by extension"
+  }
+]
