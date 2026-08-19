@@ -86,9 +86,11 @@ only hands out files.
 ## Live mode output
 
 A live run produces a full run directory (~20 MB, mostly a copy of the source
-video) plus a bundle. Both are kept: a bundle whose run directory is gone can no
-longer be re-verified, and re-verifiability is the point. `tools/prune_live.py`
-keeps the most recent ten and drops the rest.
+video) plus a bundle. **Only the current one is kept**: each run clears the
+previous one before it starts, so the finished run stays available while you are
+looking at it and disappears when you ask the next question. Bundle and run
+directory go together, because a bundle whose run directory is gone can no longer
+be re-verified. `tools/prune_live.py` remains for manual cleanup.
 
 Live bundles are gitignored and skipped by `tools/make_scenarios.py`, so a
 question someone typed can never reach the published site.

@@ -40,6 +40,7 @@ import asyncio
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import threading
@@ -56,6 +57,8 @@ from pydantic import BaseModel
 DEMO = Path(__file__).resolve().parent.parent
 PHASE0 = Path("/home/video-code-harness/video-agent-harness-phase0")
 VIDEOS = PHASE0 / "data/working/videos"
+BUNDLES = DEMO / "bundles"
+RUNS = PHASE0 / "experiments/phase0-video-harness/runs"
 LOG_DIR = DEMO / "live" / "logs"
 
 sys.path.insert(0, str(DEMO))
@@ -106,9 +109,32 @@ def _log_question(job: Job, verdict: str) -> None:
         }, ensure_ascii=False) + "\n")
 
 
+def _clear_previous_live() -> int:
+    """Drop the previous live run before starting a new one.
+
+    Live mode answers ad-hoc questions; only the run on screen is of interest,
+    and each one costs ~20 MB (mostly the copy of the video the tools place in
+    the workspace). Clearing at the START rather than at the end means the
+    finished run stays available for as long as you are looking at it, and
+    disappears when you ask the next question.
+
+    Bundle and run directory go together: a bundle whose run directory is gone
+    can no longer be re-verified, and half a record is worse than none.
+    """
+    removed = 0
+    for d in list(BUNDLES.glob("*-live-*")) + list(RUNS.glob("*-live-*")):
+        if d.is_dir():
+            shutil.rmtree(d, ignore_errors=True)
+            removed += 1
+    return removed
+
+
 def _execute(job: Job) -> None:
     with _slot:
         job.status = "running"
+        n = _clear_previous_live()
+        if n:
+            print(f"cleared {n} directory/ies from the previous live run")
         tasks = LOG_DIR / f"task-{job.token}.jsonl"
         tasks.parent.mkdir(parents=True, exist_ok=True)
         sample_id = f"live-{job.token[:8]}"

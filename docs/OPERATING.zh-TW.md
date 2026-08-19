@@ -121,17 +121,20 @@ setsid env LIVE_HOST=0.0.0.0 bash scripts.live.sh > /tmp/live.log 2>&1 &
 
 ## 6. 清理
 
-每次 live 提問會留下約 20 MB（大部分是 workspace 裡那份影片副本）。
+**live 只保留當次。** 每次開始新的 run 之前，會自動把上一次的清掉
+（run 目錄 + bundle 一起），所以不會累積。
+
+清理發生在**開跑前**而不是跑完後 —— 這樣你看完的那一次會一直留著，
+直到你問下一題為止。
+
+要手動清空（例如跑完就想收乾淨）：
 
 ```bash
 cd /home/video-code-harness/video-harness-demo
-python tools/prune_live.py              # 只報告會刪什麼
-python tools/prune_live.py --apply      # 保留最近 10 個，其餘刪除
-python tools/prune_live.py --keep 0 --apply   # 全部清掉
+python tools/prune_live.py --keep 0 --apply
 ```
 
-保留而非跑完就刪，是因為 bundle 沒有對應的 run 目錄就**無法再被重新驗證** ——
-而「可被重新驗證」正是這整個專案的主張。
+`prune_live.py` 仍然保留，用於手動清理或改變保留數量。
 
 live 的產出不會進版控、不會出現在公開站台。
 
