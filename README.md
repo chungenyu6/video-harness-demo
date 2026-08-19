@@ -69,6 +69,16 @@ cd app && npm install
 npm run dev                    # http://localhost:5173
 ```
 
+The dev server listens on `0.0.0.0`. Vite's default (`localhost`) resolves to
+`::1` on some hosts and binds IPv6 only, so a forwarded port connects over IPv4,
+receives nothing, and the browser shows a blank page while the terminal happily
+reports "ready". Binding all interfaces also covers running inside a container,
+where the connection may arrive on the container IP rather than on loopback.
+
+The live server in `live/` deliberately does the opposite and stays on
+`127.0.0.1`: it can start agent runs, so reachability is not something to be
+generous with.
+
 ## Repository layout
 
 ```

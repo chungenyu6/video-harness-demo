@@ -8,14 +8,22 @@ export default defineConfig({
   base: process.env.BASE_PATH ?? "/",
   build: { outDir: "dist", assetsDir: "assets", sourcemap: false },
 
-  // Bind IPv4 explicitly.
+  // Listen on all interfaces, IPv4 included.
   //
-  // Vite's default host is "localhost", which on this machine resolves to ::1
-  // and binds IPv6 ONLY - so 127.0.0.1:5173 refuses the connection. Editor and
-  // SSH port forwarding generally connect over IPv4, so the tunnel opens, the
-  // browser gets nothing, and the page sits blank forever with the dev server
-  // cheerfully reporting "ready". Pinning 127.0.0.1 makes `npm run dev` work
-  // through a forwarded port with no flags.
-  server: { host: "127.0.0.1", port: 5173, strictPort: true },
-  preview: { host: "127.0.0.1", port: 4173, strictPort: true },
+  // Two separate problems, one fix. Vite's default host is "localhost", which
+  // here resolves to ::1 and binds IPv6 ONLY, so 127.0.0.1:5173 refuses the
+  // connection while the dev server reports "ready" - the forwarder connects
+  // over IPv4, gets nothing, and the browser shows a blank page rather than an
+  // error. And this runs inside a Docker container, so depending on how you
+  // reach it the connection may arrive on the container IP (172.17.x.x) rather
+  // than on loopback; binding 127.0.0.1 only would refuse those.
+  //
+  // "0.0.0.0" covers every path: VS Code Dev Containers forwarding, a published
+  // Docker port, or hitting the container IP directly.
+  //
+  // This is deliberately NOT what live/app.py does. That one shells out to
+  // scripts that run the agent, and stays on 127.0.0.1. This server only hands
+  // out static demo files, so reachability matters more than isolation.
+  server: { host: "0.0.0.0", port: 5173, strictPort: true },
+  preview: { host: "0.0.0.0", port: 4173, strictPort: true },
 });
