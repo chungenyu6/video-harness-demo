@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Bundle, HarnessMeta } from "./types";
 import type { ScenarioSpec } from "./data";
-import { frameUrl, loadBundle, loadBundleIndex, loadHarnesses, loadScenarios, runDuration } from "./data";
+import type { Scenario } from "./data";
+import { groupByVideo, loadBundle, loadBundleIndex, loadHarnesses, loadScenarios, runDuration } from "./data";
 import { useClock } from "./clock";
 import Video from "./panels/Video";
 import Filmstrip from "./panels/Filmstrip";
@@ -13,17 +14,6 @@ import Verify from "./panels/Verify";
 import LiveView from "./LiveView";
 
 type Loaded = Bundle & { _dir: string };
-
-/** One selectable demo: a video plus a question, with one run per harness. */
-interface Scenario {
-  key: string;
-  videoId: string;
-  question: string;
-  options: string[];
-  runs: Loaded[];
-  label?: string;
-  note?: string;
-}
 
 /** Curated order and framing. Grouping by video+question alone cannot express
  *  "these two replicates of the same question are the interesting pair", which
@@ -41,6 +31,7 @@ function curate(specs: ScenarioSpec[], byName: Map<string, Loaded>): Scenario[] 
       runs,
       label: spec.label,
       note: spec.note,
+      sampleId: runs[0].sample_id,
     });
   }
   return out;
@@ -57,59 +48,12 @@ function group(bundles: Loaded[]): Scenario[] {
         question: b.task.question,
         options: b.task.options,
         runs: [],
+        sampleId: b.sample_id,
       });
     }
     map.get(key)!.runs.push(b);
   }
   return [...map.values()].sort((a, b) => a.videoId.localeCompare(b.videoId));
-}
-
-/** One video, with every scenario recorded against it.
- *  Derived from the bundles rather than declared anywhere: a video exists in the
- *  picker exactly when there is a run to show for it. */
-interface VideoGroup {
-  id: string;
-  label: string;
-  durationSec: number;
-  thumb: string | null;
-  scenarios: Scenario[];
-}
-
-function groupByVideo(scenarios: Scenario[]): VideoGroup[] {
-  const map = new Map<string, VideoGroup>();
-  for (const s of scenarios) {
-    const run = s.runs[0];
-    if (!run) continue;
-    const id = run.video.id;
-    if (!map.has(id)) {
-      // Strip the video name the label is prefixed with; inside a video's own
-      // question list, repeating it on every row is noise.
-      const label = s.label?.includes(" — ") ? s.label.split(" — ")[0] : id;
-      const first = run.frames[0];
-      map.set(id, {
-        id,
-        label: s.label?.startsWith("Featured") ? id : label,
-        durationSec: run.video.duration_sec,
-        thumb: first ? frameUrl(run._dir, first.file) : null,
-        scenarios: [],
-      });
-    }
-    map.get(id)!.scenarios.push(s);
-  }
-  // A featured pairing should lead its video's list - it is the one worth watching.
-  for (const g of map.values()) {
-    g.scenarios.sort((a, b) => Number(b.label?.startsWith("Featured") ?? false) -
-                               Number(a.label?.startsWith("Featured") ?? false));
-    if (g.label === g.id) {
-      // Must skip the featured entries: their label starts with "Featured", so
-      // using one here names the video "Featured" instead of what it shows.
-      const named = g.scenarios.find(
-        (x) => x.label?.includes(" — ") && !x.label.startsWith("Featured")
-      );
-      if (named) g.label = named.label!.split(" — ")[0];
-    }
-  }
-  return [...map.values()];
 }
 
 export default function App() {
@@ -240,7 +184,7 @@ export default function App() {
         )}
 
         {mode === "live" ? (
-          <LiveView harnesses={harnesses} />
+          <LiveView harnesses={harnesses} videos={videos} />
         ) : (
         <>
         <div className="videopick" role="group" aria-label="Choose a video">

@@ -17,7 +17,7 @@ export interface LiveState {
   bundle: (Bundle & { _dir: string }) | null;
   t: number;
   error: string | null;
-  start: (harness: string, videoId: string, question: string) => Promise<void>;
+  start: (harness: string, videoId: string, question: string, sampleRef?: string) => Promise<void>;
   reset: () => void;
 }
 
@@ -53,13 +53,13 @@ export function useLive(): LiveState {
     setStatus("idle"); setBundle(null); setT(0); setError(null);
   }, []);
 
-  const start = useCallback(async (harness: string, videoId: string, question: string) => {
+  const start = useCallback(async (harness: string, videoId: string, question: string, sampleRef?: string) => {
     reset();
     setStatus("starting");
     const res = await fetch(`${API}/api/run`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ harness, video_id: videoId, question }),
+      body: JSON.stringify({ harness, video_id: videoId, question, sample_ref: sampleRef ?? null }),
     });
     if (!res.ok) {
       const body = await res.json().catch(() => ({ detail: res.statusText }));

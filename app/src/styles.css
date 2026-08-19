@@ -362,3 +362,18 @@ button.go:disabled { background: var(--surface-2); color: var(--ink-3); border-c
 }
 .vmeta b { font-family: var(--sans); font-size: 0.78rem; color: var(--ink); font-weight: 600; }
 .vcard.on .vmeta b { color: var(--accent); }
+
+/* ---------- live suggestions ---------- */
+.suggest { margin-bottom: 0.8rem; }
+.suggest .eyebrow { display: block; margin-bottom: 0.3rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.chip {
+  font-family: var(--serif); font-size: 0.83rem; line-height: 1.3;
+  padding: 0.3rem 0.6rem; text-align: left;
+  background: var(--surface); color: var(--ink-2);
+  border: 1px solid var(--rule-strong); border-radius: 14px;
+  max-width: 32em;
+}
+.chip:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.chip.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.chip:disabled { opacity: 0.5; cursor: not-allowed; }

@@ -1,10 +1,17 @@
-// Live mode UI - only ever rendered when /api/status answers, which it does not
-// on the static Pages build. The public site cannot offer this tab even by mistake.
+// Live mode UI - only rendered when /api/status answers, which it does not on the
+// static Pages build. The public site cannot offer this tab even by mistake.
+//
+// Uses the same video picker as the replay tab. The first version listed videos
+// by raw id in a dropdown ("Kv1JXuOkAfk (42s)"), which is unusable: you cannot
+// pick a video you cannot recognise. Sharing the picker also means new content
+// shows up in both tabs from the same source.
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useLive } from "./live";
 import { useClock } from "./clock";
 import type { HarnessMeta } from "./types";
+import type { VideoGroup } from "./data";
+import { suggestionsFor } from "./data";
 import Video from "./panels/Video";
 import Filmstrip from "./panels/Filmstrip";
 import Pipeline from "./panels/Pipeline";
@@ -13,24 +20,23 @@ import Budget from "./panels/Budget";
 import Steps from "./panels/Steps";
 import Verify from "./panels/Verify";
 
-interface VideoMeta { id: string; duration_sec: number | null }
+interface Props {
+  harnesses: HarnessMeta[];
+  videos: VideoGroup[];
+}
 
-export default function LiveView({ harnesses }: { harnesses: HarnessMeta[] }) {
+export default function LiveView({ harnesses, videos }: Props) {
   const live = useLive();
-  const [videos, setVideos] = useState<VideoMeta[]>([]);
   const [harness, setHarness] = useState(harnesses[0]?.id ?? "opencode");
-  const [videoId, setVideoId] = useState("");
+  const [videoId, setVideoId] = useState<string | null>(null);
   const [question, setQuestion] = useState("");
+  //: set when the question came from a suggestion, so the server can reuse the
+  //  original answer options instead of the generic yes/no set.
+  const [sampleRef, setSampleRef] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetch("/api/videos")
-      .then((r) => r.json())
-      .then((v: VideoMeta[]) => { setVideos(v); if (v[0]) setVideoId(v[0].id); })
-      .catch(() => setVideos([]));
-  }, []);
+  const video = videos.find((v) => v.id === videoId) ?? videos[0] ?? null;
+  const suggestions = useMemo(() => (video ? suggestionsFor(video) : []), [video]);
 
-  // While running, the clock follows the stream; once finished the run becomes an
-  // ordinary replay and the transport takes over.
   const duration = live.bundle?.events.length
     ? live.bundle.events[live.bundle.events.length - 1].t
     : 0;
@@ -44,9 +50,52 @@ export default function LiveView({ harnesses }: { harnesses: HarnessMeta[] }) {
 
   const meta = harnesses.find((h) => h.id === harness);
   const busy = live.status === "starting" || live.status === "running";
+  const canRun = !busy && Boolean(video) && question.trim().length >= 8;
+
+  const run = () => {
+    if (!video || !canRun) return;
+    live.start(harness, video.id, question, sampleRef ?? undefined);
+  };
 
   return (
     <>
+      <div className="videopick" role="group" aria-label="Choose a video">
+        {videos.map((v) => (
+          <button
+            key={v.id}
+            className={`vcard${v.id === video?.id ? " on" : ""}`}
+            aria-pressed={v.id === video?.id}
+            disabled={busy}
+            onClick={() => { setVideoId(v.id); setQuestion(""); setSampleRef(null); }}
+          >
+            {v.thumb && <img src={v.thumb} alt="" loading="lazy" />}
+            <span className="vmeta">
+              <b>{v.label}</b>
+              <span>{Math.round(v.durationSec)}s</span>
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {suggestions.length > 0 && (
+        <div className="suggest">
+          <span className="eyebrow">Try one of these</span>
+          <div className="chips">
+            {suggestions.map((s) => (
+              <button
+                key={s.question}
+                className={`chip${question === s.question ? " on" : ""}`}
+                disabled={busy}
+                onClick={() => { setQuestion(s.question); setSampleRef(s.sampleId ?? null); }}
+                title={s.sampleId ? `runs with this item's original answer options` : undefined}
+              >
+                {s.question}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="picker">
         <label>
           <span className="eyebrow">Harness</span>
@@ -54,50 +103,33 @@ export default function LiveView({ harnesses }: { harnesses: HarnessMeta[] }) {
             {harnesses.map((h) => <option key={h.id} value={h.id}>{h.label}</option>)}
           </select>
         </label>
-        <label>
-          <span className="eyebrow">Video</span>
-          <select value={videoId} onChange={(e) => setVideoId(e.target.value)} disabled={busy}>
-            {videos.map((v) => (
-              <option key={v.id} value={v.id}>
-                {v.id} ({v.duration_sec ? `${Math.round(v.duration_sec)}s` : "?"})
-              </option>
-            ))}
-          </select>
-        </label>
-        <label style={{ flex: 1, minWidth: "18rem" }}>
-          <span className="eyebrow">Your question</span>
+        <label style={{ flex: 1, minWidth: "20rem" }}>
+          <span className="eyebrow">Or ask your own</span>
           <input
             className="qinput"
             value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+            onChange={(e) => { setQuestion(e.target.value); setSampleRef(null); }}
             placeholder="What colour is the car in this video?"
             maxLength={240}
             disabled={busy}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !busy && videoId) live.start(harness, videoId, question);
-            }}
+            onKeyDown={(e) => { if (e.key === "Enter") run(); }}
           />
         </label>
-        <button
-          className="go"
-          disabled={busy || !videoId || question.trim().length < 8}
-          onClick={() => live.start(harness, videoId, question)}
-        >
+        <button className="go" disabled={!canRun} onClick={run}>
           {busy ? "running…" : "run it"}
         </button>
-        {live.status === "finished" && (
-          <button onClick={live.reset}>new question</button>
-        )}
+        {live.status === "finished" && <button onClick={live.reset}>new question</button>}
       </div>
 
       {live.error && <div className="error">{live.error}</div>}
 
       <p className="livenote">
-        There is no answer key for a question you wrote, so nothing here can tell you whether
-        the answer is <em>right</em>. What it can tell you is whether the agent actually looked:
-        how many frames it spent, whether the frames it cites exist, and whether the windows it
-        claims to have examined are physically possible. That is the whole point — procedure is
-        verifiable without an answer key.
+        {sampleRef
+          ? "This is a benchmark item, so it runs with its original answer options and does have a key — though nothing here is scored against it."
+          : "There is no answer key for a question you wrote, so nothing here can tell you whether the answer is right."}{" "}
+        What it can tell you is whether the agent actually looked: how many frames it spent,
+        whether the frames it cites exist, and whether the windows it claims to have examined
+        are physically possible. That is the point — procedure is verifiable without an answer key.
       </p>
 
       {live.bundle && (

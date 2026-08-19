@@ -116,3 +116,79 @@ export function stepLabel(e: HEvent): string {
     default: return e.type;
   }
 }
+
+
+/** One selectable demo: a video plus a question, with one run per harness. */
+export interface Scenario {
+  key: string;
+  videoId: string;
+  question: string;
+  options: string[];
+  runs: (Bundle & { _dir: string })[];
+  label?: string;
+  note?: string;
+  /** sample_id when this came from the task file - lets live mode reuse the
+   *  original options instead of the generic yes/no set. */
+  sampleId?: string;
+}
+
+/** One video with every scenario recorded against it.
+ *  Derived from the bundles, never declared: a video is offered exactly when
+ *  there is a run to show for it. Shared by the replay picker and live mode so
+ *  the two cannot drift apart. */
+export interface VideoGroup {
+  id: string;
+  label: string;
+  durationSec: number;
+  thumb: string | null;
+  scenarios: Scenario[];
+}
+
+const FEATURED = "Featured";
+
+export function groupByVideo(scenarios: Scenario[]): VideoGroup[] {
+  const map = new Map<string, VideoGroup>();
+  for (const s of scenarios) {
+    const run = s.runs[0];
+    if (!run) continue;
+    const id = run.video.id;
+    if (!map.has(id)) {
+      const label = s.label?.includes(" — ") ? s.label.split(" — ")[0] : id;
+      const first = run.frames[0];
+      map.set(id, {
+        id,
+        label: s.label?.startsWith(FEATURED) ? id : label,
+        durationSec: run.video.duration_sec,
+        thumb: first ? frameUrl(run._dir, first.file) : null,
+        scenarios: [],
+      });
+    }
+    map.get(id)!.scenarios.push(s);
+  }
+  for (const g of map.values()) {
+    // A featured pairing leads its video's list - it is the one worth watching.
+    g.scenarios.sort((a, b) => Number(b.label?.startsWith(FEATURED) ?? false) -
+                               Number(a.label?.startsWith(FEATURED) ?? false));
+    if (g.label === g.id) {
+      // Skip featured entries here: their label starts with "Featured", so using
+      // one names the video "Featured" instead of what it shows.
+      const named = g.scenarios.find(
+        (x) => x.label?.includes(" — ") && !x.label.startsWith(FEATURED)
+      );
+      if (named) g.label = named.label!.split(" — ")[0];
+    }
+  }
+  return [...map.values()];
+}
+
+/** Distinct questions asked of a video, for live mode's suggestions. */
+export function suggestionsFor(group: VideoGroup): { question: string; sampleId?: string }[] {
+  const seen = new Set<string>();
+  const out: { question: string; sampleId?: string }[] = [];
+  for (const s of group.scenarios) {
+    if (seen.has(s.question)) continue;
+    seen.add(s.question);
+    out.push({ question: s.question, sampleId: s.sampleId });
+  }
+  return out;
+}

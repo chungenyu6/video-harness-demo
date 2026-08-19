@@ -61,6 +61,7 @@ class Job:
     harness: str
     video_id: str
     question: str
+    options: list[str] = field(default_factory=list)
     run_id: str | None = None
     run_dir: Path | None = None
     status: str = "queued"          # queued | running | finished | failed
@@ -100,7 +101,7 @@ def _execute(job: Job) -> None:
             "sample_id": sample_id,
             "video_path": f"data/working/videos/{job.video_id}.mp4",
             "question": job.question,
-            "options": default_options(),
+            "options": job.options or default_options(),
             "duration": "live",
             "role": "live",
         }, ensure_ascii=False) + "\n")
@@ -143,6 +144,31 @@ class RunRequest(BaseModel):
     harness: str
     video_id: str
     question: str
+    #: sample_id of a suggested question. When set, the server looks the item up
+    #: in the task file and uses ITS question and options verbatim. The client
+    #: never sends option text: accepting arbitrary options would open a second
+    #: channel into the agent's prompt alongside the free-text question, and that
+    #: one would not be sanitised.
+    sample_ref: str | None = None
+
+
+TASKS = DEMO / "content" / "demo_tasks.jsonl"
+
+
+def lookup_sample(sample_id: str) -> dict | None:
+    if not TASKS.exists():
+        return None
+    for line in TASKS.read_text().splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if row.get("sample_id") == sample_id:
+            return row
+    return None
 
 
 @api.get("/api/videos")
@@ -167,13 +193,23 @@ def start(req: RunRequest) -> dict:
 
     job = Job(token=uuid.uuid4().hex, harness=req.harness,
               video_id=req.video_id, question=req.question)
-    verdict = sanitize(req.question)
-    if not verdict.ok:
-        _log_question(job, f"rejected: {verdict.reason}")
-        raise HTTPException(400, f"question rejected: {verdict.reason}")
 
-    job.question = verdict.question
-    _log_question(job, "accepted")
+    if req.sample_ref:
+        row = lookup_sample(req.sample_ref)
+        if not row:
+            raise HTTPException(400, f"unknown sample_ref {req.sample_ref!r}")
+        # Our own content, so it needs no sanitising - and it keeps its real
+        # options, which the generic yes/no set would have thrown away.
+        job.question = row["question"]
+        job.options = list(row.get("options") or [])
+        _log_question(job, f"accepted (suggested: {req.sample_ref})")
+    else:
+        verdict = sanitize(req.question)
+        if not verdict.ok:
+            _log_question(job, f"rejected: {verdict.reason}")
+            raise HTTPException(400, f"question rejected: {verdict.reason}")
+        job.question = verdict.question
+        _log_question(job, "accepted")
     if _slot.locked():
         raise HTTPException(409, "a run is already in progress; one at a time")
 
