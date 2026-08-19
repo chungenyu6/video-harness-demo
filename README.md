@@ -1,5 +1,12 @@
 # Two Agents, One Video
 
+**Live site: https://chungenyu6.github.io/video-harness-demo/**
+
+> Deployed by `.github/workflows/deploy.yml` on every push to `main`. If the link
+> 404s, Pages has not been switched on yet: repository **Settings → Pages →
+> Source → GitHub Actions**, then re-run the latest workflow. That setting is not
+> something the workflow can set for itself.
+
 A replay viewer for a **verifiable video-QA harness**. It shows two coding
 harnesses — [OpenCode](https://opencode.ai) and Pi — answering the same question
 about the same video, driven by the same model with the same tools, and it shows
