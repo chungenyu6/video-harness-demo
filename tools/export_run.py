@@ -48,8 +48,16 @@ SOURCES = {
     "probe_log":   "tool-logs/probe.jsonl",
     "frames_index": "workspace/artifacts_crv/frames_index.json",
 }
-#: Observation files are numbered, so they are globbed rather than named.
-OBSERVATION_GLOB = "workspace/artifacts_crv/observation_*.json"
+#: Observation files are numbered AND can live in more than one place. A dense
+#: pass writes its frames into whatever directory the agent chose (`win1/` by
+#: convention) and vlm_inspect drops the observation beside them - so globbing
+#: only artifacts_crv silently loses the second VLM call. That under-reported the
+#: agent: the ledger recorded 16 inspected frames while the bundle showed 8, and
+#: the dense frames looked as though they had been extracted and never examined.
+OBSERVATION_GLOBS = [
+    "workspace/artifacts_crv/observation_*.json",
+    "workspace/*/observation_*.json",
+]
 
 #: Dense passes write their own index. The agent chooses the output directory,
 #: and rep_81 pointed extract_window at artifacts_crv - clobbering its own coarse
@@ -223,8 +231,14 @@ def export(run_dir: Path, out_root: Path, force: bool) -> Path:
                          detail={"count": len(frames_index.get("frames") or []),
                                  "range": frames_index.get("timestamp_range")}))
 
-    observations = [read_json(p) for p in sorted(run_dir.glob(OBSERVATION_GLOB))]
-    observations = [o for o in observations if o]
+    obs_paths = []
+    for g in OBSERVATION_GLOBS:
+        for op in run_dir.glob(g):
+            if op not in obs_paths:
+                obs_paths.append(op)
+    # Coarse first, then window passes, matching the order they were produced.
+    obs_paths.sort(key=lambda x: (0 if "artifacts_crv" in str(x.parent) else 1, str(x)))
+    observations = [o for o in (read_json(op) for op in obs_paths) if o]
     vlm_done = results_for("vlm_inspect")
     for i, obs in enumerate(observations):
         ts = vlm_done[i] if i < len(vlm_done) else (vlm_done[-1] if vlm_done else events[-1]["_ts"])

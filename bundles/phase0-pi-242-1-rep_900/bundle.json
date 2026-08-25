@@ -3,7 +3,7 @@
  "run_id": "phase0-pi-242-1-rep_900-20260819T054926+0000",
  "harness": "pi",
  "sample_id": "242-1",
- "exported_at": "2026-08-19T06:10:27+00:00",
+ "exported_at": "2026-08-25T22:24:15+00:00",
  "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
  "task": {
   "question": "Which of the following is the correct order of cosmetics used in the video?",
@@ -133,7 +133,7 @@
    "file": "frames/w_000_35.000s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": true,
    "observation": null
   },
@@ -163,7 +163,7 @@
    "file": "frames/w_001_42.143s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": true,
    "observation": null
   },
@@ -183,7 +183,7 @@
    "file": "frames/w_002_49.286s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -203,7 +203,7 @@
    "file": "frames/w_003_56.429s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": true,
    "observation": null
   },
@@ -223,7 +223,7 @@
    "file": "frames/w_004_63.571s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": true,
    "observation": null
   },
@@ -243,7 +243,7 @@
    "file": "frames/w_005_70.714s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -263,7 +263,7 @@
    "file": "frames/w_006_77.857s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -283,7 +283,7 @@
    "file": "frames/w_007_85.000s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -691,6 +691,15 @@
     "granted": true,
     "used_before": 8,
     "limit": 32
+   }
+  },
+  {
+   "t": 47.469,
+   "type": "observe.done",
+   "detail": {
+    "window": null,
+    "frames": 8,
+    "summary": null
    }
   },
   {

@@ -67,7 +67,7 @@
     "label": "Racing game — What colour are the wheels of the main car?",
     "note": "A question we wrote for the demo. There is no answer key, so correctness is not evaluated — only whether the agent did what it says it did.",
     "bundles": [
-      "phase0-opencode-140-d1-rep_900",
+      "phase0-opencode-140-d1-rep_902",
       "phase0-pi-140-d1-rep_900"
     ]
   },

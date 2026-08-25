@@ -3,7 +3,7 @@
  "run_id": "phase0-pi-242-d2-rep_900-20260819T060838+0000",
  "harness": "pi",
  "sample_id": "242-d2",
- "exported_at": "2026-08-19T06:10:27+00:00",
+ "exported_at": "2026-08-25T22:24:15+00:00",
  "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
  "task": {
   "question": "What kind of product is opened partway through the video?",
@@ -173,7 +173,7 @@
    "file": "frames/w_000_60.000s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -193,7 +193,7 @@
    "file": "frames/w_001_62.143s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -203,7 +203,7 @@
    "file": "frames/w_002_64.286s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -213,7 +213,7 @@
    "file": "frames/w_003_66.429s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -233,7 +233,7 @@
    "file": "frames/w_004_68.571s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -243,7 +243,7 @@
    "file": "frames/w_005_70.714s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -253,7 +253,7 @@
    "file": "frames/w_006_72.857s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -263,7 +263,7 @@
    "file": "frames/w_007_75.000s.jpg",
    "selection_reason": null,
    "pass": "dense",
-   "inspected": false,
+   "inspected": true,
    "cited": false,
    "observation": null
   },
@@ -718,6 +718,18 @@
     "granted": true,
     "used_before": 8,
     "limit": 32
+   }
+  },
+  {
+   "t": 37.023,
+   "type": "observe.done",
+   "detail": {
+    "window": [
+     60.0,
+     75.0
+    ],
+    "frames": 8,
+    "summary": null
    }
   },
   {

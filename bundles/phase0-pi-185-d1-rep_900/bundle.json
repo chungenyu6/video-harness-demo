@@ -3,7 +3,7 @@
  "run_id": "phase0-pi-185-d1-rep_900-20260819T060303+0000",
  "harness": "pi",
  "sample_id": "185-d1",
- "exported_at": "2026-08-19T06:10:27+00:00",
+ "exported_at": "2026-08-25T22:24:15+00:00",
  "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
  "task": {
   "question": "What is the man wearing while dancing?",
