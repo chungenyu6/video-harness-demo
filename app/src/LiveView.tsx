@@ -64,6 +64,19 @@ export default function LiveView({ harnesses, videos }: Props) {
   const clock = useClock(duration);
   const t = live.status === "finished" ? clock.t : live.t;
 
+  // Land on the END of the run when it finishes.
+  //
+  // Swapping in the finished bundle changes `duration`, and useClock resets to 0
+  // on a duration change - so the moment a live run completed the panel jumped
+  // back to t=0 and showed no answer and no verification, which reads as the
+  // checker having produced nothing. Seek to the end so the result is what you
+  // see; the transport is right there to replay from the start.
+  useEffect(() => {
+    if (live.status === "finished" && duration > 0) clock.seek(duration);
+    // clock.seek is stable; depending on it would re-fire on every tick.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [live.status, duration]);
+
   const stops = useMemo(
     () => (live.bundle ? [...new Set(live.bundle.events.map((e) => e.t))].sort((a, b) => a - b) : []),
     [live.bundle]

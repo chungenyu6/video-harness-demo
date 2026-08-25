@@ -339,7 +339,33 @@ async def events(token: str) -> StreamingResponse:
                                       "X-Accel-Buffering": "no"})
 
 
-# Serve the built viewer last so /api/* wins.
+# --------------------------------------------------------------------------- #
+# static
+# --------------------------------------------------------------------------- #
+#
+# Bundles are served from the REAL bundles/ directory, not from app/dist.
+#
+# app/dist/bundles is a build-time snapshot made by `npm run sync`. A live run
+# writes its bundle to bundles/ after the build, so the viewer's fetch 404'd, the
+# finished bundle never replaced the streaming skeleton, and the panel sat on
+# "V0 - pending" with no answer for a run that had in fact passed 26 checks.
+# Serving the live directory means the server is never a rebuild behind.
+
+
+@api.get("/bundles/index.json")
+def bundle_index() -> list[str]:
+    """Built on demand, so a bundle written seconds ago is listed."""
+    if not BUNDLES.is_dir():
+        return []
+    return sorted(d.name for d in BUNDLES.iterdir()
+                  if d.is_dir() and (d / "bundle.json").exists())
+
+
+# Declared after the route above so /bundles/index.json is matched first.
+if BUNDLES.is_dir():
+    api.mount("/bundles", StaticFiles(directory=str(BUNDLES)), name="bundles")
+
+# The built viewer last, so every /api and /bundles path wins over the SPA.
 _dist = DEMO / "app" / "dist"
 if _dist.exists():
     api.mount("/", StaticFiles(directory=str(_dist), html=True), name="app")
