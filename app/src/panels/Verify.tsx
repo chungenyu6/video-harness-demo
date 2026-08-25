@@ -41,14 +41,18 @@ export default function Verify({ bundle, t }: { bundle: Bundle; t: number }) {
       )}
 
       <div className="section-label">
-        V0 · {names.length} checks{" "}
+        {/* Before the checker has run there are no checks to count, and printing
+            "V0 · 0 checks" reads as "the verifier found nothing" rather than
+            "the verifier has not run yet". During a live run that is the state
+            for the whole run, which is exactly when it misleads most. */}
+        V0 · {verified ? `${names.length} checks` : "pending"}{" "}
         {verified && (
           <span className={`pill ${v.v0_status === "pass" ? "p-pass" : "p-fail"}`}>
             {v.v0_status}
           </span>
         )}
       </div>
-      <div className="checks" aria-label={`${names.length} procedural checks`}>
+      <div className="checks" aria-label={verified ? `${names.length} procedural checks` : "checks pending"}>
         {names.map((n) => (
           <span
             key={n}
@@ -58,9 +62,17 @@ export default function Verify({ bundle, t }: { bundle: Bundle; t: number }) {
         ))}
       </div>
 
-      <button className="disclose" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
-        {open ? "▾" : "▸"} what these {names.length} checks are
-      </button>
+      {verified ? (
+        <button className="disclose" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+          {open ? "▾" : "▸"} what these {names.length} checks are
+        </button>
+      ) : (
+        <p className="pendnote">
+          The external checker runs once the agent submits. Nothing is checked
+          until then — this panel is empty because there is not yet a result,
+          not because the run failed anything.
+        </p>
+      )}
 
       {open && (
         <div className="checklist">
