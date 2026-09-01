@@ -41,7 +41,8 @@ export interface Bundle {
   task: {
     question: string; options: string[];
     option_rotation: number | null; duration_label?: string | null;
-    has_gold: false;
+    has_gold: boolean;
+    gold?: string | null;
   };
   video: {
     id: string; duration_sec: number; fps?: number | null;
@@ -58,6 +59,7 @@ export interface Bundle {
   pipeline: { declared: string[]; actual: string[]; claimed: string[]; agrees?: boolean };
   answer: {
     letter: string | null; status: string; frames_processed: number | null;
+    correct?: boolean | null;
     windows_examined: number[][];
     evidence: { t: number; frame: string; claim: string }[];
   };

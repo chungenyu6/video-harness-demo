@@ -122,6 +122,44 @@ def basename(p: str | None) -> str | None:
     return Path(p).name if p else None
 
 
+GOLD_FILE = Path(__file__).resolve().parent.parent / "content" / "gold.json"
+
+
+def load_gold() -> dict:
+    """Answer keys for the benchmark items, kept in the demo repo.
+
+    Deliberately NOT read from phase 0's data/labels - that directory is 0700 and
+    must stay unreadable, and reaching into it from here would put the label path
+    on the export path. This copy lives beside the demo, is mode 600 on the lab
+    machine so the agent user cannot read it either, and is published because
+    Video-MME's keys are already public. What phase 0 protects is the agent's
+    ignorance during a run, not the secrecy of the answers.
+    """
+    if not GOLD_FILE.exists():
+        return {}
+    try:
+        return (json.loads(GOLD_FILE.read_text()) or {}).get("gold", {})
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def present_gold(original: str | None, mapping: dict | None) -> str | None:
+    """Map the key from the original lettering into the lettering the agent saw.
+
+    Options are rotated per run, so the recorded key ("B") is only meaningful
+    once translated through this run's presented->original map. Getting this
+    backwards would mark correct runs wrong, and it would do so silently.
+    """
+    if not original:
+        return None
+    if not mapping:
+        return original
+    for presented, orig in mapping.items():
+        if orig == original:
+            return presented
+    return None
+
+
 def build_task(task_raw: dict, run: dict) -> dict:
     """Rebuild the task record field by field. Never copy the source dict."""
     for banned in ("answer", "gold", "label", "correct"):
@@ -130,12 +168,17 @@ def build_task(task_raw: dict, run: dict) -> dict:
                 f"REFUSING TO EXPORT: input/task.json contains a {banned!r} field. "
                 "A run directory should never hold the answer key."
             )
+    gold = present_gold(
+        (load_gold().get(run.get("sample_id", "")) or {}).get("answer"),
+        run.get("option_presented_to_original"),
+    )
     return {
         "question": task_raw.get("question", ""),
         "options": list(task_raw.get("options") or []),
         "option_rotation": run.get("option_rotation"),
         "duration_label": task_raw.get("duration"),
-        "has_gold": False,
+        "has_gold": gold is not None,
+        "gold": gold,
     }
 
 
@@ -373,6 +416,7 @@ def export(run_dir: Path, out_root: Path, force: bool) -> Path:
             "agrees": _same_multiset(actual, claimed),
         },
         "answer": {
+            "correct": None,   # filled in below once task is built
             "letter": evidence.get("answer"),
             "status": evidence.get("status", "unknown"),
             "frames_processed": evidence.get("frames_processed"),
@@ -397,6 +441,9 @@ def export(run_dir: Path, out_root: Path, force: bool) -> Path:
             "caveats": list(telemetry.get("caveats") or []),
         },
     }
+    g = bundle["task"]["gold"]
+    bundle["answer"]["correct"] = (bundle["answer"]["letter"] == g) if g else None
+
     bundle["verification"]["boundary_probes"] = assert_no_gold(bundle)
 
     # --- write -------------------------------------------------------------

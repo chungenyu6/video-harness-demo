@@ -3,7 +3,7 @@
  "run_id": "phase0-opencode-242-1-rep_900-20260819T054757+0000",
  "harness": "opencode",
  "sample_id": "242-1",
- "exported_at": "2026-08-25T22:24:15+00:00",
+ "exported_at": "2026-09-01T17:17:20+00:00",
  "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
  "task": {
   "question": "Which of the following is the correct order of cosmetics used in the video?",
@@ -15,7 +15,8 @@
   ],
   "option_rotation": 0,
   "duration_label": "short",
-  "has_gold": false
+  "has_gold": true,
+  "gold": "D"
  },
  "video": {
   "id": "lokFoo_QD8c",
@@ -775,6 +776,7 @@
   "agrees": false
  },
  "answer": {
+  "correct": false,
   "letter": "C",
   "status": "answered",
   "frames_processed": 16,

@@ -418,3 +418,15 @@ button.disclose:hover { text-decoration: underline; }
   font-family: var(--mono); font-size: 0.68rem; color: var(--ink-3);
   line-height: 1.55; margin: 0.4rem 0 0; max-width: 40em;
 }
+
+/* ---------- benchmark verdict ---------- */
+.verdict {
+  font-family: var(--sans); font-size: 0.7rem; font-weight: 600;
+  padding: 0.16em 0.5em; border-radius: 2px; white-space: nowrap;
+}
+.verdict.right { background: var(--pass-soft); color: var(--pass); }
+.verdict.wrong { background: var(--fail-soft); color: var(--fail); }
+.nokey {
+  font-family: var(--mono); font-size: 0.66rem; color: var(--ink-3);
+  line-height: 1.55; margin: 0.3rem 0 0; max-width: 42em;
+}

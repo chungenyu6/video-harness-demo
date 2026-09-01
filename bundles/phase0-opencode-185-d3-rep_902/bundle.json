@@ -3,7 +3,7 @@
  "run_id": "phase0-opencode-185-d3-rep_902-20260819T200911+0000",
  "harness": "opencode",
  "sample_id": "185-d3",
- "exported_at": "2026-08-25T22:24:15+00:00",
+ "exported_at": "2026-09-01T17:17:20+00:00",
  "source_commit": "63d5f1974ff56799449f01a243a641af77fe2921",
  "task": {
   "question": "Is the dance floor crowded with many people, or only a few?",
@@ -15,7 +15,8 @@
   ],
   "option_rotation": 0,
   "duration_label": "short",
-  "has_gold": false
+  "has_gold": false,
+  "gold": null
  },
  "video": {
   "id": "mmKggCnGtA4",
@@ -562,6 +563,7 @@
   "agrees": true
  },
  "answer": {
+  "correct": null,
   "letter": "B",
   "status": "answered",
   "frames_processed": 8,

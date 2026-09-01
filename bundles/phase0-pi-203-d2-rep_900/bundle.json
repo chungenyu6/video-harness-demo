@@ -3,7 +3,7 @@
  "run_id": "phase0-pi-203-d2-rep_900-20260819T060109+0000",
  "harness": "pi",
  "sample_id": "203-d2",
- "exported_at": "2026-08-25T22:24:15+00:00",
+ "exported_at": "2026-09-01T17:17:20+00:00",
  "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
  "task": {
   "question": "What is the dominant lighting colour during the stage performance?",
@@ -15,7 +15,8 @@
   ],
   "option_rotation": 0,
   "duration_label": "short",
-  "has_gold": false
+  "has_gold": false,
+  "gold": null
  },
  "video": {
   "id": "mD_7mhnPS_Y",
@@ -587,6 +588,7 @@
   "agrees": false
  },
  "answer": {
+  "correct": null,
   "letter": "B",
   "status": "answered",
   "frames_processed": 8,

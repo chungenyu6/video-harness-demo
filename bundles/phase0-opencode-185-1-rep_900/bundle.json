@@ -3,7 +3,7 @@
  "run_id": "phase0-opencode-185-1-rep_900-20260819T054615+0000",
  "harness": "opencode",
  "sample_id": "185-1",
- "exported_at": "2026-08-25T22:24:15+00:00",
+ "exported_at": "2026-09-01T17:17:20+00:00",
  "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
  "task": {
   "question": "Which activity is the most likely one for the two main people in the image?",
@@ -15,7 +15,8 @@
   ],
   "option_rotation": 0,
   "duration_label": "short",
-  "has_gold": false
+  "has_gold": true,
+  "gold": "B"
  },
  "video": {
   "id": "mmKggCnGtA4",
@@ -567,6 +568,7 @@
   "agrees": true
  },
  "answer": {
+  "correct": true,
   "letter": "B",
   "status": "answered",
   "frames_processed": 8,

@@ -22,10 +22,28 @@ export default function Verify({ bundle, t }: { bundle: Bundle; t: number }) {
         <>
           <div className="answer">
             <span className="letter">{bundle.answer.letter ?? "?"}</span>
+            {/* Correctness is shown only where a benchmark key exists, and is
+                deliberately quieter than the verification panel below it: one
+                run is one sample, and this demo is about whether the agent
+                looked, not about a score. */}
+            {bundle.task.has_gold && bundle.answer.correct !== null &&
+             bundle.answer.correct !== undefined && (
+              <span className={`verdict ${bundle.answer.correct ? "right" : "wrong"}`}>
+                {bundle.answer.correct
+                  ? "matches the benchmark key"
+                  : `key is ${bundle.task.gold}`}
+              </span>
+            )}
             <span style={{ fontWeight: 400, fontSize: "0.85rem", color: "var(--ink-2)" }}>
               {bundle.answer.status} · {bundle.answer.frames_processed} frames claimed
             </span>
           </div>
+          {!bundle.task.has_gold && (
+            <p className="nokey">
+              No benchmark key for this question, so nothing here says whether the
+              answer is right — only whether the agent did what it says it did.
+            </p>
+          )}
           <ol className="evidence">
             {bundle.answer.evidence.map((e, i) => (
               <li key={i}>

@@ -1,0 +1,37 @@
+{
+  "_comment": "Answer keys for the Video-MME items shown in this demo, so the viewer can say whether a run was right. Published deliberately: these are already public in the lmms-eval/Video-MME dataset, and the reason phase 0 hides them is agent isolation, not secrecy. On the lab machine this file is mode 600 so the agent user cannot read it during a run - see scripts/setup_agent_user.sh.",
+  "_source": "lmms-eval/Video-MME via data/labels/phase0_gold.jsonl",
+  "_note": "Only benchmark items have keys. Demo questions and live questions have none.",
+  "gold": {
+    "282-1": {
+      "answer": "D",
+      "videoID": "MiPw-RZMHCQ",
+      "task_type": "Object Recognition",
+      "domain": "Life Record"
+    },
+    "140-1": {
+      "answer": "B",
+      "videoID": "Kv1JXuOkAfk",
+      "task_type": "Attribute Perception",
+      "domain": "Sports Competition"
+    },
+    "203-1": {
+      "answer": "D",
+      "videoID": "mD_7mhnPS_Y",
+      "task_type": "Counting Problem",
+      "domain": "Artistic Performance"
+    },
+    "185-1": {
+      "answer": "B",
+      "videoID": "mmKggCnGtA4",
+      "task_type": "Action Recognition",
+      "domain": "Artistic Performance"
+    },
+    "242-1": {
+      "answer": "D",
+      "videoID": "lokFoo_QD8c",
+      "task_type": "Temporal Reasoning",
+      "domain": "Life Record"
+    }
+  }
+}

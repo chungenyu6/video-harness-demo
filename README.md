@@ -101,8 +101,15 @@ The checker validates **procedure and artifacts only**. It does not certify that
 frame semantically supports its claim, that the evidence justifies the answer, or
 that the model did not hallucinate.
 
-Most scenarios here have no answer key at all. That is deliberate: **procedure can
-be verified without one.** We cannot tell you whether an answer is right, but we can
+Benchmark items carry the Video-MME answer key, so those runs show whether the
+answer matched. The key lives in `content/gold.json`, published on purpose: those
+answers are already public in the dataset, and what phase 0 protects is the
+agent's ignorance during a run, not the secrecy of the answers. On the lab
+machine that file is mode 600 so the agent user cannot read it mid-run, and
+`scripts/setup_agent_user.sh` verifies that it cannot.
+
+Everything else — the questions we wrote, and anything asked in live mode — has
+no key at all. That is deliberate: **procedure can be verified without one.** We cannot tell you whether an answer is right, but we can
 tell you whether the agent probed the video, how many frames it spent, whether the
 frames it cited exist, and whether the windows it claims to have examined are
 physically possible.

@@ -36,19 +36,32 @@ jobs:
         # re-run, which would silently publish a picker missing the new content.
         run: python tools/make_scenarios.py --check
 
-      - name: Every bundle must declare it has no gold
+      - name: Answer keys must be internally consistent
+        # Bundles may carry the benchmark key (see D033) - it is published on
+        # purpose. What is checked here is that a key, when present, is one of
+        # the options offered and agrees with answer.correct, so the site cannot
+        # mark a run right or wrong on a key that does not line up.
         run: |
           python - <<'PY'
           import json, pathlib, sys
           bad = []
-          for p in pathlib.Path("bundles").glob("*/bundle.json"):
+          paths = sorted(pathlib.Path("bundles").glob("*/bundle.json"))
+          for p in paths:
               b = json.loads(p.read_text())
-              if b.get("task", {}).get("has_gold") is not False:
-                  bad.append(str(p))
+              t, a = b.get("task", {}), b.get("answer", {})
+              g = t.get("gold")
+              if t.get("has_gold"):
+                  letters = {o.strip()[0] for o in t.get("options", []) if o.strip()}
+                  if g not in letters:
+                      bad.append(f"{p}: gold {g!r} not among options")
+                  elif a.get("letter") and a.get("correct") != (a["letter"] == g):
+                      bad.append(f"{p}: correct disagrees with letter vs gold")
+              elif g not in (None, "") or a.get("correct") is not None:
+                  bad.append(f"{p}: no key but gold/correct is set")
           if bad:
-              print("::error::has_gold is not false in: " + ", ".join(bad))
+              print("::error::" + "; ".join(bad))
               sys.exit(1)
-          print(f"checked {len(list(pathlib.Path('bundles').glob('*/bundle.json')))} bundles")
+          print(f"checked {len(paths)} bundles")
           PY
 
   build:

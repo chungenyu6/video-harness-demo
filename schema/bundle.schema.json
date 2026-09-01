@@ -81,8 +81,16 @@
           ]
         },
         "has_gold": {
-          "const": false,
-          "description": "Always false. A bundle never carries the answer key; correctness is scored outside the bundle."
+          "type": "boolean",
+          "description": "Whether a benchmark answer key exists for this item. Demo questions and live questions have none."
+        },
+        "gold": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-D]?$",
+          "description": "The benchmark's answer, AS PRESENTED (already mapped through option_rotation). Null when has_gold is false. Published deliberately - Video-MME's keys are public, and phase 0 hides them for agent isolation, not secrecy. It is never in anything the agent can read."
         }
       }
     },
@@ -431,6 +439,13 @@
               }
             }
           }
+        },
+        "correct": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Did the answer match the key? Null when there is no key. One run is one sample - this is not an accuracy measurement."
         }
       }
     },

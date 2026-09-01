@@ -98,8 +98,29 @@ def validate(bundle_dir: Path, schema: dict) -> Report:
             r.check(bool(DENIED_RE.search(ctx)), "leak",
                     f"{needle!r} referenced without a refusal in context")
 
-    r.check(bundle.get("task", {}).get("has_gold") is False,
-            "leak", "task.has_gold must be false")
+    # A bundle may now carry the benchmark key, so the check is consistency
+    # rather than absence. What must still never happen is the key reaching the
+    # agent - and that is a filesystem property (content/gold.json is mode 600,
+    # phase 0's data/labels is 0700), not something a bundle can demonstrate.
+    task = bundle.get("task", {})
+    gold = task.get("gold")
+    if task.get("has_gold"):
+        r.check(isinstance(gold, str) and gold in "ABCD" and len(gold) == 1,
+                "gold", f"has_gold is true but gold is {gold!r}")
+        letters = {o.strip()[0] for o in task.get("options", []) if o.strip()}
+        r.check(not gold or gold in letters, "gold",
+                f"gold {gold!r} is not one of the presented options")
+    else:
+        r.check(gold in (None, ""), "gold",
+                f"has_gold is false but gold is {gold!r}")
+
+    ans = bundle.get("answer", {})
+    if task.get("has_gold") and ans.get("letter"):
+        r.check(ans.get("correct") == (ans["letter"] == gold), "gold",
+                "answer.correct disagrees with letter vs gold")
+    elif not task.get("has_gold"):
+        r.check(ans.get("correct") is None, "gold",
+                "answer.correct must be null when there is no key")
 
     for pr in probes:
         r.check(pr.get("blocked") is True, "leak",

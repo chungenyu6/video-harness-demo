@@ -3,7 +3,7 @@
  "run_id": "phase0-opencode-140-1-rep_84-20260817T205253+0000",
  "harness": "opencode",
  "sample_id": "140-1",
- "exported_at": "2026-08-25T22:24:15+00:00",
+ "exported_at": "2026-09-01T17:17:20+00:00",
  "source_commit": "f7bfde6d32a0607f7b5e552239449c06461678f1",
  "task": {
   "question": "What is the color of the car in this video?",
@@ -15,7 +15,8 @@
   ],
   "option_rotation": null,
   "duration_label": "short",
-  "has_gold": false
+  "has_gold": true,
+  "gold": "B"
  },
  "video": {
   "id": "Kv1JXuOkAfk",
@@ -530,6 +531,7 @@
   "agrees": false
  },
  "answer": {
+  "correct": true,
   "letter": "B",
   "status": "answered",
   "frames_processed": 8,

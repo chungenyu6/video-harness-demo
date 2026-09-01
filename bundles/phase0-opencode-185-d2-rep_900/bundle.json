@@ -3,7 +3,7 @@
  "run_id": "phase0-opencode-185-d2-rep_900-20260819T060344+0000",
  "harness": "opencode",
  "sample_id": "185-d2",
- "exported_at": "2026-08-25T22:24:15+00:00",
+ "exported_at": "2026-09-01T17:17:20+00:00",
  "source_commit": "f23a961a47990c1fd471b36e2134bf6cf3364ea2",
  "task": {
   "question": "What colour is the woman's top during the dance?",
@@ -15,7 +15,8 @@
   ],
   "option_rotation": 0,
   "duration_label": "short",
-  "has_gold": false
+  "has_gold": false,
+  "gold": null
  },
  "video": {
   "id": "mmKggCnGtA4",
@@ -491,6 +492,7 @@
   "agrees": true
  },
  "answer": {
+  "correct": null,
   "letter": "A",
   "status": "answered",
   "frames_processed": 8,
