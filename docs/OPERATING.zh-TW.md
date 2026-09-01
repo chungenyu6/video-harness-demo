@@ -22,13 +22,40 @@ Live Web 同時包含錄製回放**和**即時提問，所以你平常只需要�
 
 ```bash
 # 在你的筆電上
-ssh -L 8080:172.17.0.2:8080 <帳號>@<server-host>
+ssh -L 8080:<container-ip>:8080 cy31@ai-spark.hmcse.uwf.edu
 ```
 
 然後瀏覽器開 **http://localhost:8080/**
 
-`-L` 的目標寫 container IP（`172.17.0.2`），SSH 會一次完成
-「筆電 → host → container」兩跳，你不需要自己分兩段。
+`-L` 的目標寫 container IP，SSH 會一次完成「筆電 → host → container」兩跳，
+你不需要自己分兩段。
+
+### ⚠ container IP 會變
+
+**Docker 在 container 重啟時會重新分配 IP。** 寫死 `172.17.0.2` 遲早會失效，
+症狀是 SSH 一直印：
+
+```
+channel 3: open failed: connect failed: Connection refused
+```
+
+**那不代表 server 掛了** —— tunnel 是通的，只是它連到的位址上沒有東西在聽。
+
+先查現在的 IP（在 container 裡）：
+
+```bash
+hostname -I
+```
+
+或者一行搞定，不用先查（前提是你在 host 上有 docker 權限）：
+
+```bash
+IP=$(ssh cy31@ai-spark.hmcse.uwf.edu \
+      "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 41e9ceed22a4")
+ssh -L 8080:$IP:8080 cy31@ai-spark.hmcse.uwf.edu
+```
+
+container 的名稱/ID（`41e9ceed22a4`）不會變，變的只有 IP。
 
 ---
 
@@ -189,6 +216,7 @@ live 的產出不會進版控、不會出現在公開站台。
 | 症狀 | 原因 | 處理 |
 |---|---|---|
 | 瀏覽器全黑 / 一直載入 | tunnel 通了但服務沒在那個介面上聽 | 用 `LIVE_HOST=0.0.0.0` 重啟 |
+| SSH 一直印 `channel N: open failed: connect failed` | **container IP 變了**，tunnel 指到舊位址 | 在 container 裡 `hostname -I` 查新 IP，重開 tunnel |
 | 看不到「Ask your own」 | 你連到 5173（dev server），那裡沒有 API | 改用 8080 |
 | 按 run 出現 `Not found` | 同上 | 改用 8080 |
 | `address already in use` | 它已經在跑了 | 直接開瀏覽器 |
