@@ -80,6 +80,9 @@ class Job:
     video_id: str
     question: str
     options: list[str] = field(default_factory=list)
+    #: sample_id of the benchmark item this question came from, when it came from
+    #: one. The run's own sample_id is live-<token>, which matches no key.
+    sample_ref: str | None = None
     run_id: str | None = None
     run_dir: Path | None = None
     status: str = "queued"          # queued | running | finished | failed
@@ -174,7 +177,44 @@ def _execute(job: Job) -> None:
         except subprocess.CalledProcessError as exc:
             job.status, job.error = "failed", (exc.stderr or "")[-800:]
             return
+
+        _attach_gold(job)
         job.status = "finished"
+
+
+def _attach_gold(job: Job) -> None:
+    """Give a live run the key, when it was a benchmark question.
+
+    The exporter looks the key up by the run's sample_id, and a live run's is
+    live-<token>, which matches nothing - so picking the suggested benchmark
+    question ran the real item with its real options and then could not say
+    whether the answer was right. The server is the only place that knows the
+    suggestion it came from, so it patches the bundle after export rather than
+    teaching the exporter about live runs.
+
+    Rotation is not applied: live runs are created with option_rotation 0, so the
+    presented lettering is the original lettering.
+    """
+    if not job.sample_ref or not job.run_id:
+        return
+    bundle_path = DEMO / "bundles" / job.run_id.rsplit("-", 1)[0] / "bundle.json"
+    if not bundle_path.exists():
+        return
+    try:
+        keys = (json.loads((DEMO / "content" / "gold.json").read_text()) or {}).get("gold", {})
+        gold = (keys.get(job.sample_ref) or {}).get("answer")
+        if not gold:
+            return
+        b = json.loads(bundle_path.read_text())
+        if gold not in {o.strip()[0] for o in b["task"].get("options", []) if o.strip()}:
+            return          # options differ from the key's - safer to say nothing
+        b["task"]["has_gold"] = True
+        b["task"]["gold"] = gold
+        letter = b["answer"].get("letter")
+        b["answer"]["correct"] = (letter == gold) if letter else None
+        bundle_path.write_text(json.dumps(b, indent=1, ensure_ascii=False) + "\n")
+    except (OSError, json.JSONDecodeError, KeyError):
+        return
 
 
 # --------------------------------------------------------------------------- #
@@ -281,6 +321,7 @@ def start(req: RunRequest) -> dict:
         # options, which the generic yes/no set would have thrown away.
         job.question = row["question"]
         job.options = list(row.get("options") or [])
+        job.sample_ref = req.sample_ref
         _log_question(job, f"accepted (suggested: {req.sample_ref})")
     else:
         verdict = sanitize(req.question)
