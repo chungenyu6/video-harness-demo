@@ -193,9 +193,20 @@ export default function App() {
           </div>
         )}
 
-        {mode === "live" ? (
-          <LiveView harnesses={harnesses} videos={videos} />
-        ) : (
+        {/* Both tabs stay MOUNTED; the inactive one is hidden.
+            Conditional rendering unmounted LiveView on every tab switch, which
+            tore down its EventSource and threw away the run - so stepping over
+            to the recorded runs to explain something and coming back looked like
+            a fresh page with nothing in progress, while the run carried on
+            server-side. Hiding costs a little idle rendering; unmounting costs
+            you the run you were showing someone. */}
+        {liveAvailable && (
+          <div hidden={mode !== "live"}>
+            <LiveView harnesses={harnesses} videos={videos} />
+          </div>
+        )}
+
+        <div hidden={mode === "live"}>
         <>
         <div className="videopick" role="group" aria-label="Choose a video">
           {videos.map((v) => (
@@ -312,7 +323,7 @@ export default function App() {
         </div>
 
         </>
-        )}
+        </div>
 
         <p className="footnote">
           Runs are recorded, then replayed on one shared clock. They were executed
